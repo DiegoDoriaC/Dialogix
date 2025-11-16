@@ -1,0 +1,140 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\convesacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\convesacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\mensaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\mensaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\preguntasfrecuentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\preguntasfrecuentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\metricauso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\metricauso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 258,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Rol.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Rol.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Rol.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:20:35.108Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Mensaje.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Mensaje.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Mensaje.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Mensaje.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Mensaje.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:31:00.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Usuario.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Usuario.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Usuario.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:13:59.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Convesacion.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Convesacion.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Convesacion.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Convesacion.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Convesacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:29:38.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PreguntasFrecuentes.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\PreguntasFrecuentes.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\PreguntasFrecuentes.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\PreguntasFrecuentes.cs",
+              "RelativeToolTip": "Dialogix.Domain\\PreguntasFrecuentes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:27:51.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Feedback.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Feedback.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Feedback.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Feedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:32:19.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MetricaUso.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\MetricaUso.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\MetricaUso.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\MetricaUso.cs",
+              "RelativeToolTip": "Dialogix.Domain\\MetricaUso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T01:29:04.903Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

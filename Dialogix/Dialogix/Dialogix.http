@@ -1,0 +1,6 @@
+@Dialogix_HostAddress = http://localhost:5096
+
+GET {{Dialogix_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
