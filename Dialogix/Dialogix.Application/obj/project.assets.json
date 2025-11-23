@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Dialogix.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Dialogix.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dialogix.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Dialogix.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Dialogix.Domain/Dialogix.Domain.csproj",
+      "msbuildProject": "../Dialogix.Domain/Dialogix.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Dialogix.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\USUARIO\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
