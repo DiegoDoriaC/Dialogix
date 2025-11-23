@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialogix.Domain", "Dialogix
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialogix.Application", "Dialogix.Application\Dialogix.Application.csproj", "{B58BA157-CD06-4BFD-9539-656F4E0498E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Essalud.Domain", "Essalud.Domain\Essalud.Domain.csproj", "{D233DE49-CCF6-4AA4-AE82-7A9A71CE9885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Essalud.Application", "Essalud.Application\Essalud.Application.csproj", "{7B1383CA-52B4-431C-AD59-A18AAB39896E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialogix.Infrastructure", "Dialogix.Infrastructure\Dialogix.Infrastructure.csproj", "{0369E9A3-E6BF-4212-9987-C03000111B96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Essalud.Infraestructure", "Essalud.Infraestructure\Essalud.Infraestructure.csproj", "{0EC74AFA-7F16-4C12-992E-19819B9AD99F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +35,22 @@ Global
 		{B58BA157-CD06-4BFD-9539-656F4E0498E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B58BA157-CD06-4BFD-9539-656F4E0498E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B58BA157-CD06-4BFD-9539-656F4E0498E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D233DE49-CCF6-4AA4-AE82-7A9A71CE9885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D233DE49-CCF6-4AA4-AE82-7A9A71CE9885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D233DE49-CCF6-4AA4-AE82-7A9A71CE9885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D233DE49-CCF6-4AA4-AE82-7A9A71CE9885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1383CA-52B4-431C-AD59-A18AAB39896E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1383CA-52B4-431C-AD59-A18AAB39896E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1383CA-52B4-431C-AD59-A18AAB39896E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1383CA-52B4-431C-AD59-A18AAB39896E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0369E9A3-E6BF-4212-9987-C03000111B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0369E9A3-E6BF-4212-9987-C03000111B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0369E9A3-E6BF-4212-9987-C03000111B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0369E9A3-E6BF-4212-9987-C03000111B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC74AFA-7F16-4C12-992E-19819B9AD99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC74AFA-7F16-4C12-992E-19819B9AD99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC74AFA-7F16-4C12-992E-19819B9AD99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC74AFA-7F16-4C12-992E-19819B9AD99F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

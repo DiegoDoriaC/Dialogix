@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dialogix.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d2f1389488e67fb530e6cd48944ed9c2079e799")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dialogix.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dialogix.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
