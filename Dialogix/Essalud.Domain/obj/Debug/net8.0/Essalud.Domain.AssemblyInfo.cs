@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Essalud.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d2f1389488e67fb530e6cd48944ed9c2079e799")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eab29fd09b385c21c89d92839baacc868929cb2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Essalud.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Essalud.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

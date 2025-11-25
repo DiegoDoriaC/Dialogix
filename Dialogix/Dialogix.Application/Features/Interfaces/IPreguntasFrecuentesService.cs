@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Dialogix.Application.Features.Interfaces
 {
-    public interface IPreguntasFrecuentes
+    public interface IPreguntasFrecuentesService
     {
         Task<List<PreguntasFrecuentes>> ListarPreguntasFrecuentes();
-        Task<PreguntasFrecuentes> RegistrarPreguntasFrecuentes();
-        Task<PreguntasFrecuentes> EliminarPreguntaFrecuentes();
+        Task<bool> RegistrarPreguntasFrecuentes(PreguntasFrecuentes pre);
+        Task<bool> ModificarPreguntaFrecuente(PreguntasFrecuentes pre);
+        Task<bool> EliminarPreguntaFrecuentes(int id);
     }
 }

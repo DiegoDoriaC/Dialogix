@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dialogix.Infrastructure\Dialogix.Infrastructure.csproj" />
     <ProjectReference Include="..\Essalud.Domain\Essalud.Domain.csproj" />
+    <ProjectReference Include="..\Essalud.Infraestructure\Essalud.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>

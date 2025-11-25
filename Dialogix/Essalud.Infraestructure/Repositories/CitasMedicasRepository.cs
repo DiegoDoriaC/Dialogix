@@ -13,9 +13,9 @@ namespace Essalud.Infraestructure.Repositories
 {
     public class CitasMedicasRepository : ICitasMedicasRepository
     {
-        private readonly ISqlConnectionFactory _connectionFactory;
+        private readonly ISqlConnectionEssaludFactory _connectionFactory;
 
-        public CitasMedicasRepository(ISqlConnectionFactory connectionFactory)
+        public CitasMedicasRepository(ISqlConnectionEssaludFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }
@@ -111,5 +111,38 @@ namespace Essalud.Infraestructure.Repositories
             return listadoCitas;
         }
 
+        public async Task<CitaMedica> InformacionCitaMedica(CitaMedica cita)
+        {
+            CitaMedica obj = new CitaMedica();
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_informacion_citamedica";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@@IdCitaMedica", cita.IdCitaMedica);
+
+                    await connection.OpenAsync();
+
+                    using (var rd = await command.ExecuteReaderAsync())
+                    {
+                        while (await rd.ReadAsync())
+                        {     
+                            obj = new CitaMedica();
+                            obj.IdCitaMedica = rd["Id"] != DBNull.Value ? Convert.ToInt32(rd["Id"]) : 0;
+                            obj.Paciente.IdPaciente = rd["IdPaciente"] != DBNull.Value ? Convert.ToInt32(rd["NombrePaciente"]) : 0;
+                            obj.Medico.IdMedico = rd["IdMedico"] != DBNull.Value ? Convert.ToInt32(rd["IdMedico"]) : 0;
+                            obj.FechaCita = rd["FechaCita"] != DBNull.Value ? Convert.ToDateTime(rd["FechaCita"]) : DateTime.MinValue;
+                            obj.HoraCita = rd["HoraCita"] != DBNull.Value ? TimeOnly.FromDateTime(Convert.ToDateTime(rd["FechaCita"])) : TimeOnly.MinValue;
+                            obj.Motivo = Convert.ToString(rd["Motivo"])!;
+                            obj.Estado = Convert.ToString(rd["Estado"])!;
+                        }
+                    }
+                }
+            }
+            return obj;
+        }
     }
 }

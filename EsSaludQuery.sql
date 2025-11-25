@@ -621,7 +621,14 @@ begin
 	where cit.IdPaciente = @IdPaciente order by res.IdResultadosClinicos desc
 end
 
-
+create procedure pr_informacion_citamedica
+	@IdCitaMedica int
+as
+begin
+	select Id, IdPaciente, IdMedico, FechaCita, HoraCita,
+	Motivo, Estado from CitaMedica
+	where Id = @IdCitaMedica
+end
 ----------------------------------------	PROCEDURE VALIDACION PACIENTE	----------------------------------------
 create procedure pr_validar_existencia_paciente
 	@DniPaciente varchar(8)

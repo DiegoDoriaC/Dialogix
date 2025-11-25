@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Essalud.Application.Feature.Interfaces
 {
-    public interface Resultados
+    public interface IResultadosService
     {
         Task<ResultadosClinicos> ConsultarEstadoResultados(ResultadosClinicos resultados);
     }

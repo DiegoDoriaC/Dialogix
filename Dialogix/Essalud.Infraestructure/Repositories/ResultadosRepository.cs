@@ -13,9 +13,9 @@ namespace Essalud.Infraestructure.Repositories
     public class ResultadosRepository : IResultadosRepository
     {
 
-        private readonly ISqlConnectionFactory _connectionFactory;
+        private readonly ISqlConnectionEssaludFactory _connectionFactory;
 
-        public ResultadosRepository(ISqlConnectionFactory connectionFactory)
+        public ResultadosRepository(ISqlConnectionEssaludFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }

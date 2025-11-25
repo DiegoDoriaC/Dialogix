@@ -12,5 +12,6 @@ namespace Essalud.Infraestructure.Repositories
         Task<bool> AgendarCitaMedica(CitaMedica cita);
         Task<bool> CancelarCitaMedica(CitaMedica cita);
         Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita);
+        Task<CitaMedica> InformacionCitaMedica(CitaMedica cita);
     }
 }

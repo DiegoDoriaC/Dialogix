@@ -12,9 +12,9 @@ namespace Essalud.Infraestructure.Repositories
 {
     public class PacientesRepository : IPacientesRepository
     {
-        private readonly ISqlConnectionFactory _connectionFactory;
+        private readonly ISqlConnectionEssaludFactory _connectionFactory;
 
-        public PacientesRepository(ISqlConnectionFactory connectionFactory)
+        public PacientesRepository(ISqlConnectionEssaludFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dialogix.Infrastructure.Database
+namespace Essalud.Infraestructure.Database
 {
-    public interface ISqlConnectionFactory
+    public interface ISqlConnectionEssaludFactory
     {
         IDbConnection CreateConnection();
     }

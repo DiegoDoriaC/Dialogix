@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dialogix.Application.Features.Interfaces
 {
-    public interface IConversacion
+    public interface IConversacionService
     {
         Task<ConversacionResponse> ConversarConLaIA (ConversacionRequest request);
     }

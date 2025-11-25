@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dialogix.Application.Features.Services
 {
-    public class PreguntasFrecuentes
+    public class ConversacionService
     {
     }
 }

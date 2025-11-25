@@ -56,6 +56,9 @@ create table Feedback
 	Fecha datetime
 )
 
+insert into Usuarios ([Nombre], [Apellido], [FechaNacimiento], [Rol], [Estado], [Usuario], [Contraseña])
+values ('Diego', 'Doria', '2002-04-06', 'ADMIN', 'ACT', 'admin', 'admin123') --luego se codificará la contraseña
+
 ----------------------------------------	USUARIO	  ----------------------------------------
 create procedure pr_iniciar_sesion
 	@Usuario varchar(30),
@@ -121,6 +124,7 @@ begin
 end
 go
 
+
 ----------------------------------------	PREGUNTAS FRECUENTES	  ----------------------------------------
 create procedure pr_listar_preguntas_frecuentes
 as
@@ -132,11 +136,14 @@ go
 
 create procedure pr_registrar_pregunta_frecuente
 	@Descripcion varchar(50),
-	@Orden int
+	@Orden int,
+	@xIdPreFre int out
 as
 begin
 	insert into PreguntasFrecuentes ([Descripcion], [Estado], [Orden]) 
 	values (@Descripcion, 'ACT', @Orden)
+
+	set @xIdPreFre = SCOPE_IDENTITY()
 end
 go
 

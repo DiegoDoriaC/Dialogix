@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Dialogix.Infrastructure.Database
 {
-    public class SqlConnectionFactory : ISqlConnectionFactory
+    public class SqlConnectionDialogixFactory : ISqlConnectionDialogixFactory
     {
         private readonly string _connectionString;
 
-        public SqlConnectionFactory(string connectionString)
+        public SqlConnectionDialogixFactory(string connectionString)
         {
             _connectionString = connectionString;
         }

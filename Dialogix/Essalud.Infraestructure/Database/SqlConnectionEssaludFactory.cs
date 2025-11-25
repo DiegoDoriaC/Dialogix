@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Essalud.Infraestructure.Database
 {
-    public class SqlConnectionFactory
+    public class SqlConnectionEssaludFactory
     {
         private readonly string _connectionString;
 
-        public SqlConnectionFactory(string connectionString)
+        public SqlConnectionEssaludFactory(string connectionString)
         {
             _connectionString = connectionString;
         }

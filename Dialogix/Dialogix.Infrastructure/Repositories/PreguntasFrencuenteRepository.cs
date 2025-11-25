@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Dialogix.Infrastructure.Repositories
 {
-    public class PreguntaFrencuente
+    public class PreguntasFrencuenteRepository : IPreguntasFrecuentesRepository
     {
-        private readonly ISqlConnectionFactory _connectionFactory;
+        private readonly ISqlConnectionDialogixFactory _connectionFactory;
 
-        public PreguntaFrencuente(ISqlConnectionFactory connectionFactory)
+        public PreguntasFrencuenteRepository(ISqlConnectionDialogixFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }
@@ -64,8 +64,15 @@ namespace Dialogix.Infrastructure.Repositories
                     command.Parameters.AddWithValue("@Descripcion", pre.Descripcion);
                     command.Parameters.AddWithValue("@Orden", pre.Orden);
 
+                    var outputIdParam = new SqlParameter("@xIdPreFre", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputIdParam);
+
                     await connection.OpenAsync();
                     result = await command.ExecuteNonQueryAsync() > 0;
+                    pre.IdPreguntaFrecuente = (int)outputIdParam.Value;
                 }
             }
             return result;
