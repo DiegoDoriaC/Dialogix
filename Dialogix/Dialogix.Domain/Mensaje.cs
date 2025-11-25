@@ -9,9 +9,9 @@ namespace Dialogix.Domain
     public class Mensaje
     {
         public int IdMensaje { get; set; }
-        public int IdConversacion { get; set; }
+        public Conversacion Conversacion { get; set; } = new Conversacion();
         public string Texto { get; set; } = "";
         public string Respuesta { get; set; } = "";
         public DateTime Fecha { get; set; }
     }
-}
+} 

@@ -1,5 +1,181 @@
 [
   {
+    "ContainingType": "Dialogix.Controllers.AdministradorController",
+    "Method": "IniciarSesion",
+    "RelativePath": "Dialogix/Administrador/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "contrasenia",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.Usuario, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.PacienteController",
+    "Method": "EnviarMensaje",
+    "RelativePath": "Dialogix/Paciente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mensaje",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "Conversar"
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",
+    "Method": "ModificarPreguntaFrecuente",
+    "RelativePath": "Dialogix/PreguntasFrecuentes/actualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPreguntaFrecuente",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.PreguntasFrecuentes, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",
+    "Method": "EliminarPreguntaFrecuente",
+    "RelativePath": "Dialogix/PreguntasFrecuentes/eliminar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.PreguntasFrecuentes, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",
+    "Method": "ListarPreguntasFrecuentes",
+    "RelativePath": "Dialogix/PreguntasFrecuentes/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.PreguntasFrecuentes, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",
+    "Method": "RegistrarPreguntaFrecuente",
+    "RelativePath": "Dialogix/PreguntasFrecuentes/registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPreguntaFrecuente",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.PreguntasFrecuentes, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Dialogix.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

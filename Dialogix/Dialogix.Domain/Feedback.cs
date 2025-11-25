@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace Dialogix.Domain
     public class Feedback
     {
         public int IdFeedback { get; set; }
-        public int idConversacion { get; set; }
+        public Conversacion Conversacion { get; set; } = new Conversacion();
         public int Calificacion { get; set; }
         public DateTime Fecha { get; set; }
-    }
+    } 
 }
