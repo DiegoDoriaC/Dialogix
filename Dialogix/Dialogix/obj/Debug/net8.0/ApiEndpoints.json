@@ -176,6 +176,170 @@
     ]
   },
   {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "FiltrarFeedback",
+    "RelativePath": "filtrarFeetback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdFeedback",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.IdConversacion",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.DniUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.FechaInicio",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.FechaFin",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.Canal",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Conversacion.Estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Calificacion",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Fecha",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaAux",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.Feedback, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "FiltrarMetricaUso",
+    "RelativePath": "filtrarMetricaUso",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FechaInicio",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaFin",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "FiltrarMetricaUsoPorDia",
+    "RelativePath": "filtrarMetricaUsoDia",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FechaInicio",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaFin",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.MetricaUso, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "FiltrarMetricaUsoPorMes",
+    "RelativePath": "filtrarMetricaUsoMes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FechaInicio",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaFin",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.MetricaUso, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Dialogix.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

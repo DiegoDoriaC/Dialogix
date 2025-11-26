@@ -4,6 +4,9 @@ GO
 USE Essalud
 GO
 
+set dateformat ymd
+go
+
 CREATE TABLE Establecimiento (
     Id INT PRIMARY KEY,
     Nombre VARCHAR(150),

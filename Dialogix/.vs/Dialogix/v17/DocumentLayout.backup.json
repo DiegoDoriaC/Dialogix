@@ -3,68 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\administradorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\administradorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.application\\features\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|solutionrelative:dialogix.application\\features\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.application\\features\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|solutionrelative:dialogix.application\\features\\interfaces\\iusuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.infrastructure\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.infrastructure\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.infrastructure\\repositories\\preguntasfrencuenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\repositories\\preguntasfrencuenterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.infrastructure\\database\\sqlconnectiondialogixfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\database\\sqlconnectiondialogixfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.infrastructure\\database\\isqlconnectiondialogixfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\database\\isqlconnectiondialogixfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.application\\features\\services\\preguntasfrecuentesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|solutionrelative:dialogix.application\\features\\services\\preguntasfrecuentesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.application\\features\\interfaces\\ipreguntasfrecuentesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|solutionrelative:dialogix.application\\features\\interfaces\\ipreguntasfrecuentesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix.application\\common\\dtos\\respuestagenerica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B58BA157-CD06-4BFD-9539-656F4E0498E6}|Dialogix.Application\\Dialogix.Application.csproj|solutionrelative:dialogix.application\\common\\dtos\\respuestagenerica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,201 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 258,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
               "RelativeDocumentMoniker": "Dialogix\\appsettings.json",
               "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
               "RelativeToolTip": "Dialogix\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-25T02:52:20.553Z"
+              "WhenOpened": "2025-11-26T04:00:06.96Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AdministradorController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\AdministradorController.cs",
-              "RelativeDocumentMoniker": "Dialogix\\Controllers\\AdministradorController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\AdministradorController.cs",
-              "RelativeToolTip": "Dialogix\\Controllers\\AdministradorController.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:23:40.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PreguntasFrecuentesController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "RelativeDocumentMoniker": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "RelativeToolTip": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:57:18.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IUsuarioService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Interfaces\\IUsuarioService.cs",
-              "RelativeDocumentMoniker": "Dialogix.Application\\Features\\Interfaces\\IUsuarioService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Interfaces\\IUsuarioService.cs",
-              "RelativeToolTip": "Dialogix.Application\\Features\\Interfaces\\IUsuarioService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:36:30.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Usuario.cs",
-              "RelativeDocumentMoniker": "Dialogix.Domain\\Usuario.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Usuario.cs",
-              "RelativeToolTip": "Dialogix.Domain\\Usuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:29:38.786Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Repositories\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\UsuarioRepository.cs",
-              "RelativeToolTip": "Dialogix.Infrastructure\\Repositories\\UsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:29:05.209Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Repositories\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\IUsuarioRepository.cs",
-              "RelativeToolTip": "Dialogix.Infrastructure\\Repositories\\IUsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:28:56.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UsuarioService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Services\\UsuarioService.cs",
-              "RelativeDocumentMoniker": "Dialogix.Application\\Features\\Services\\UsuarioService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Services\\UsuarioService.cs",
-              "RelativeToolTip": "Dialogix.Application\\Features\\Services\\UsuarioService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAABcAAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:28:11.083Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PacienteController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
-              "RelativeDocumentMoniker": "Dialogix\\Controllers\\PacienteController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
-              "RelativeToolTip": "Dialogix\\Controllers\\PacienteController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:57:38.273Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
-              "RelativeDocumentMoniker": "Dialogix\\Program.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
-              "RelativeToolTip": "Dialogix\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACgAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:00:22.46Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PreguntasFrencuenteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\PreguntasFrencuenteRepository.cs",
-              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Repositories\\PreguntasFrencuenteRepository.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\PreguntasFrencuenteRepository.cs",
-              "RelativeToolTip": "Dialogix.Infrastructure\\Repositories\\PreguntasFrencuenteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:45:27.469Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PreguntasFrecuentesService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Services\\PreguntasFrecuentesService.cs",
-              "RelativeDocumentMoniker": "Dialogix.Application\\Features\\Services\\PreguntasFrecuentesService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Services\\PreguntasFrecuentesService.cs",
-              "RelativeToolTip": "Dialogix.Application\\Features\\Services\\PreguntasFrecuentesService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:50:03.304Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ISqlConnectionDialogixFactory.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Database\\ISqlConnectionDialogixFactory.cs",
-              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Database\\ISqlConnectionDialogixFactory.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Database\\ISqlConnectionDialogixFactory.cs",
-              "RelativeToolTip": "Dialogix.Infrastructure\\Database\\ISqlConnectionDialogixFactory.cs",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Dialogix\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.Development.json",
+              "RelativeToolTip": "Dialogix\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:05:18.664Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SqlConnectionDialogixFactory.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Database\\SqlConnectionDialogixFactory.cs",
-              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Database\\SqlConnectionDialogixFactory.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Database\\SqlConnectionDialogixFactory.cs",
-              "RelativeToolTip": "Dialogix.Infrastructure\\Database\\SqlConnectionDialogixFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T02:05:19.618Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RespuestaGenerica.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Common\\DTOs\\RespuestaGenerica.cs",
-              "RelativeDocumentMoniker": "Dialogix.Application\\Common\\DTOs\\RespuestaGenerica.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Common\\DTOs\\RespuestaGenerica.cs",
-              "RelativeToolTip": "Dialogix.Application\\Common\\DTOs\\RespuestaGenerica.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:58:54.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IPreguntasFrecuentesService.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Interfaces\\IPreguntasFrecuentesService.cs",
-              "RelativeDocumentMoniker": "Dialogix.Application\\Features\\Interfaces\\IPreguntasFrecuentesService.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Application\\Features\\Interfaces\\IPreguntasFrecuentesService.cs",
-              "RelativeToolTip": "Dialogix.Application\\Features\\Interfaces\\IPreguntasFrecuentesService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T00:48:26.674Z"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-26T04:00:05.781Z",
+              "EditorCaption": ""
             }
           ]
         }

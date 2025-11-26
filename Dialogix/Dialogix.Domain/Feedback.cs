@@ -13,5 +13,6 @@ namespace Dialogix.Domain
         public Conversacion Conversacion { get; set; } = new Conversacion();
         public int Calificacion { get; set; }
         public DateTime Fecha { get; set; }
+        public DateTime FechaAux { get; set; }
     } 
 }

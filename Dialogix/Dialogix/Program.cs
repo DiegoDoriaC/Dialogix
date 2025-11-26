@@ -33,10 +33,15 @@ builder.Services.AddSingleton<ISqlConnectionDialogixFactory>(new SqlConnectionDi
 
 // Configuracion de la inyecion de dependencias
 builder.Services.AddScoped<IChatbotService, ChatbotService>();
+
 builder.Services.AddScoped<IPreguntasFrecuentesService, PreguntasFrecuentesService>();
 builder.Services.AddScoped<IPreguntasFrecuentesRepository, PreguntasFrencuenteRepository>();
+
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+builder.Services.AddScoped<IReportesService, ReportesService>();
+builder.Services.AddScoped<IReportesRepository, ReportesRepository>();
 
 var app = builder.Build();
 
