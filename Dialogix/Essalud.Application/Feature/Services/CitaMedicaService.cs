@@ -1,11 +1,6 @@
 ﻿using Essalud.Application.Feature.Interfaces;
 using Essalud.Domain;
-using Essalud.Infraestructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Essalud.Infraestructure.Repositories.Interfaces;
 
 
 namespace Essalud.Application.Feature.Services
@@ -20,7 +15,7 @@ namespace Essalud.Application.Feature.Services
             _citasMedicasRepository = citasMedicasRepository;
         }
 
-        public async Task<Domain.CitaMedica> AgendarCitaMedica(Domain.CitaMedica cita)
+        public async Task<CitaMedica> AgendarCitaMedica(CitaMedica cita)
         {
             bool respuesta = await _citasMedicasRepository.AgendarCitaMedica(cita);
             if (!respuesta)
@@ -28,11 +23,11 @@ namespace Essalud.Application.Feature.Services
             return cita;
         }
 
-        public async Task<Domain.CitaMedica> CancelarCitaMedica(Domain.CitaMedica cita)
+        public async Task<CitaMedica> CancelarCitaMedica(CitaMedica cita)
         {
             CitaMedica citaObj = await _citasMedicasRepository.InformacionCitaMedica(cita);
-            if (citaObj.FechaCita.AddDays(1) >= DateTime.Now)
-                throw new Exception("Falta menos de un dia para la cita, no se puede cancelar");
+            //if (citaObj.FechaCita.AddDays(1) >= DateTime.Now)
+            //    throw new Exception("Falta menos de un dia para la cita, no se puede cancelar");
 
             bool respuesta = await _citasMedicasRepository.CancelarCitaMedica(cita);
             if (!respuesta)
@@ -41,7 +36,7 @@ namespace Essalud.Application.Feature.Services
             return citaObj;
         }
 
-        public async Task<List<Domain.CitaMedica>> HistorialCitasMedicas(Domain.CitaMedica cita)
+        public async Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita)
         {
             List<CitaMedica> listadoCitas = await _citasMedicasRepository.HistorialCitasMedicas(cita);
             if (listadoCitas.Count == 0)

@@ -50,12 +50,11 @@
         }
       }
     },
-    "/Dialogix/Paciente": {
+    "/Dialogix/Paciente/Hablar": {
       "get": {
         "tags": [
           "Paciente"
         ],
-        "operationId": "Conversar",
         "parameters": [
           {
             "name": "mensaje",

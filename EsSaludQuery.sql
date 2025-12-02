@@ -1,6 +1,9 @@
+USE master
+go
+
 CREATE DATABASE Essalud
 GO
-
+ 
 USE Essalud
 GO
 
@@ -13,6 +16,7 @@ CREATE TABLE Establecimiento (
     Tipo VARCHAR(50),
     Region VARCHAR(80)
 );
+go
 
 CREATE TABLE Consultorio (
     Id INT PRIMARY KEY,
@@ -21,6 +25,7 @@ CREATE TABLE Consultorio (
     Especialidad VARCHAR(80),
     FOREIGN KEY (IdEstablecimiento) REFERENCES Establecimiento(Id)
 );
+go
 
 CREATE TABLE Medico (
     Id INT PRIMARY KEY,
@@ -30,6 +35,7 @@ CREATE TABLE Medico (
     Especialidad VARCHAR(80),
     FOREIGN KEY (IdEstablecimiento) REFERENCES Establecimiento(Id)
 );
+go
 
 CREATE TABLE Paciente (
     Id INT PRIMARY KEY,
@@ -41,6 +47,7 @@ CREATE TABLE Paciente (
     Correo VARCHAR(40),
 	Direccion VARCHAR(50)
 );
+go
 
 CREATE TABLE HorarioMedico (
     Id INT PRIMARY KEY,
@@ -50,9 +57,10 @@ CREATE TABLE HorarioMedico (
     HoraFin TIME,
     FOREIGN KEY (IdMedico) REFERENCES Medico(Id)
 );
+go
 
 CREATE TABLE CitaMedica  (
-	Id INT PRIMARY KEY,
+	Id INT PRIMARY KEY IDENTITY(1,1),
 	IdPaciente INT,
 	IdMedico INT,
 	FechaCita DATE,
@@ -60,6 +68,7 @@ CREATE TABLE CitaMedica  (
 	Motivo VARCHAR(200),
 	Estado VARCHAR(20)
 )
+go
 
 CREATE TABLE ResultadosClinicos (
     IdResultadosClinicos INT IDENTITY(1,1) PRIMARY KEY,
@@ -72,6 +81,7 @@ CREATE TABLE ResultadosClinicos (
     FechaRegistro DATETIME,
 	FOREIGN KEY (IdCitaMedica) REFERENCES CitaMedica(Id)
 );
+go
 
 
 -- INSERTS — Establecimiento (30 registros)
@@ -243,7 +253,6 @@ INSERT INTO Medico VALUES (78, 18, 'Dr. Elmer Gutiérrez', 'CMP20999', 'Medicina 
 INSERT INTO Medico VALUES (79, 19, 'Dra. Pierina Concha', 'CMP21111', 'Emergencias');
 INSERT INTO Medico VALUES (80, 20, 'Dr. Alejandro Cárdenas', 'CMP21400', 'Medicina General');
 
-
 -- Pacientes — 70 INSERTs
 INSERT INTO Paciente VALUES (1,'72104533','Carlos Alberto Ruiz', 'M','1984-03-12','987654321','carlos.ruiz@example.com','Av. Los Álamos 123');
 INSERT INTO Paciente VALUES (2,'74823011','María Fernanda Torres', 'F','1992-07-25','986112233','maria.torres@example.com','Jr. Las Margaritas 450');
@@ -315,8 +324,6 @@ INSERT INTO Paciente VALUES (67,'70190211','Joel Martín Jurado', 'M','1995-12-09
 INSERT INTO Paciente VALUES (68,'72511092','Yuliana Marisol Paredes', 'F','1982-10-04','987642110','yuliana.paredes@example.com','Av. Paseo Colón 530');
 INSERT INTO Paciente VALUES (69,'73520094','Henry Alonso Pastor', 'M','1990-05-22','984200099','henry.pastor@example.com','Av. Nicolás Ayllón 771');
 INSERT INTO Paciente VALUES (70,'71029011','Tatiana Milena Guzmán', 'F','1998-04-15','986132110','tatiana.guzman@example.com','Av. Los Laureles 915');
-
-
 
 -- INSERTS — HorarioMedico (70 registros)
 INSERT INTO HorarioMedico VALUES (1, 1, 'Lunes', '08:00', '14:00');
@@ -390,139 +397,141 @@ INSERT INTO HorarioMedico VALUES (68, 68, 'Miércoles', '14:00', '20:00');
 INSERT INTO HorarioMedico VALUES (69, 69, 'Jueves', '08:00', '14:00');
 INSERT INTO HorarioMedico VALUES (70, 70, 'Viernes', '14:00', '20:00');
 
+update CitaMedica set Estado = 'Atendida' where IdPaciente = 1
+go
 
 -- INSERTS — CitaMedica (120 registros)
-INSERT INTO CitaMedica VALUES (1, 12, 5, '2025-01-05', '08:00', 'Control general', 'Programada');
-INSERT INTO CitaMedica VALUES (2, 44, 12, '2025-01-06', '09:30', 'Dolor de cabeza', 'Atendida');
-INSERT INTO CitaMedica VALUES (3, 3, 8, '2025-01-06', '11:15', 'Chequeo anual', 'Programada');
-INSERT INTO CitaMedica VALUES (4, 70, 15, '2025-01-07', '14:00', 'Dolor abdominal', 'Atendida');
-INSERT INTO CitaMedica VALUES (5, 27, 20, '2025-01-07', '16:30', 'Problemas respiratorios', 'Cancelada');
-INSERT INTO CitaMedica VALUES (6, 15, 1, '2025-01-08', '10:45', 'Dolor lumbar', 'Atendida');
-INSERT INTO CitaMedica VALUES (7, 88, 33, '2025-01-09', '12:00', 'Consulta preventiva', 'Programada');
-INSERT INTO CitaMedica VALUES (8, 101, 22, '2025-01-09', '17:15', 'Revisión post-operatoria', 'Programada');
-INSERT INTO CitaMedica VALUES (9, 4, 7, '2025-01-10', '09:00', 'Gripe persistente', 'Atendida');
-INSERT INTO CitaMedica VALUES (10, 133, 11, '2025-01-11', '15:45', 'Control de presión', 'Programada');
+INSERT INTO CitaMedica VALUES (12, 5, '2025-01-05', '08:00', 'Control general', 'Programada');
+INSERT INTO CitaMedica VALUES (44, 12, '2025-01-06', '09:30', 'Dolor de cabeza', 'Atendida');
+INSERT INTO CitaMedica VALUES (3, 8, '2025-01-06', '11:15', 'Chequeo anual', 'Programada');
+INSERT INTO CitaMedica VALUES (70, 15, '2025-01-07', '14:00', 'Dolor abdominal', 'Atendida');
+INSERT INTO CitaMedica VALUES (27, 20, '2025-01-07', '16:30', 'Problemas respiratorios', 'Cancelada');
+INSERT INTO CitaMedica VALUES (15, 1, '2025-01-08', '10:45', 'Dolor lumbar', 'Atendida');
+INSERT INTO CitaMedica VALUES (88, 33, '2025-01-09', '12:00', 'Consulta preventiva', 'Programada');
+INSERT INTO CitaMedica VALUES (101, 22, '2025-01-09', '17:15', 'Revisión post-operatoria', 'Programada');
+INSERT INTO CitaMedica VALUES (4, 7, '2025-01-10', '09:00', 'Gripe persistente', 'Atendida');
+INSERT INTO CitaMedica VALUES (133, 11, '2025-01-11', '15:45', 'Control de presión', 'Programada');
 
-INSERT INTO CitaMedica VALUES (11, 55, 40, '2025-01-12', '08:15', 'Chequeo general', 'Programada');
-INSERT INTO CitaMedica VALUES (12, 19, 45, '2025-01-12', '09:45', 'Dolor muscular', 'Atendida');
-INSERT INTO CitaMedica VALUES (13, 23, 30, '2025-01-12', '11:00', 'Alergia', 'Programada');
-INSERT INTO CitaMedica VALUES (14, 92, 18, '2025-01-13', '13:30', 'Control pediátrico', 'Atendida');
-INSERT INTO CitaMedica VALUES (15, 120, 29, '2025-01-13', '14:45', 'Dolor de pecho', 'Programada');
-INSERT INTO CitaMedica VALUES (16, 33, 50, '2025-01-14', '16:15', 'Examen de rutina', 'Programada');
-INSERT INTO CitaMedica VALUES (17, 66, 61, '2025-01-14', '17:30', 'Chequeo general', 'Atendida');
-INSERT INTO CitaMedica VALUES (18, 7, 10, '2025-01-15', '08:45', 'Dolor de garganta', 'Atendida');
-INSERT INTO CitaMedica VALUES (19, 41, 8, '2025-01-15', '09:15', 'Inflamación', 'Programada');
-INSERT INTO CitaMedica VALUES (20, 143, 13, '2025-01-15', '10:30', 'Consulta por fiebre', 'Programada');
+INSERT INTO CitaMedica VALUES (55, 40, '2025-01-12', '08:15', 'Chequeo general', 'Programada');
+INSERT INTO CitaMedica VALUES (19, 45, '2025-01-12', '09:45', 'Dolor muscular', 'Atendida');
+INSERT INTO CitaMedica VALUES (23, 30, '2025-01-12', '11:00', 'Alergia', 'Programada');
+INSERT INTO CitaMedica VALUES (92, 18, '2025-01-13', '13:30', 'Control pediátrico', 'Atendida');
+INSERT INTO CitaMedica VALUES (120, 29, '2025-01-13', '14:45', 'Dolor de pecho', 'Programada');
+INSERT INTO CitaMedica VALUES (33, 50, '2025-01-14', '16:15', 'Examen de rutina', 'Programada');
+INSERT INTO CitaMedica VALUES (66, 61, '2025-01-14', '17:30', 'Chequeo general', 'Atendida');
+INSERT INTO CitaMedica VALUES (7, 10, '2025-01-15', '08:45', 'Dolor de garganta', 'Atendida');
+INSERT INTO CitaMedica VALUES (41, 8, '2025-01-15', '09:15', 'Inflamación', 'Programada');
+INSERT INTO CitaMedica VALUES (143, 13, '2025-01-15', '10:30', 'Consulta por fiebre', 'Programada');
 
-INSERT INTO CitaMedica VALUES (21, 17, 2, '2025-01-16', '08:00', 'Control general', 'Programada');
-INSERT INTO CitaMedica VALUES (22, 8, 5, '2025-01-16', '08:30', 'Dolor de cabeza', 'Cancelada');
-INSERT INTO CitaMedica VALUES (23, 13, 1, '2025-01-16', '09:00', 'Chequeo anual', 'Atendida');
-INSERT INTO CitaMedica VALUES (24, 4, 7, '2025-01-16', '09:30', 'Seguimiento', 'Programada');
-INSERT INTO CitaMedica VALUES (25, 21, 3, '2025-01-16', '10:00', 'Consulta general', 'Cancelada');
-INSERT INTO CitaMedica VALUES (26, 19, 8, '2025-01-16', '10:30', 'Dolor muscular', 'Atendida');
-INSERT INTO CitaMedica VALUES (27, 6, 9, '2025-01-16', '11:00', 'Alergia', 'Programada');
-INSERT INTO CitaMedica VALUES (28, 11, 4, '2025-01-16', '11:30', 'Control mensual', 'Atendida');
-INSERT INTO CitaMedica VALUES (29, 15, 6, '2025-01-16', '12:00', 'Revisión', 'Cancelada');
-INSERT INTO CitaMedica VALUES (30, 10, 2, '2025-01-16', '14:00', 'Fiebre persistente', 'Programada');
+INSERT INTO CitaMedica VALUES (17, 2, '2025-01-16', '08:00', 'Control general', 'Programada');
+INSERT INTO CitaMedica VALUES (8, 5, '2025-01-16', '08:30', 'Dolor de cabeza', 'Cancelada');
+INSERT INTO CitaMedica VALUES (13, 1, '2025-01-16', '09:00', 'Chequeo anual', 'Atendida');
+INSERT INTO CitaMedica VALUES (4, 7, '2025-01-16', '09:30', 'Seguimiento', 'Programada');
+INSERT INTO CitaMedica VALUES (21, 3, '2025-01-16', '10:00', 'Consulta general', 'Cancelada');
+INSERT INTO CitaMedica VALUES (19, 8, '2025-01-16', '10:30', 'Dolor muscular', 'Atendida');
+INSERT INTO CitaMedica VALUES (6, 9, '2025-01-16', '11:00', 'Alergia', 'Programada');
+INSERT INTO CitaMedica VALUES (11, 4, '2025-01-16', '11:30', 'Control mensual', 'Atendida');
+INSERT INTO CitaMedica VALUES (15, 6, '2025-01-16', '12:00', 'Revisión', 'Cancelada');
+INSERT INTO CitaMedica VALUES (10, 2, '2025-01-16', '14:00', 'Fiebre persistente', 'Programada');
 
-INSERT INTO CitaMedica VALUES (31, 3, 1, '2025-01-17', '08:00', 'Chequeo general', 'Atendida');
-INSERT INTO CitaMedica VALUES (32, 12, 5, '2025-01-17', '08:30', 'Molestia estomacal', 'Cancelada');
-INSERT INTO CitaMedica VALUES (33, 20, 7, '2025-01-17', '09:00', 'Evaluación', 'Programada');
-INSERT INTO CitaMedica VALUES (34, 5, 8, '2025-01-17', '09:30', 'Dolor crónico', 'Atendida');
-INSERT INTO CitaMedica VALUES (35, 9, 4, '2025-01-17', '10:00', 'Infección leve', 'Programada');
-INSERT INTO CitaMedica VALUES (36, 14, 3, '2025-01-17', '10:30', 'Control', 'Cancelada');
-INSERT INTO CitaMedica VALUES (37, 18, 6, '2025-01-17', '11:00', 'Revisión anual', 'Programada');
-INSERT INTO CitaMedica VALUES (38, 7, 2, '2025-01-17', '11:30', 'Chequeo rápido', 'Atendida');
-INSERT INTO CitaMedica VALUES (39, 16, 9, '2025-01-17', '12:00', 'Problema respiratorio', 'Cancelada');
-INSERT INTO CitaMedica VALUES (40, 2, 1, '2025-01-17', '14:00', 'Dolor abdominal', 'Programada');
+INSERT INTO CitaMedica VALUES (3, 1, '2025-01-17', '08:00', 'Chequeo general', 'Atendida');
+INSERT INTO CitaMedica VALUES (12, 5, '2025-01-17', '08:30', 'Molestia estomacal', 'Cancelada');
+INSERT INTO CitaMedica VALUES (20, 7, '2025-01-17', '09:00', 'Evaluación', 'Programada');
+INSERT INTO CitaMedica VALUES (5, 8, '2025-01-17', '09:30', 'Dolor crónico', 'Atendida');
+INSERT INTO CitaMedica VALUES (9, 4, '2025-01-17', '10:00', 'Infección leve', 'Programada');
+INSERT INTO CitaMedica VALUES (14, 3, '2025-01-17', '10:30', 'Control', 'Cancelada');
+INSERT INTO CitaMedica VALUES (18, 6, '2025-01-17', '11:00', 'Revisión anual', 'Programada');
+INSERT INTO CitaMedica VALUES (7, 2, '2025-01-17', '11:30', 'Chequeo rápido', 'Atendida');
+INSERT INTO CitaMedica VALUES (16, 9, '2025-01-17', '12:00', 'Problema respiratorio', 'Cancelada');
+INSERT INTO CitaMedica VALUES (2, 1, '2025-01-17', '14:00', 'Dolor abdominal', 'Programada');
 
-INSERT INTO CitaMedica VALUES (41, 3, 3, '2025-01-18', '08:00', 'Control general', 'Cancelada');
-INSERT INTO CitaMedica VALUES (42, 10, 4, '2025-01-18', '08:30', 'Dolor de pecho', 'Atendida');
-INSERT INTO CitaMedica VALUES (43, 6, 5, '2025-01-18', '09:00', 'Seguimiento', 'Programada');
-INSERT INTO CitaMedica VALUES (44, 12, 6, '2025-01-18', '09:30', 'Chequeo anual', 'Cancelada');
-INSERT INTO CitaMedica VALUES (45, 14, 7, '2025-01-18', '10:00', 'Fatiga', 'Programada');
-INSERT INTO CitaMedica VALUES (46, 2, 8, '2025-01-18', '10:30', 'Infección viral', 'Atendida');
-INSERT INTO CitaMedica VALUES (47, 1, 9, '2025-01-18', '11:00', 'Consulta general', 'Cancelada');
-INSERT INTO CitaMedica VALUES (48, 8, 1, '2025-01-18', '11:30', 'Revisión', 'Programada');
-INSERT INTO CitaMedica VALUES (49, 4, 2, '2025-01-18', '12:00', 'Dolor lumbar', 'Atendida');
-INSERT INTO CitaMedica VALUES (50, 11, 3, '2025-01-18', '14:00', 'Control mensual', 'Programada');
+INSERT INTO CitaMedica VALUES (3, 3, '2025-01-18', '08:00', 'Control general', 'Cancelada');
+INSERT INTO CitaMedica VALUES (10, 4, '2025-01-18', '08:30', 'Dolor de pecho', 'Atendida');
+INSERT INTO CitaMedica VALUES (6, 5, '2025-01-18', '09:00', 'Seguimiento', 'Programada');
+INSERT INTO CitaMedica VALUES (12, 6, '2025-01-18', '09:30', 'Chequeo anual', 'Cancelada');
+INSERT INTO CitaMedica VALUES (14, 7, '2025-01-18', '10:00', 'Fatiga', 'Programada');
+INSERT INTO CitaMedica VALUES (2, 8, '2025-01-18', '10:30', 'Infección viral', 'Atendida');
+INSERT INTO CitaMedica VALUES (1, 9, '2025-01-18', '11:00', 'Consulta general', 'Cancelada');
+INSERT INTO CitaMedica VALUES (8, 1, '2025-01-18', '11:30', 'Revisión', 'Programada');
+INSERT INTO CitaMedica VALUES (4, 2, '2025-01-18', '12:00', 'Dolor lumbar', 'Atendida');
+INSERT INTO CitaMedica VALUES (11, 3, '2025-01-18', '14:00', 'Control mensual', 'Programada');
 
-INSERT INTO CitaMedica VALUES (51, 13, 4, '2025-01-19', '08:00', 'Dolor muscular', 'Programada');
-INSERT INTO CitaMedica VALUES (52, 19, 5, '2025-01-19', '08:30', 'Seguimiento', 'Atendida');
-INSERT INTO CitaMedica VALUES (53, 7, 6, '2025-01-19', '09:00', 'Problemas digestivos', 'Cancelada');
-INSERT INTO CitaMedica VALUES (54, 15, 7, '2025-01-19', '09:30', 'Control general', 'Atendida');
-INSERT INTO CitaMedica VALUES (55, 5, 8, '2025-01-19', '10:00', 'Alergia', 'Programada');
-INSERT INTO CitaMedica VALUES (56, 9, 9, '2025-01-19', '10:30', 'Evaluación', 'Cancelada');
-INSERT INTO CitaMedica VALUES (57, 16, 1, '2025-01-19', '11:00', 'Chequeo anual', 'Programada');
-INSERT INTO CitaMedica VALUES (58, 18, 2, '2025-01-19', '11:30', 'Consulta rápida', 'Atendida');
-INSERT INTO CitaMedica VALUES (59, 21, 3, '2025-01-19', '12:00', 'Control mensual', 'Cancelada');
-INSERT INTO CitaMedica VALUES (60, 17, 4, '2025-01-19', '14:00', 'Dolor de cabeza', 'Programada');
+INSERT INTO CitaMedica VALUES (13, 4, '2025-01-19', '08:00', 'Dolor muscular', 'Programada');
+INSERT INTO CitaMedica VALUES (19, 5, '2025-01-19', '08:30', 'Seguimiento', 'Atendida');
+INSERT INTO CitaMedica VALUES (7, 6, '2025-01-19', '09:00', 'Problemas digestivos', 'Cancelada');
+INSERT INTO CitaMedica VALUES (15, 7, '2025-01-19', '09:30', 'Control general', 'Atendida');
+INSERT INTO CitaMedica VALUES (5, 8, '2025-01-19', '10:00', 'Alergia', 'Programada');
+INSERT INTO CitaMedica VALUES (9, 9, '2025-01-19', '10:30', 'Evaluación', 'Cancelada');
+INSERT INTO CitaMedica VALUES (16, 1, '2025-01-19', '11:00', 'Chequeo anual', 'Programada');
+INSERT INTO CitaMedica VALUES (18, 2, '2025-01-19', '11:30', 'Consulta rápida', 'Atendida');
+INSERT INTO CitaMedica VALUES (21, 3, '2025-01-19', '12:00', 'Control mensual', 'Cancelada');
+INSERT INTO CitaMedica VALUES (17, 4, '2025-01-19', '14:00', 'Dolor de cabeza', 'Programada');
 
-INSERT INTO CitaMedica VALUES (61, 3, 5, '2025-01-20', '08:00', 'Chequeo', 'Cancelada');
-INSERT INTO CitaMedica VALUES (62, 11, 6, '2025-01-20', '08:30', 'Fiebre', 'Programada');
-INSERT INTO CitaMedica VALUES (63, 8, 7, '2025-01-20', '09:00', 'Control', 'Atendida');
-INSERT INTO CitaMedica VALUES (64, 6, 8, '2025-01-20', '09:30', 'Dolor de espalda', 'Programada');
-INSERT INTO CitaMedica VALUES (65, 9, 9, '2025-01-20', '10:00', 'Consulta', 'Cancelada');
-INSERT INTO CitaMedica VALUES (66, 12, 1, '2025-01-20', '10:30', 'Alergia', 'Programada');
-INSERT INTO CitaMedica VALUES (67, 13, 2, '2025-01-20', '11:00', 'Chequeo anual', 'Atendida');
-INSERT INTO CitaMedica VALUES (68, 7, 3, '2025-01-20', '11:30', 'Infección leve', 'Programada');
-INSERT INTO CitaMedica VALUES (69, 15, 4, '2025-01-20', '12:00', 'Revisión', 'Atendida');
-INSERT INTO CitaMedica VALUES (70, 20, 5, '2025-01-20', '14:00', 'Evaluación', 'Cancelada');
+INSERT INTO CitaMedica VALUES (3, 5, '2025-01-20', '08:00', 'Chequeo', 'Cancelada');
+INSERT INTO CitaMedica VALUES (11, 6, '2025-01-20', '08:30', 'Fiebre', 'Programada');
+INSERT INTO CitaMedica VALUES (8, 7, '2025-01-20', '09:00', 'Control', 'Atendida');
+INSERT INTO CitaMedica VALUES (6, 8, '2025-01-20', '09:30', 'Dolor de espalda', 'Programada');
+INSERT INTO CitaMedica VALUES (9, 9, '2025-01-20', '10:00', 'Consulta', 'Cancelada');
+INSERT INTO CitaMedica VALUES (12, 1, '2025-01-20', '10:30', 'Alergia', 'Programada');
+INSERT INTO CitaMedica VALUES (13, 2, '2025-01-20', '11:00', 'Chequeo anual', 'Atendida');
+INSERT INTO CitaMedica VALUES (7, 3, '2025-01-20', '11:30', 'Infección leve', 'Programada');
+INSERT INTO CitaMedica VALUES (15, 4, '2025-01-20', '12:00', 'Revisión', 'Atendida');
+INSERT INTO CitaMedica VALUES (20, 5, '2025-01-20', '14:00', 'Evaluación', 'Cancelada');
 
-INSERT INTO CitaMedica VALUES (71, 2, 6, '2025-01-21', '08:00', 'Control general', 'Programada');
-INSERT INTO CitaMedica VALUES (72, 4, 7, '2025-01-21', '08:30', 'Seguimiento', 'Cancelada');
-INSERT INTO CitaMedica VALUES (73, 10, 8, '2025-01-21', '09:00', 'Chequeo extraordinario', 'Atendida');
-INSERT INTO CitaMedica VALUES (74, 21, 9, '2025-01-21', '09:30', 'Dolor muscular', 'Programada');
-INSERT INTO CitaMedica VALUES (75, 19, 1, '2025-01-21', '10:00', 'Infección', 'Cancelada');
-INSERT INTO CitaMedica VALUES (76, 1, 2, '2025-01-21', '10:30', 'Evaluación', 'Programada');
-INSERT INTO CitaMedica VALUES (77, 5, 3, '2025-01-21', '11:00', 'Molestia general', 'Atendida');
-INSERT INTO CitaMedica VALUES (78, 14, 4, '2025-01-21', '11:30', 'Revisión', 'Cancelada');
-INSERT INTO CitaMedica VALUES (79, 16, 5, '2025-01-21', '12:00', 'Control mensual', 'Programada');
-INSERT INTO CitaMedica VALUES (80, 18, 6, '2025-01-21', '14:00', 'Problema digestivo', 'Atendida');
+INSERT INTO CitaMedica VALUES (2, 6, '2025-01-21', '08:00', 'Control general', 'Programada');
+INSERT INTO CitaMedica VALUES (4, 7, '2025-01-21', '08:30', 'Seguimiento', 'Cancelada');
+INSERT INTO CitaMedica VALUES (10, 8, '2025-01-21', '09:00', 'Chequeo extraordinario', 'Atendida');
+INSERT INTO CitaMedica VALUES (21, 9, '2025-01-21', '09:30', 'Dolor muscular', 'Programada');
+INSERT INTO CitaMedica VALUES (19, 1, '2025-01-21', '10:00', 'Infección', 'Cancelada');
+INSERT INTO CitaMedica VALUES (1, 2, '2025-01-21', '10:30', 'Evaluación', 'Programada');
+INSERT INTO CitaMedica VALUES (5, 3, '2025-01-21', '11:00', 'Molestia general', 'Atendida');
+INSERT INTO CitaMedica VALUES (14, 4, '2025-01-21', '11:30', 'Revisión', 'Cancelada');
+INSERT INTO CitaMedica VALUES (16, 5, '2025-01-21', '12:00', 'Control mensual', 'Programada');
+INSERT INTO CitaMedica VALUES (18, 6, '2025-01-21', '14:00', 'Problema digestivo', 'Atendida');
 
-INSERT INTO CitaMedica VALUES (81, 7, 7, '2025-01-22', '08:00', 'Alergia', 'Programada');
-INSERT INTO CitaMedica VALUES (82, 12, 8, '2025-01-22', '08:30', 'Chequeo', 'Atendida');
-INSERT INTO CitaMedica VALUES (83, 17, 9, '2025-01-22', '09:00', 'Dolor abdominal', 'Cancelada');
-INSERT INTO CitaMedica VALUES (84, 9, 1, '2025-01-22', '09:30', 'Control general', 'Programada');
-INSERT INTO CitaMedica VALUES (85, 3, 2, '2025-01-22', '10:00', 'Fiebre', 'Cancelada');
-INSERT INTO CitaMedica VALUES (86, 11, 3, '2025-01-22', '10:30', 'Problema respiratorio', 'Programada');
-INSERT INTO CitaMedica VALUES (87, 20, 4, '2025-01-22', '11:00', 'Evaluación', 'Atendida');
-INSERT INTO CitaMedica VALUES (88, 5, 5, '2025-01-22', '11:30', 'Chequeo general', 'Programada');
-INSERT INTO CitaMedica VALUES (89, 6, 6, '2025-01-22', '12:00', 'Dolor de cabeza', 'Cancelada');
-INSERT INTO CitaMedica VALUES (90, 10, 7, '2025-01-22', '14:00', 'Consulta', 'Atendida');
+INSERT INTO CitaMedica VALUES (7, 7, '2025-01-22', '08:00', 'Alergia', 'Programada');
+INSERT INTO CitaMedica VALUES (12, 8, '2025-01-22', '08:30', 'Chequeo', 'Atendida');
+INSERT INTO CitaMedica VALUES (17, 9, '2025-01-22', '09:00', 'Dolor abdominal', 'Cancelada');
+INSERT INTO CitaMedica VALUES (9, 1, '2025-01-22', '09:30', 'Control general', 'Programada');
+INSERT INTO CitaMedica VALUES (3, 2, '2025-01-22', '10:00', 'Fiebre', 'Cancelada');
+INSERT INTO CitaMedica VALUES (11, 3, '2025-01-22', '10:30', 'Problema respiratorio', 'Programada');
+INSERT INTO CitaMedica VALUES (20, 4, '2025-01-22', '11:00', 'Evaluación', 'Atendida');
+INSERT INTO CitaMedica VALUES (5, 5, '2025-01-22', '11:30', 'Chequeo general', 'Programada');
+INSERT INTO CitaMedica VALUES (6, 6, '2025-01-22', '12:00', 'Dolor de cabeza', 'Cancelada');
+INSERT INTO CitaMedica VALUES (10, 7, '2025-01-22', '14:00', 'Consulta', 'Atendida');
 
-INSERT INTO CitaMedica VALUES (91, 13, 8, '2025-01-23', '08:00', 'Control mensual', 'Programada');
-INSERT INTO CitaMedica VALUES (92, 2, 9, '2025-01-23', '08:30', 'Revisión', 'Atendida');
-INSERT INTO CitaMedica VALUES (93, 8, 1, '2025-01-23', '09:00', 'Molestia estomacal', 'Cancelada');
-INSERT INTO CitaMedica VALUES (94, 16, 2, '2025-01-23', '09:30', 'Chequeo general', 'Programada');
-INSERT INTO CitaMedica VALUES (95, 1, 3, '2025-01-23', '10:00', 'Dolor muscular', 'Atendida');
-INSERT INTO CitaMedica VALUES (96, 14, 4, '2025-01-23', '10:30', 'Evaluación', 'Cancelada');
-INSERT INTO CitaMedica VALUES (97, 4, 5, '2025-01-23', '11:00', 'Chequeo', 'Atendida');
-INSERT INTO CitaMedica VALUES (98, 15, 6, '2025-01-23', '11:30', 'Control', 'Programada');
-INSERT INTO CitaMedica VALUES (99, 6, 7, '2025-01-23', '12:00', 'Alergia', 'Cancelada');
-INSERT INTO CitaMedica VALUES (100, 9, 8, '2025-01-23', '14:00', 'Revisión general', 'Atendida');
+INSERT INTO CitaMedica VALUES (13, 8, '2025-01-23', '08:00', 'Control mensual', 'Programada');
+INSERT INTO CitaMedica VALUES (2, 9, '2025-01-23', '08:30', 'Revisión', 'Atendida');
+INSERT INTO CitaMedica VALUES (8, 1, '2025-01-23', '09:00', 'Molestia estomacal', 'Cancelada');
+INSERT INTO CitaMedica VALUES (16, 2, '2025-01-23', '09:30', 'Chequeo general', 'Programada');
+INSERT INTO CitaMedica VALUES (1, 3, '2025-01-23', '10:00', 'Dolor muscular', 'Atendida');
+INSERT INTO CitaMedica VALUES (14, 4, '2025-01-23', '10:30', 'Evaluación', 'Cancelada');
+INSERT INTO CitaMedica VALUES (4, 5, '2025-01-23', '11:00', 'Chequeo', 'Atendida');
+INSERT INTO CitaMedica VALUES (15, 6, '2025-01-23', '11:30', 'Control', 'Programada');
+INSERT INTO CitaMedica VALUES (6, 7, '2025-01-23', '12:00', 'Alergia', 'Cancelada');
+INSERT INTO CitaMedica VALUES (9, 8, '2025-01-23', '14:00', 'Revisión general', 'Atendida');
 
-INSERT INTO CitaMedica VALUES (101, 7, 9, '2025-01-24', '08:00', 'Control mensual', 'Cancelada');
-INSERT INTO CitaMedica VALUES (102, 11, 1, '2025-01-24', '08:30', 'Chequeo', 'Programada');
-INSERT INTO CitaMedica VALUES (103, 18, 2, '2025-01-24', '09:00', 'Consulta', 'Atendida');
-INSERT INTO CitaMedica VALUES (104, 21, 3, '2025-01-24', '09:30', 'Revisión', 'Programada');
-INSERT INTO CitaMedica VALUES (105, 20, 4, '2025-01-24', '10:00', 'Evaluación', 'Cancelada');
-INSERT INTO CitaMedica VALUES (106, 3, 5, '2025-01-24', '10:30', 'Dolor abdominal', 'Atendida');
-INSERT INTO CitaMedica VALUES (107, 5, 6, '2025-01-24', '11:00', 'Control general', 'Programada');
-INSERT INTO CitaMedica VALUES (108, 12, 7, '2025-01-24', '11:30', 'Seguimiento', 'Cancelada');
-INSERT INTO CitaMedica VALUES (109, 8, 8, '2025-01-24', '12:00', 'Chequeo', 'Programada');
-INSERT INTO CitaMedica VALUES (110, 10, 9, '2025-01-24', '14:00', 'Consulta rápida', 'Atendida');
+INSERT INTO CitaMedica VALUES (7, 9, '2025-01-24', '08:00', 'Control mensual', 'Cancelada');
+INSERT INTO CitaMedica VALUES (11, 1, '2025-01-24', '08:30', 'Chequeo', 'Programada');
+INSERT INTO CitaMedica VALUES (18, 2, '2025-01-24', '09:00', 'Consulta', 'Atendida');
+INSERT INTO CitaMedica VALUES (21, 3, '2025-01-24', '09:30', 'Revisión', 'Programada');
+INSERT INTO CitaMedica VALUES (20, 4, '2025-01-24', '10:00', 'Evaluación', 'Cancelada');
+INSERT INTO CitaMedica VALUES (3, 5, '2025-01-24', '10:30', 'Dolor abdominal', 'Atendida');
+INSERT INTO CitaMedica VALUES (5, 6, '2025-01-24', '11:00', 'Control general', 'Programada');
+INSERT INTO CitaMedica VALUES (12, 7, '2025-01-24', '11:30', 'Seguimiento', 'Cancelada');
+INSERT INTO CitaMedica VALUES (8, 8, '2025-01-24', '12:00', 'Chequeo', 'Programada');
+INSERT INTO CitaMedica VALUES (10, 9, '2025-01-24', '14:00', 'Consulta rápida', 'Atendida');
 
-INSERT INTO CitaMedica VALUES (111, 2, 1, '2025-01-25', '08:00', 'Evaluación', 'Cancelada');
-INSERT INTO CitaMedica VALUES (112, 14, 2, '2025-01-25', '08:30', 'Revisión', 'Programada');
-INSERT INTO CitaMedica VALUES (113, 19, 3, '2025-01-25', '09:00', 'Dolor de cabeza', 'Atendida');
-INSERT INTO CitaMedica VALUES (114, 4, 4, '2025-01-25', '09:30', 'Chequeo', 'Cancelada');
-INSERT INTO CitaMedica VALUES (115, 6, 5, '2025-01-25', '10:00', 'Control mensual', 'Programada');
-INSERT INTO CitaMedica VALUES (116, 9, 6, '2025-01-25', '10:30', 'Fatiga', 'Atendida');
-INSERT INTO CitaMedica VALUES (117, 1, 7, '2025-01-25', '11:00', 'Consulta general', 'Cancelada');
-INSERT INTO CitaMedica VALUES (118, 16, 8, '2025-01-25', '11:30', 'Alergia', 'Atendida');
-INSERT INTO CitaMedica VALUES (119, 11, 9, '2025-01-25', '12:00', 'Seguimiento', 'Programada');
-INSERT INTO CitaMedica VALUES (120, 7, 1, '2025-01-25', '14:00', 'Chequeo', 'Atendida');
+INSERT INTO CitaMedica VALUES (2, 1, '2025-01-25', '08:00', 'Evaluación', 'Cancelada');
+INSERT INTO CitaMedica VALUES (14, 2, '2025-01-25', '08:30', 'Revisión', 'Programada');
+INSERT INTO CitaMedica VALUES (19, 3, '2025-01-25', '09:00', 'Dolor de cabeza', 'Atendida');
+INSERT INTO CitaMedica VALUES (4, 4, '2025-01-25', '09:30', 'Chequeo', 'Cancelada');
+INSERT INTO CitaMedica VALUES (6, 5, '2025-01-25', '10:00', 'Control mensual', 'Programada');
+INSERT INTO CitaMedica VALUES (9, 6, '2025-01-25', '10:30', 'Fatiga', 'Atendida');
+INSERT INTO CitaMedica VALUES (1, 7, '2025-01-25', '11:00', 'Consulta general', 'Cancelada');
+INSERT INTO CitaMedica VALUES (16, 8, '2025-01-25', '11:30', 'Alergia', 'Atendida');
+INSERT INTO CitaMedica VALUES (11, 9, '2025-01-25', '12:00', 'Seguimiento', 'Programada');
+INSERT INTO CitaMedica VALUES (7, 1, '2025-01-25', '14:00', 'Chequeo', 'Atendida');
 
 
 -- INSERTS — ResultadosClinicos (30 registros)
@@ -556,7 +565,7 @@ INSERT INTO ResultadosClinicos VALUES (27,'Triglicéridos','132 mg/dL','2025-01-2
 INSERT INTO ResultadosClinicos VALUES (28,'Hemoglobina','13.9 g/dL','2025-01-25','Normal','Validado','2025-02-01');
 INSERT INTO ResultadosClinicos VALUES (29,'Creatinina','0.76 mg/dL','2025-01-25','Normal','Validado','2025-02-02');
 INSERT INTO ResultadosClinicos VALUES (30,'Glucosa en ayunas','109 mg/dL','2025-01-26','Límite alto','Observado','2025-02-03');
-
+go
 
 ---------------------------------------- PROCEDURE CITAS MEDICAS ----------------------------------------
 create procedure pr_insertar_citamedica
@@ -587,7 +596,7 @@ begin
 	set @xIdCitaMedica = SCOPE_IDENTITY()
 
 end
-
+go
 
 create procedure pr_actualizar_estado_citamedica
 	@IdCitaMedica int,
@@ -598,20 +607,22 @@ begin
 	Estado = @Estado
 	where id = @IdCitaMedica
 end
-
+go
 
 create procedure pr_listar_historial_citasmedicas
-	@IdPaciente int
+	@IdPaciente int,
+	@Estado varchar(20)
 as
 begin
-	select top 3 cit.Id, cit.FechaCita, cit.Estado, cit.Motivo, 
-	pac.Nombre as NombrePaciente, med.Nombre as NombreMedico from CitaMedica cit
+	select top 3 cit.Id, CAST(CONCAT(cit.FechaCita, ' ', cit.HoraCita) AS datetime2) as FechaCita, cit.Estado, 
+	cit.Motivo, pac.Nombre as NombrePaciente, med.Nombre as NombreMedico, med.Especialidad from CitaMedica cit
 	left join Paciente pac on pac.Id = cit.IdPaciente
 	left join Medico med on med.Id = cit.IdMedico
 	where pac.Id = @IdPaciente 
+	AND (@Estado = '' OR Estado = @Estado)
 	order by cit.Id desc
 end
-
+go
 
 create procedure pr_consultar_estado_ultimos_resultados
 	@IdPaciente int
@@ -620,9 +631,10 @@ begin
 	select top 3 IdResultadosClinicos, res.TipoExamen, res.Valor, res.Observaciones, 
 	res.Estado, res.FechaRegistro, pac.Nombre from ResultadosClinicos res
 	left join CitaMedica cit on cit.Id = res.IdCitaMedica
-	left join Paciente pac on pac.Id = res.IdCitaMedica
+	left join Paciente pac on pac.Id = cit.IdPaciente
 	where cit.IdPaciente = @IdPaciente order by res.IdResultadosClinicos desc
 end
+go
 
 create procedure pr_informacion_citamedica
 	@IdCitaMedica int
@@ -632,6 +644,8 @@ begin
 	Motivo, Estado from CitaMedica
 	where Id = @IdCitaMedica
 end
+go
+
 ----------------------------------------	PROCEDURE VALIDACION PACIENTE	----------------------------------------
 create procedure pr_validar_existencia_paciente
 	@DniPaciente varchar(8)
@@ -641,3 +655,47 @@ begin
 	Telefono, Correo, Direccion from Paciente
 	where DNI = @DniPaciente
 end
+go
+
+
+create procedure pr_listar_doctores_segun_especialidad
+	@Especialidad varchar(15)
+as
+begin
+	select top 7 Id, Nombre from Medico where Especialidad = @Especialidad
+end
+go
+
+
+create procedure pr_listar_horarios_medico
+	@IdMedico int,
+	@DiaSemana varchar(10)
+as
+begin
+	SELECT * 
+	FROM HorarioMedico
+	WHERE IdMedico = @idMedico
+	AND DiaSemana = @diaSemana;
+end
+go
+
+
+create procedure pr_listar_horarios_reservados
+	@IdMedico int,
+	@Fecha datetime
+as
+begin
+	SELECT HoraCita
+	FROM CitaMedica
+	WHERE IdMedico = @idMedico
+	AND FechaCita = @fecha;
+end
+go
+
+
+create procedure pr_listar_especialidades
+as
+begin
+	select Especialidad from Medico group by Especialidad	
+end
+go

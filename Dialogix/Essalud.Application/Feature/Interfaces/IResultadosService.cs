@@ -9,6 +9,6 @@ namespace Essalud.Application.Feature.Interfaces
 {
     public interface IResultadosService
     {
-        Task<ResultadosClinicos> ConsultarEstadoResultados(ResultadosClinicos resultados);
+        Task<List<ResultadosClinicos>> ConsultarEstadoResultados(ResultadosClinicos resultados);
     }
 }

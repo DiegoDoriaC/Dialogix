@@ -1,5 +1,6 @@
 ﻿using Essalud.Domain;
 using Essalud.Infraestructure.Database;
+using Essalud.Infraestructure.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,7 @@ namespace Essalud.Infraestructure.Repositories
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@IdCitaMedica", cita.IdCitaMedica);
-                    command.Parameters.AddWithValue("@Estado", cita.Estado);
+                    command.Parameters.AddWithValue("@Estado", "Cancelada");
 
                     await connection.OpenAsync();
                     result = await command.ExecuteNonQueryAsync() > 0;
@@ -88,6 +89,7 @@ namespace Essalud.Infraestructure.Repositories
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@IdPaciente", cita.Paciente.IdPaciente);
+                    command.Parameters.AddWithValue("@Estado", cita.Estado);
 
                     await connection.OpenAsync();
 
@@ -102,7 +104,7 @@ namespace Essalud.Infraestructure.Repositories
                                 Estado = Convert.ToString(rd["Estado"])!,
                                 Motivo = Convert.ToString(rd["Motivo"])!,
                                 Paciente = new Paciente { Nombre = Convert.ToString(rd["NombrePaciente"])! },
-                                Medico = new Medico { Nombre = Convert.ToString(rd["NombreMedico"])! }
+                                Medico = new Medico { Nombre = Convert.ToString(rd["NombreMedico"])!, Especialidad = Convert.ToString(rd["Especialidad"])! }
                             });
                         }
                     }                        
@@ -122,7 +124,7 @@ namespace Essalud.Infraestructure.Repositories
                     command.CommandText = "pr_informacion_citamedica";
                     command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@@IdCitaMedica", cita.IdCitaMedica);
+                    command.Parameters.AddWithValue("@IdCitaMedica", cita.IdCitaMedica);
 
                     await connection.OpenAsync();
 
@@ -132,10 +134,10 @@ namespace Essalud.Infraestructure.Repositories
                         {     
                             obj = new CitaMedica();
                             obj.IdCitaMedica = rd["Id"] != DBNull.Value ? Convert.ToInt32(rd["Id"]) : 0;
-                            obj.Paciente.IdPaciente = rd["IdPaciente"] != DBNull.Value ? Convert.ToInt32(rd["NombrePaciente"]) : 0;
+                            obj.Paciente.IdPaciente = rd["IdPaciente"] != DBNull.Value ? Convert.ToInt32(rd["IdPaciente"]) : 0;
                             obj.Medico.IdMedico = rd["IdMedico"] != DBNull.Value ? Convert.ToInt32(rd["IdMedico"]) : 0;
                             obj.FechaCita = rd["FechaCita"] != DBNull.Value ? Convert.ToDateTime(rd["FechaCita"]) : DateTime.MinValue;
-                            obj.HoraCita = rd["HoraCita"] != DBNull.Value ? TimeOnly.FromDateTime(Convert.ToDateTime(rd["FechaCita"])) : TimeOnly.MinValue;
+                            obj.HoraCita = rd["HoraCita"] != DBNull.Value ? TimeOnly.FromTimeSpan((TimeSpan)rd["HoraCita"]) : TimeOnly.MinValue;
                             obj.Motivo = Convert.ToString(rd["Motivo"])!;
                             obj.Estado = Convert.ToString(rd["Estado"])!;
                         }

@@ -9,6 +9,6 @@ namespace Essalud.Application.Feature.Interfaces
 {
     public interface IPacientesService
     {
-        Task<Paciente> BuscarUsuarioPorDni(Paciente paciente);
+        Task<Paciente> BuscarUsuarioPorDni(string dni);
     }
 }

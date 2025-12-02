@@ -1,5 +1,7 @@
 use master
 create database Dialogix
+go
+
 use Dialogix
 
 set dateformat ymd
@@ -16,6 +18,7 @@ create table Usuarios
 	Usuario varchar(30) unique,
 	Contraseña varchar(300)
 )
+go
 
 create table PreguntasFrecuentes
 (
@@ -24,6 +27,7 @@ create table PreguntasFrecuentes
 	Estado varchar(10),
 	Orden int unique
 )
+go
 
 create table MetricaUso
 (
@@ -31,6 +35,7 @@ create table MetricaUso
 	Fecha date,
 	TotalConversaciones int
 )
+go
 
 create table Convesaciones
 (
@@ -41,6 +46,7 @@ create table Convesaciones
 	Canal varchar(10),
 	Estado varchar(10)
 )
+go
 
 create table Mensajes
 (
@@ -50,6 +56,7 @@ create table Mensajes
 	Respuesta varchar(300),
 	Fecha datetime
 )
+go
 
 create table Feedback
 (
@@ -58,9 +65,11 @@ create table Feedback
 	Calificacion int,
 	Fecha datetime
 )
+go
 
 insert into Usuarios ([Nombre], [Apellido], [FechaNacimiento], [Rol], [Estado], [Usuario], [Contraseña])
 values ('Diego', 'Doria', '2002-04-06', 'ADMIN', 'ACT', 'admin', 'admin123') --luego se codificará la contraseña
+go
 
 ----------------------------------------	USUARIO	  ----------------------------------------
 create procedure pr_iniciar_sesion
@@ -90,24 +99,25 @@ begin
 end
 go
 
-exec pr_registrar_metrica @Fecha = '2025-01-01'
-exec pr_registrar_metrica @Fecha = '2025-02-01'
-exec pr_registrar_metrica @Fecha = '2025-03-01'
-exec pr_registrar_metrica @Fecha = '2025-03-05'
-exec pr_registrar_metrica @Fecha = '2025-03-13'
-exec pr_registrar_metrica @Fecha = '2025-04-30'
-exec pr_registrar_metrica @Fecha = '2025-05-12'
-exec pr_registrar_metrica @Fecha = '2025-06-05'
-exec pr_registrar_metrica @Fecha = '2025-07-06'
-exec pr_registrar_metrica @Fecha = '2025-08-09'
-exec pr_registrar_metrica @Fecha = '2025-09-21'
-exec pr_registrar_metrica @Fecha = '2025-10-06'
-exec pr_registrar_metrica @Fecha = '2025-11-01'
-exec pr_registrar_metrica @Fecha = '2025-11-01'
-exec pr_registrar_metrica @Fecha = '2025-02-01'
+exec pr_registrar_metrica @Fecha = '2025-01-01';
+exec pr_registrar_metrica @Fecha = '2025-02-01';
+exec pr_registrar_metrica @Fecha = '2025-03-01';
+exec pr_registrar_metrica @Fecha = '2025-03-05';
+exec pr_registrar_metrica @Fecha = '2025-03-13';
+exec pr_registrar_metrica @Fecha = '2025-04-30';
+exec pr_registrar_metrica @Fecha = '2025-05-12';
+exec pr_registrar_metrica @Fecha = '2025-06-05';
+exec pr_registrar_metrica @Fecha = '2025-07-06';
+exec pr_registrar_metrica @Fecha = '2025-08-09';
+exec pr_registrar_metrica @Fecha = '2025-09-21';
+exec pr_registrar_metrica @Fecha = '2025-10-06';
+exec pr_registrar_metrica @Fecha = '2025-11-01';
+exec pr_registrar_metrica @Fecha = '2025-11-01';
+exec pr_registrar_metrica @Fecha = '2025-02-01';
+go
 
 
-alter procedure pr_filtrar_metrica_uso
+create procedure pr_filtrar_metrica_uso
 	@FechaInicio datetime,
 	@FechaFin datetime
 as
@@ -118,7 +128,7 @@ begin
 end
 go
 
-alter procedure pr_filtrar_metrica_uso_por_dia
+create procedure pr_filtrar_metrica_uso_por_dia
 	@FechaInicio datetime,
 	@FechaFin datetime
 as
@@ -131,7 +141,7 @@ begin
 end
 go
 
-alter procedure pr_filtrar_metrica_uso_por_mes
+create procedure pr_filtrar_metrica_uso_por_mes
 	@FechaInicio datetime,
 	@FechaFin datetime
 as

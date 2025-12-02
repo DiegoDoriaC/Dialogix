@@ -1,5 +1,6 @@
 ﻿using Essalud.Application.Feature.Interfaces;
 using Essalud.Domain;
+using Essalud.Infraestructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +11,20 @@ namespace Essalud.Application.Feature.Services
 {
     public class ResultadosService : IResultadosService
     {
-        private readonly IResultadosService _resultadosService;
+        private readonly IResultadosRepository _resultadosRepository;
 
-        public ResultadosService(IResultadosService resultadosService)
+        public ResultadosService(IResultadosRepository resultadosRepository)
         {
-            _resultadosService = resultadosService;
+            _resultadosRepository = resultadosRepository;
         }
 
-        public async Task<ResultadosClinicos> ConsultarEstadoResultados(ResultadosClinicos resultados)
+        public async Task<List<ResultadosClinicos>> ConsultarEstadoResultados(ResultadosClinicos resultados)
         {
-            ResultadosClinicos resultadosObj = await _resultadosService.ConsultarEstadoResultados(resultados);
-            if (resultadosObj.IdResultadosClinicos == 0)
+            List<ResultadosClinicos> listaResultados = await _resultadosRepository.ConsultarEstadoResultados(resultados);
+            if (listaResultados.Count == 0)
                 throw new Exception("No se encontró ningun resultado");
 
-            return resultadosObj;
+            return listaResultados;
         }
     }
 }
