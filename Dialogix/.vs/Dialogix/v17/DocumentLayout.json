@@ -1,12 +1,85 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 382,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "RelativeDocumentMoniker": "Dialogix\\appsettings.json",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "RelativeToolTip": "Dialogix\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-02T23:11:36.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
+              "RelativeDocumentMoniker": "Dialogix\\Program.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
+              "RelativeToolTip": "Dialogix\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T23:11:28.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
+              "RelativeDocumentMoniker": "Dialogix\\Controllers\\PacienteController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
+              "RelativeToolTip": "Dialogix\\Controllers\\PacienteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T23:12:30.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PreguntasFrecuentesController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "RelativeDocumentMoniker": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "RelativeToolTip": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T23:11:26.025Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

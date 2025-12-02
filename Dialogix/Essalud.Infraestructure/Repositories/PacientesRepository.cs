@@ -1,5 +1,6 @@
 ﻿using Essalud.Domain;
 using Essalud.Infraestructure.Database;
+using Essalud.Infraestructure.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;

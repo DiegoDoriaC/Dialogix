@@ -25,9 +25,9 @@ namespace Dialogix.Application.Features.Services
             return await _preguntasFrecuentesRepository.EliminarPreguntaFrecuente(pregunta);
         }
 
-        public Task<List<Domain.PreguntasFrecuentes>> ListarPreguntasFrecuentes()
+        public async Task<List<Domain.PreguntasFrecuentes>> ListarPreguntasFrecuentes()
         {
-            return _preguntasFrecuentesRepository.ListarPreguntasFrecuentes();
+            return await _preguntasFrecuentesRepository.ListarPreguntasFrecuentes();
         }
 
         public async Task<bool> ModificarPreguntaFrecuente(Domain.PreguntasFrecuentes pre)

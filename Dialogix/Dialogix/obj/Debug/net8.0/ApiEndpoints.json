@@ -33,7 +33,7 @@
   {
     "ContainingType": "Dialogix.Controllers.PacienteController",
     "Method": "EnviarMensaje",
-    "RelativePath": "Dialogix/Paciente",
+    "RelativePath": "Dialogix/Paciente/Hablar",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -44,8 +44,7 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": [],
-    "EndpointName": "Conversar"
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",

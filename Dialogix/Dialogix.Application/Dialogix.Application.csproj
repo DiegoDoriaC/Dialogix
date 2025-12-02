@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Remove="Features\Interfaces\ICitasMedicas.cs" />
     <Compile Remove="Features\Services\CitaMedica.cs" />
+    <Compile Remove="Features\Services\Horarios.cs" />
   </ItemGroup>
 
   <ItemGroup>

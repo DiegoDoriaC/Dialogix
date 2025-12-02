@@ -9,6 +9,8 @@ namespace Dialogix.Application.Features.Interfaces
 {
     public interface IConversacionService
     {
-        Task<ConversacionResponse> ConversarConLaIA (ConversacionRequest request);
+        Task<string> IniciarConversacion();
+        Task<string> ReiterarInicioConversacion();
+        Task<string> IniciarConversacionConLaIA();
     }
 }
