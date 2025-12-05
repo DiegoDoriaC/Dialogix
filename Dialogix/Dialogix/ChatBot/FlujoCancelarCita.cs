@@ -42,6 +42,7 @@ namespace Dialogix.ChatBot
             }
             catch (Exception ex)
             {
+                Session.Clear();
                 return ex.Message;
             }
 
