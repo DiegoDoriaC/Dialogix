@@ -16,7 +16,8 @@ create table Usuarios
 	Rol varchar(10),
 	Estado varchar(10),
 	Usuario varchar(30) unique,
-	Contraseña varchar(300)
+	Contraseña varchar(300),
+	Avatar varchar(300)
 )
 go
 
@@ -36,6 +37,7 @@ create table MetricaUso
 	TotalConversaciones int
 )
 go
+
 create table Convesaciones
 (
 	IdConversacion int identity primary key,
@@ -46,9 +48,6 @@ create table Convesaciones
 	Estado varchar(10)
 )
 go
-select * from Convesaciones
-SELECT * FROM MetricaUso ORDER BY Fecha DESC
-
 
 create table Mensajes
 (
@@ -59,7 +58,6 @@ create table Mensajes
 	Fecha datetime
 )
 go
-select * from Mensajes
 
 create table Feedback
 (
@@ -71,22 +69,30 @@ create table Feedback
 go
 
 insert into Usuarios ([Nombre], [Apellido], [FechaNacimiento], [Rol], [Estado], [Usuario], [Contraseña])
-values ('Diego', 'Doria', '2002-04-06', 'ADMIN', 'ACT', 'admin', 'admin123') --luego se codificará la contraseña
+values ('Diego', 'Doria', '2002-04-06', 'ADMIN', 'ACT', 'admin', '100000.wNKCFMdxa9c6uhj8Du+9KQ==.w+Q0Wtmy2msTVdoJhwyleJg9Pt+skfav6FBkjp9xK8E=', '')
 go
 
 ----------------------------------------	USUARIO	  ----------------------------------------
 create procedure pr_iniciar_sesion
-	@Usuario varchar(30),
-	@Contraseña varchar(300)
+	@Usuario varchar(30)
 as
 begin
-	select IdUsuario, Nombre, Apellido, Rol 
+	select IdUsuario, Nombre, Apellido, Rol, Contraseña, Avatar
 	from Usuarios where Usuario = @Usuario
-	AND Contraseña = @Contraseña
 	AND Estado = 'ACT'
 end
 go
 
+create procedure pr_actualizar_avatar
+	@Id_usuario int,
+	@Avatar varchar(300)
+as
+begin
+	update Usuarios set Avatar = @Avatar where IdUsuario = @Id_usuario
+	select IdUsuario, Nombre, Apellido, Rol, Contraseña, Avatar
+	from Usuarios where IdUsuario = @Id_usuario
+end
+go
 
 ----------------------------------------	METRICA	  ----------------------------------------
 create procedure pr_registrar_metrica
@@ -101,24 +107,6 @@ begin
 	end
 end
 go
-
-ALTER procedure pr_registrar_metrica
-	@Fecha datetime
-as
-begin
-	update MetricaUso 
-	set TotalConversaciones = TotalConversaciones + 1 
-	where Fecha = CONVERT(date, @Fecha)
-
-	if(@@ROWCOUNT = 0)
-	begin
-		insert into MetricaUso ([Fecha], [TotalConversaciones]) 
-		values (CONVERT(date, @Fecha), 1)
-	end
-end
-go
-
-
 
 exec pr_registrar_metrica @Fecha = '2025-01-01';
 exec pr_registrar_metrica @Fecha = '2025-02-01';
@@ -313,69 +301,3 @@ begin
 	AND (@Canal = '' or @Canal = con.Canal)
 end
 go
-
-
-
-ALTER PROCEDURE pr_listar_conversaciones_mensajes
-	@FechaInicio DATETIME = NULL,
-	@FechaFin DATETIME = NULL,
-	@DniUsuario INT = NULL,
-	@Estado VARCHAR(10) = NULL,
-	@Calificacion INT = NULL,
-	@Canal VARCHAR(10) = NULL
-AS
-BEGIN
-	SELECT 
-		con.IdConversacion,
-		con.DniUsuario,
-		con.FechaInicio,
-		con.FechaFin,
-		con.Canal,
-		con.Estado,
-		men.IdConversacion,
-		men.Texto,
-		men.Respuesta,
-		men.Fecha,
-		fee.Calificacion
-	FROM Convesaciones con
-	LEFT JOIN Mensajes men ON men.IdConversacion = con.IdConversacion
-	LEFT JOIN Feedback fee ON fee.idConversacion = con.IdConversacion
-	WHERE (@FechaInicio IS NULL OR con.FechaInicio >= @FechaInicio)
-	  AND (@FechaFin IS NULL OR con.FechaInicio <= @FechaFin)
-	  AND (@DniUsuario IS NULL OR con.DniUsuario = @DniUsuario)
-	  AND (@Estado IS NULL OR con.Estado = @Estado)
-	  AND (@Calificacion IS NULL OR fee.Calificacion = @Calificacion)
-	  AND (@Canal IS NULL OR con.Canal = @Canal);
-END;
-GO
-ALTER PROCEDURE pr_listar_feedback_rango_fechas
-	@FechaInicio DATETIME = NULL,
-	@FechaFin DATETIME = NULL,
-	@Calificacion INT = NULL,
-	@Canal VARCHAR(10) = NULL
-AS
-BEGIN
-	SELECT 
-		con.IdConversacion,
-		con.Estado,
-		fee.Fecha,
-		fee.Calificacion
-	FROM Convesaciones con
-	LEFT JOIN Feedback fee ON fee.idConversacion = con.IdConversacion
-	WHERE (@FechaInicio IS NULL OR con.FechaInicio >= @FechaInicio)
-	  AND (@FechaFin IS NULL OR con.FechaInicio <= @FechaFin)
-	  AND (@Calificacion IS NULL OR fee.Calificacion = @Calificacion)
-	  AND (@Canal IS NULL OR con.Canal = @Canal);
-END;
-GO
-
-
-CREATE PROCEDURE pr_metrica_hoy
-AS
-BEGIN
-    SELECT SUM(TotalConversaciones) AS TotalHoy
-    FROM MetricaUso
-    WHERE Fecha = CONVERT(date, GETDATE());
-END
-GO
-
