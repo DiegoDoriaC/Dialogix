@@ -85,7 +85,7 @@ namespace Dialogix.Correos
             xEmail += "<td>" + estadoConversa.NombrePaciente + "</td>";
             xEmail += "<td>" + especialidad + "</td>";
             xEmail += "<td>" + medico + "</td>";
-            xEmail += "<td>" + cita.HoraCita + "</td>";
+            xEmail += "<td>" + cita.FechaCita.ToShortDateString() + " " + cita.HoraCita + "</td>";
             xEmail += "</tr>";
             //}
 

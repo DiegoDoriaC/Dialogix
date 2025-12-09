@@ -1,4 +1,5 @@
 ﻿using Essalud.Domain;
+using Essalud.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace Essalud.Infraestructure.Repositories.Interfaces
         Task<bool> CancelarCitaMedica(CitaMedica cita);
         Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita);
         Task<CitaMedica> InformacionCitaMedica(CitaMedica cita);
+        Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(DateTime FechaInicio, DateTime FechaFin);
     }
 }

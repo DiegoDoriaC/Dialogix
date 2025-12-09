@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dialogix.Domain
+﻿namespace Dialogix.Domain
 {
     public class Usuario
     {
@@ -16,5 +10,7 @@ namespace Dialogix.Domain
         public string Estado { get; set; } = "";
         public string User { get; set; } = "";
         public string Contrasenia { get; set; } = "";
+        public string Avatar { get; set; } = "";
+
     }
 }

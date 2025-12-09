@@ -1,3 +1,4 @@
+using Dialogix.Application.Common;
 using Dialogix.Application.Features.Interfaces;
 using Dialogix.Application.Features.Services;
 using Dialogix.ChatBot;
@@ -38,7 +39,7 @@ builder.Services.AddSingleton<ISqlConnectionEssaludFactory>(new SqlConnectionEss
 builder.Services.AddScoped<IChatbotService, ChatbotService>();
 builder.Services.AddScoped<IConversacionService, ConversacionService>();
 builder.Services.AddScoped<IMedicosRepository, MedicosRepository>();
-builder.Services.AddScoped<IEspecialidadRepository, EspecialidadRepository>();
+builder.Services.AddScoped<IEspecialidadRepository, EspecialidadRepository>(); 
 builder.Services.AddScoped<InteraccionChatbot>();
 
 builder.Services.AddScoped<IFlujoAgendarCita, FlujoAgendarCita>();
@@ -78,7 +79,6 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
 
 
 builder.Services.AddCors(options =>
@@ -122,4 +122,5 @@ app.UseCookiePolicy();
 app.UseSession();              
 app.UseAuthorization();
 app.MapControllers();
+app.UseStaticFiles();
 app.Run();

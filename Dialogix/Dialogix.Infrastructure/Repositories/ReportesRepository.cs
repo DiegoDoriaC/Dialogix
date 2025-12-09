@@ -1,5 +1,7 @@
 ﻿using Dialogix.Domain;
 using Dialogix.Infrastructure.Database;
+using Essalud.Domain;
+using Essalud.Domain.DTOs;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -191,8 +193,5 @@ namespace Dialogix.Infrastructure.Repositories
 
             return total;
         }
-
-
-
     }
 }

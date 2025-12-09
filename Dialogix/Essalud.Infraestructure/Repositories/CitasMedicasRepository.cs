@@ -1,4 +1,5 @@
 ﻿using Essalud.Domain;
+using Essalud.Domain.DTOs;
 using Essalud.Infraestructure.Database;
 using Essalud.Infraestructure.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
@@ -54,7 +55,6 @@ namespace Essalud.Infraestructure.Repositories
             return result;
         }
 
-
         public async Task<bool> CancelarCitaMedica(CitaMedica cita)
         {
             bool result = false;
@@ -75,7 +75,6 @@ namespace Essalud.Infraestructure.Repositories
             }
             return result;
         }
-
 
         public async Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita)
         {
@@ -146,5 +145,38 @@ namespace Essalud.Infraestructure.Repositories
             }
             return obj;
         }
+
+        public async Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(DateTime FechaInicio, DateTime FechaFin)
+        {
+            List<CitasPorEspecialidadDTO> listado = new List<CitasPorEspecialidadDTO>();
+            CitasPorEspecialidadDTO obj = new CitasPorEspecialidadDTO();
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_listar_atencion_por_especialidad";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@FechaInicio", FechaInicio);
+                    command.Parameters.AddWithValue("@FechaFin", FechaFin);
+
+                    await connection.OpenAsync();
+
+                    using (var rd = await command.ExecuteReaderAsync())
+                    {
+                        while (await rd.ReadAsync())
+                        {
+                            obj = new CitasPorEspecialidadDTO();
+                            obj.Especilidad = rd["Especialidad"].ToString()!;
+                            obj.Cantidad = rd["cantidad"] != DBNull.Value ? Convert.ToInt32(rd["cantidad"]) : 0;
+                            listado.Add(obj);
+                        }
+                    }
+                }
+            }
+            return listado;
+        }
+
     }
 }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\DTOs\SubirImagenRequest.cs" />
     <Compile Remove="Features\Interfaces\ICitasMedicas.cs" />
     <Compile Remove="Features\Services\CitaMedica.cs" />
     <Compile Remove="Features\Services\Horarios.cs" />

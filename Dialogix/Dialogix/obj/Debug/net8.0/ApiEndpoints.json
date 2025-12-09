@@ -1,5 +1,67 @@
 [
   {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "ListarCantidadConsultasPorEspecialidad",
+    "RelativePath": "atencionesPorEspecialidads",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FechaInicio",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaFin",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Essalud.Domain.DTOs.CitasPorEspecialidadDTO, Essalud.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.AdministradorController",
+    "Method": "CambiarAvatar",
+    "RelativePath": "Dialogix/Administrador/avatar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Avatar",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.Usuario, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Dialogix.Controllers.AdministradorController",
     "Method": "IniciarSesion",
     "RelativePath": "Dialogix/Administrador/login",

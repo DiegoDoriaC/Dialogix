@@ -10,5 +10,6 @@ namespace Dialogix.Infrastructure.Repositories
     public interface IUsuarioRepository
     {
         Task<Usuario> IniciarSesion(Usuario usuario);
+        Task<Usuario> ActualizarAvatar(int IdUsuario, string NombreImagen);
     }
 }

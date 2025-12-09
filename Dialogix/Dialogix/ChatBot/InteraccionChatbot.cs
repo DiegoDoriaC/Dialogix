@@ -1,14 +1,10 @@
 ﻿using Dialogix.Application.Features.Interfaces;
 using Dialogix.ChatBot.Interfaces;
-using Dialogix.Domain;
 using Dialogix.Domain.Common;
 using Dialogix.Helpers;
 using Dialogix.Infrastructure.Repositories;
 using Essalud.Application.Feature.Interfaces;
 using Essalud.Domain;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Threading.Tasks;
 
 namespace Dialogix.ChatBot
 {
@@ -90,7 +86,7 @@ namespace Dialogix.ChatBot
                 return respuesta;
             }
 
-            if(estado.EstadoActual == "SegundaValidacion")
+            if (estado.EstadoActual == "SegundaValidacion")
             {
                 string opcion = mensaje.Trim().Replace(".", "");
                 return await ValidarUltimoDigitoDNI(opcion);
@@ -224,7 +220,7 @@ namespace Dialogix.ChatBot
 
                 Session.SetObject("OUser", conversacion);
 
-                string respuestaMenu = "Por favor, ingrese el código de verificacion de su DNI:\n\n"; 
+                string respuestaMenu = "Por favor, ingrese el código de verificacion de su DNI:\n\n";
 
                 await RegistrarSiCorresponde(dniTexto, respuestaMenu);
 

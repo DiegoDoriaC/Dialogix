@@ -1,16 +1,37 @@
 {
   "Version": 1,
-<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\",
-=======
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\",
->>>>>>> 3cd697dd8be3876bc1f7b2d0faef23f1bb27634c
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 382,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "RelativeDocumentMoniker": "Dialogix\\appsettings.json",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "RelativeToolTip": "Dialogix\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-09T17:12:25.358Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

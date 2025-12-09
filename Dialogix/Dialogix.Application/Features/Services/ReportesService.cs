@@ -1,14 +1,8 @@
 ﻿using Dialogix.Application.Features.Interfaces;
 using Dialogix.Domain;
 using Dialogix.Infrastructure.Repositories;
-using Dialogix.Application.Features.Interfaces;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Essalud.Domain.DTOs;
+using Essalud.Infraestructure.Repositories.Interfaces;
 
 namespace Dialogix.Application.Features.Services
 {
@@ -16,16 +10,14 @@ namespace Dialogix.Application.Features.Services
     {
         private readonly IReportesRepository _ReportesRepository;
         private readonly IReportesCitasRepository _citasRepo;
+        private readonly ICitasMedicasRepository _citasMedicasRepository;
 
-        public ReportesService(
-     IReportesRepository reportesRepository,
-     IReportesCitasRepository citasRepo)
+        public ReportesService(IReportesRepository reportesRepository, IReportesCitasRepository citasRepo, ICitasMedicasRepository citasMedicasRepository)
         {
             _ReportesRepository = reportesRepository;
             _citasRepo = citasRepo;
+            _citasMedicasRepository = citasMedicasRepository;
         }
-
-
 
         public Task<List<Feedback>> FiltrarFeedback(Feedback feedback)
         {
@@ -81,7 +73,16 @@ namespace Dialogix.Application.Features.Services
             return _citasRepo.ObtenerTotalCitasAgendadas();
         }
 
+        public Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(string FechaInicio, string FechaFin)
+        {
+            DateTime fechaIncioParseado = DateTime.MinValue;
+            DateTime fechaFinParseado = DateTime.MaxValue;
 
+            if (!DateTime.TryParse(FechaInicio, out fechaIncioParseado)) throw new Exception("Error al convertir la fecha de inicio");
+            if (!DateTime.TryParse(FechaFin, out fechaFinParseado)) throw new Exception("Error al convertir la fecha de fin");
+
+            return _citasMedicasRepository.ListarCantidadConsultasPorEspecialidad(fechaIncioParseado, fechaFinParseado);
+        }
 
     }
 }

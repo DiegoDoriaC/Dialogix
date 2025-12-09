@@ -50,6 +50,62 @@
         }
       }
     },
+    "/Dialogix/Administrador/avatar": {
+      "post": {
+        "tags": [
+          "Administrador"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Avatar": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "IdUsuario": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Avatar": {
+                  "style": "form"
+                },
+                "IdUsuario": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Dialogix/Paciente/Hablar": {
       "get": {
         "tags": [
@@ -576,6 +632,51 @@
         }
       }
     },
+    "/atencionesPorEspecialidads": {
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "parameters": [
+          {
+            "name": "FechaInicio",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "FechaFin",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CitasPorEspecialidadDTOListRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CitasPorEspecialidadDTOListRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CitasPorEspecialidadDTOListRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -618,6 +719,40 @@
   },
   "components": {
     "schemas": {
+      "CitasPorEspecialidadDTO": {
+        "type": "object",
+        "properties": {
+          "especilidad": {
+            "type": "string",
+            "nullable": true
+          },
+          "cantidad": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CitasPorEspecialidadDTOListRespuestaGenerica": {
+        "type": "object",
+        "properties": {
+          "mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CitasPorEspecialidadDTO"
+            },
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Conversacion": {
         "type": "object",
         "properties": {
@@ -842,6 +977,10 @@
             "nullable": true
           },
           "contrasenia": {
+            "type": "string",
+            "nullable": true
+          },
+          "avatar": {
             "type": "string",
             "nullable": true
           }

@@ -2,6 +2,7 @@
 using Dialogix.Domain.Common;
 using Dialogix.Helpers;
 using Essalud.Domain;
+using Essalud.Application.Feature.Interfaces;
 using Essalud.Infraestructure.Repositories.Interfaces;
 
 namespace Dialogix.ChatBot
@@ -10,10 +11,10 @@ namespace Dialogix.ChatBot
     {
         private ISession Session => _httpContextAccessor.HttpContext!.Session;
 
-        private readonly ICitasMedicasRepository _citasMedicasRepository;
+        private readonly ICitasMedicasService _citasMedicasRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public FlujoHistorialCitas(ICitasMedicasRepository citasMedicasRepository, IHttpContextAccessor httpContextAccessor)
+        public FlujoHistorialCitas(ICitasMedicasService citasMedicasRepository, IHttpContextAccessor httpContextAccessor)
         {
             _citasMedicasRepository = citasMedicasRepository;
             _httpContextAccessor = httpContextAccessor;

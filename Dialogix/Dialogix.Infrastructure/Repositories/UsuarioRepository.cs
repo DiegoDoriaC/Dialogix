@@ -32,7 +32,6 @@ namespace Dialogix.Infrastructure.Repositories
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("@Usuario", usuario.User);
-                    command.Parameters.AddWithValue("@Contraseña", usuario.Contrasenia);
 
                     await connection.OpenAsync();
 
@@ -44,11 +43,47 @@ namespace Dialogix.Infrastructure.Repositories
                             obj.Nombre = Convert.ToString(rd["Nombre"])!;
                             obj.Apellido = Convert.ToString(rd["Apellido"])!;
                             obj.Rol = Convert.ToString(rd["Rol"])!;
+                            obj.Contrasenia = Convert.ToString(rd["Contraseña"])!;
+                            obj.Avatar = Convert.ToString(rd["Avatar"])!;
                         }
                     }
                 }
             }
             return obj;
-        }    
+        }
+
+        public async Task<Usuario> ActualizarAvatar(int IdUsuario, string NombreImagen)
+        {
+            Usuario obj = new Usuario();
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_actualizar_avatar";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@Id_usuario", IdUsuario);
+                    command.Parameters.AddWithValue("@Avatar", NombreImagen);
+
+                    await connection.OpenAsync();
+
+                    using (var rd = await command.ExecuteReaderAsync())
+                    {
+                        while (await rd.ReadAsync())
+                        {
+                            obj.IdUsuario = rd["IdUsuario"] != DBNull.Value ? Convert.ToInt32(rd["IdUsuario"]) : 0;
+                            obj.Nombre = Convert.ToString(rd["Nombre"])!;
+                            obj.Apellido = Convert.ToString(rd["Apellido"])!;
+                            obj.Rol = Convert.ToString(rd["Rol"])!;
+                            obj.Contrasenia = Convert.ToString(rd["Contraseña"])!;
+                            obj.Avatar = Convert.ToString(rd["Avatar"])!;
+                        }
+                    }
+                }
+            }
+            return obj;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Essalud.Domain;
+using Essalud.Domain.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

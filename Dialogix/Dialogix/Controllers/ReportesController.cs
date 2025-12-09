@@ -2,6 +2,7 @@
 using Dialogix.Application.Features.Interfaces;
 using Dialogix.Application.Features.Services;
 using Dialogix.Domain;
+using Essalud.Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dialogix.Controllers
@@ -171,7 +172,33 @@ namespace Dialogix.Controllers
             return response;
         }
 
+        [HttpGet("atencionesPorEspecialidads")]
+        public async Task<RespuestaGenerica<List<CitasPorEspecialidadDTO>>> ListarCantidadConsultasPorEspecialidad(string FechaInicio, string FechaFin)
+        {
+            List<CitasPorEspecialidadDTO> listado = new List<CitasPorEspecialidadDTO>();
+            RespuestaGenerica<List<CitasPorEspecialidadDTO>> response = new RespuestaGenerica<List<CitasPorEspecialidadDTO>>();
 
+            try
+            {
+                listado = await _reportesService.ListarCantidadConsultasPorEspecialidad(FechaInicio, FechaFin);
+                response.Mensaje = "Citas obteneda correctamente";
+                response.ObjetoRespuesta = listado;
+                response.Estado = true;
+
+                if (listado.Count == 0)
+                {
+                    response.Mensaje = "No se encontraron datos de las citas";
+                    response.Estado = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Mensaje = ex.Message;
+                response.Estado = false;
+            }
+
+            return response;
+        }
 
     }
 }
