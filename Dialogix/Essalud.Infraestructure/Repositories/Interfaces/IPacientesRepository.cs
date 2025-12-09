@@ -10,5 +10,6 @@ namespace Essalud.Infraestructure.Repositories.Interfaces
     public interface IPacientesRepository
     {
         Task<Paciente> BuscarUsuarioPorDni(Paciente paciente);
+        Task<string> ObtenerUltimoDigitoDni(int idPaciente);
     }
 }

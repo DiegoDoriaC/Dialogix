@@ -1,8 +1,11 @@
 ﻿using Dialogix.Application.Features.Interfaces;
 using Dialogix.Domain;
 using Dialogix.Infrastructure.Repositories;
+using Dialogix.Application.Features.Interfaces;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +15,17 @@ namespace Dialogix.Application.Features.Services
     public class ReportesService : IReportesService
     {
         private readonly IReportesRepository _ReportesRepository;
+        private readonly IReportesCitasRepository _citasRepo;
 
-        public ReportesService(IReportesRepository reportesRepository)
+        public ReportesService(
+     IReportesRepository reportesRepository,
+     IReportesCitasRepository citasRepo)
         {
             _ReportesRepository = reportesRepository;
+            _citasRepo = citasRepo;
         }
+
+
 
         public Task<List<Feedback>> FiltrarFeedback(Feedback feedback)
         {
@@ -61,5 +70,18 @@ namespace Dialogix.Application.Features.Services
         {
             return _ReportesRepository.RegistrarMetrica();
         }
+
+        public Task<int> ObtenerMetricaHoy()
+        {
+            return _ReportesRepository.ObtenerMetricaHoy();
+        }
+
+        public Task<int> ObtenerTotalCitasAgendadas()
+        {
+            return _citasRepo.ObtenerTotalCitasAgendadas();
+        }
+
+
+
     }
 }

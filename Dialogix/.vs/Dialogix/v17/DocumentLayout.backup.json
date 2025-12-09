@@ -1,22 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\",
+  "WorkspaceRootPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\correos\\enviocorreo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\correos\\enviocorreo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\chatbot\\flujoagendarcita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\chatbot\\flujoagendarcita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\chatbot\\interaccionchatbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\chatbot\\interaccionchatbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EC74AFA-7F16-4C12-992E-19819B9AD99F}|Essalud.Infraestructure\\Essalud.Infraestructure.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\essalud.infraestructure\\repositories\\pacientesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EC74AFA-7F16-4C12-992E-19819B9AD99F}|Essalud.Infraestructure\\Essalud.Infraestructure.csproj|solutionrelative:essalud.infraestructure\\repositories\\pacientesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix.domain\\common\\estadoconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EA13A2E-15A2-477F-B13A-37424CA8606F}|Dialogix.Domain\\Dialogix.Domain.csproj|solutionrelative:dialogix.domain\\common\\estadoconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B1383CA-52B4-431C-AD59-A18AAB39896E}|Essalud.Application\\Essalud.Application.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\essalud.application\\feature\\services\\pacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B1383CA-52B4-431C-AD59-A18AAB39896E}|Essalud.Application\\Essalud.Application.csproj|solutionrelative:essalud.application\\feature\\services\\pacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\pacientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\desktop\\dialogix\\dialogix\\dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix.infrastructure\\repositories\\ireportesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\repositories\\ireportesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B1383CA-52B4-431C-AD59-A18AAB39896E}|Essalud.Application\\Essalud.Application.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\essalud.application\\feature\\interfaces\\ipacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B1383CA-52B4-431C-AD59-A18AAB39896E}|Essalud.Application\\Essalud.Application.csproj|solutionrelative:essalud.application\\feature\\interfaces\\ipacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\preguntasfrecuentescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EF18863-1AA6-4A0F-8C29-74F7242AC709}|Dialogix\\Dialogix.csproj|solutionrelative:dialogix\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|c:\\users\\usuario\\downloads\\dialogix\\dialogix\\dialogix.infrastructure\\repositories\\reportesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0369E9A3-E6BF-4212-9987-C03000111B96}|Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj|solutionrelative:dialogix.infrastructure\\repositories\\reportesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,50 +72,180 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
               "RelativeDocumentMoniker": "Dialogix\\appsettings.json",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\appsettings.json",
               "RelativeToolTip": "Dialogix\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-02T23:11:36.964Z",
+              "WhenOpened": "2025-12-09T02:16:26.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
               "RelativeDocumentMoniker": "Dialogix\\Program.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Program.cs",
               "RelativeToolTip": "Dialogix\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T23:11:28.894Z",
+              "WhenOpened": "2025-12-09T02:16:20.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EstadoConversacion.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Common\\EstadoConversacion.cs",
+              "RelativeDocumentMoniker": "Dialogix.Domain\\Common\\EstadoConversacion.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Common\\EstadoConversacion.cs",
+              "RelativeToolTip": "Dialogix.Domain\\Common\\EstadoConversacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T01:00:38.911Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "EnvioCorreo.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Correos\\EnvioCorreo.cs",
+              "RelativeDocumentMoniker": "Dialogix\\Correos\\EnvioCorreo.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Correos\\EnvioCorreo.cs",
+              "RelativeToolTip": "Dialogix\\Correos\\EnvioCorreo.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAGYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T00:44:22.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FlujoAgendarCita.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\ChatBot\\FlujoAgendarCita.cs",
+              "RelativeDocumentMoniker": "Dialogix\\ChatBot\\FlujoAgendarCita.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\ChatBot\\FlujoAgendarCita.cs",
+              "RelativeToolTip": "Dialogix\\ChatBot\\FlujoAgendarCita.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAFcAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T00:51:29.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PacientesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Repositories\\PacientesRepository.cs",
+              "RelativeDocumentMoniker": "Essalud.Infraestructure\\Repositories\\PacientesRepository.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Repositories\\PacientesRepository.cs",
+              "RelativeToolTip": "Essalud.Infraestructure\\Repositories\\PacientesRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T23:32:33.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PacientesService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Application\\Feature\\Services\\PacientesService.cs",
+              "RelativeDocumentMoniker": "Essalud.Application\\Feature\\Services\\PacientesService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Application\\Feature\\Services\\PacientesService.cs",
+              "RelativeToolTip": "Essalud.Application\\Feature\\Services\\PacientesService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABwAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T23:30:41.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InteraccionChatbot.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\ChatBot\\InteraccionChatbot.cs",
+              "RelativeDocumentMoniker": "Dialogix\\ChatBot\\InteraccionChatbot.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\ChatBot\\InteraccionChatbot.cs",
+              "RelativeToolTip": "Dialogix\\ChatBot\\InteraccionChatbot.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAAGgAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T23:25:24.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IPacientesService.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Application\\Feature\\Interfaces\\IPacientesService.cs",
+              "RelativeDocumentMoniker": "Essalud.Application\\Feature\\Interfaces\\IPacientesService.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Application\\Feature\\Interfaces\\IPacientesService.cs",
+              "RelativeToolTip": "Essalud.Application\\Feature\\Interfaces\\IPacientesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T23:38:48.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ReportesController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\ReportesController.cs",
+              "RelativeDocumentMoniker": "Dialogix\\Controllers\\ReportesController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\ReportesController.cs",
+              "RelativeToolTip": "Dialogix\\Controllers\\ReportesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-08T23:25:13.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReportesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\ReportesRepository.cs",
+              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Repositories\\ReportesRepository.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\ReportesRepository.cs",
+              "RelativeToolTip": "Dialogix.Infrastructure\\Repositories\\ReportesRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T14:55:20.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IReportesRepository.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\IReportesRepository.cs",
+              "RelativeDocumentMoniker": "Dialogix.Infrastructure\\Repositories\\IReportesRepository.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Repositories\\IReportesRepository.cs",
+              "RelativeToolTip": "Dialogix.Infrastructure\\Repositories\\IReportesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T14:55:15.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "PacienteController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
               "RelativeDocumentMoniker": "Dialogix\\Controllers\\PacienteController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PacienteController.cs",
               "RelativeToolTip": "Dialogix\\Controllers\\PacienteController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T23:12:30.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "PreguntasFrecuentesController.cs",
-              "DocumentMoniker": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "DocumentMoniker": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
               "RelativeDocumentMoniker": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "ToolTip": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
+              "ToolTip": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
               "RelativeToolTip": "Dialogix\\Controllers\\PreguntasFrecuentesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAACMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T23:11:26.025Z",
               "EditorCaption": ""

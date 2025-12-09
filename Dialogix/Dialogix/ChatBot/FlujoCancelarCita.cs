@@ -35,13 +35,14 @@ namespace Dialogix.ChatBot
                 mensaje += "|Paciente: " + primeraCita.Paciente.Nombre;
                 mensaje += "|Doctor: " + primeraCita.Medico.Nombre;
                 mensaje += "|Motivo: " + primeraCita.Motivo;
-                mensaje += "|Fecha: " + primeraCita.FechaCita.ToString("yyyy/MM/dd hh:mm tt");
+                mensaje += "|Fecha: " + primeraCita.FechaCita.ToString("dd/MM/yyyy 'a las' hh:mm tt");
                 mensaje += "|¿Está seguro que desea cancelar su cita médica?, el cancelar sus citas " +
                     "repetitivamente le prohibirá agendar citas virtualmente en el futuro";
                 Session.SetObject("OCita", primeraCita);
             }
             catch (Exception ex)
             {
+                Session.Clear();
                 return ex.Message;
             }
 
@@ -55,8 +56,11 @@ namespace Dialogix.ChatBot
         {
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
             CitaMedica? citaMedica = Session.GetObject<CitaMedica>("OCita");
-            string mensaje = "Estimado(a) " + estadoConversacion!.NombrePaciente + " su cita programada " +
-                "con fecha " + citaMedica!.FechaCita.ToString("yyyy/MM/dd hh:mm tt") + " fue cancelada exitosamente";
+
+            string fechaFormateada = citaMedica!.FechaCita.ToString("dd/MM/yyyy 'a las' hh:mm tt");
+
+            string mensaje = "Estimado(a) " + estadoConversacion!.NombrePaciente +
+                ", su cita programada para el " + fechaFormateada + " fue cancelada exitosamente";
 
             try
             {
@@ -73,6 +77,7 @@ namespace Dialogix.ChatBot
             Session.Clear();
             return mensaje;
         }
+
 
     }
 }

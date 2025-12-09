@@ -16,5 +16,11 @@ namespace Dialogix.Application.Features.Interfaces
         Task<List<MetricaUso>> FiltrarMetricaUsoPorMes(string FechaInicio, string FechaFin);
 
         Task<List<Feedback>> FiltrarFeedback(Feedback feedback);
+
+        Task<int> ObtenerMetricaHoy();
+
+        Task<int> ObtenerTotalCitasAgendadas();
+
+
     }
 }

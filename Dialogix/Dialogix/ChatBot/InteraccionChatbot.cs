@@ -6,8 +6,9 @@ using Dialogix.Helpers;
 using Dialogix.Infrastructure.Repositories;
 using Essalud.Application.Feature.Interfaces;
 using Essalud.Domain;
-using Microsoft.Identity.Client;
-using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Threading.Tasks;
 
 namespace Dialogix.ChatBot
 {
@@ -24,9 +25,15 @@ namespace Dialogix.ChatBot
         private readonly IFlujoConsultarResultados _flujoConsultarResultados;
         private readonly IFlujoHistorialCitas _flujoHistorialCitas;
 
-        public InteraccionChatbot(IOpenAIRepository openAIRepository, IConversacionService conversacionService,
-            IPacientesService pacientesService, IHttpContextAccessor httpContextAccessor, IFlujoAgendarCita flujoAgendarCita,
-            IFlujoCancelarCita flujoCancelarCita, IFlujoConsultarResultados flujoConsultarResultados, IFlujoHistorialCitas flujoHistorialCitas)
+        public InteraccionChatbot(
+            IOpenAIRepository openAIRepository,
+            IConversacionService conversacionService,
+            IPacientesService pacientesService,
+            IHttpContextAccessor httpContextAccessor,
+            IFlujoAgendarCita flujoAgendarCita,
+            IFlujoCancelarCita flujoCancelarCita,
+            IFlujoConsultarResultados flujoConsultarResultados,
+            IFlujoHistorialCitas flujoHistorialCitas)
         {
             _openAIRepository = openAIRepository;
             _conversacionService = conversacionService;
@@ -38,17 +45,21 @@ namespace Dialogix.ChatBot
             _flujoHistorialCitas = flujoHistorialCitas;
         }
 
-        //private static int _numeroConsulta = 0;
-
         public async Task<string> EnviarMensajeAsync(string mensaje)
         {
-            string respuesta = "";
+            if (mensaje == null) mensaje = string.Empty;
+            mensaje = mensaje.Trim();
 
+            string respuesta = string.Empty;
             EstadoConversacion? estado = Session.GetObject<EstadoConversacion>("OUser");
+
             if (estado == null)
             {
-                estado = new EstadoConversacion();
-                estado.EstadoActual = "Esperando DNI";
+                estado = new EstadoConversacion
+                {
+                    EstadoActual = "Esperando DNI",
+                    IdConversacion = 0
+                };
                 Session.SetObject("OUser", estado);
                 return await IniciarConversacion();
             }
@@ -64,61 +75,108 @@ namespace Dialogix.ChatBot
                     "5. No agregues nada más, no incluyas explicaciones, JSON, comillas ni texto adicional.";
 
                 respuesta = await _openAIRepository.GenerarRespuestaAsync(prompt1);
+                if (mensaje.Trim().Length == 8) respuesta = "VALIDAR DNI";
 
-                if (respuesta.Contains("VALIDAR DNI"))
-                    return await ValidarDNI(mensaje);
-                else if (respuesta.Contains("REITERAR DNI"))
-                    return await ReiterarInicioConversacion();
+                if (respuesta != null && respuesta.Contains("VALIDAR DNI"))
+                {
+                    respuesta = await ValidarDNI(mensaje);
+                }
+                else
+                {
+                    respuesta = await ReiterarInicioConversacion();
+                }
+
+                await RegistrarSiCorresponde(mensaje, respuesta);
+                return respuesta;
+            }
+
+            if(estado.EstadoActual == "SegundaValidacion")
+            {
+                string opcion = mensaje.Trim().Replace(".", "");
+                return await ValidarUltimoDigitoDNI(opcion);
             }
 
             if (estado.EstadoActual == "MenuPrincipal")
             {
-                switch (mensaje.Trim().Replace(".", ""))
+                string opcion = mensaje.Trim().Replace(".", "");
+                switch (opcion)
                 {
-                    case "1": return await _flujoAgendarCita.ListarEspecialidades();
-                    case "2": return await _flujoCancelarCita.MostrarInformacionCitaMedica();
-                    case "3": return await _flujoConsultarResultados.ConsultarEstadoResultados();
-                    case "4": return await _flujoHistorialCitas.ConsultarHistorialUltimasCitas();
-                    case "5": return await IniciarConversacionConLaIA();
-                    case "6": return "Hardcodeado por judith";
+                    case "1":
+                        respuesta = await _flujoAgendarCita.ListarEspecialidades();
+                        break;
+                    case "2":
+                        respuesta = await _flujoCancelarCita.MostrarInformacionCitaMedica();
+                        break;
+                    case "3":
+                        respuesta = await _flujoConsultarResultados.ConsultarEstadoResultados();
+                        break;
+                    case "4":
+                        respuesta = await _flujoHistorialCitas.ConsultarHistorialUltimasCitas();
+                        break;
+                    case "5":
+                        respuesta = await IniciarConversacionConLaIA();
+                        break;
+                    case "6":
+                        respuesta = ObtenerCanalesAsesor();
+                        await RegistrarSiCorresponde(mensaje, respuesta);
+                        return respuesta;
+                    default:
+                        respuesta = "Opción no válida. Por favor seleccione una opción del menú.";
+                        break;
                 }
 
+                await RegistrarSiCorresponde(mensaje, respuesta);
+                return respuesta;
             }
 
             if (estado.EstadoActual.Contains("AgendarCita"))
             {
                 if (estado.EstadoActual.Split(';').Length == 1)
                 {
-                    return await _flujoAgendarCita.ListarDoctoresSegunEspecialidad(mensaje);
+                    respuesta = await _flujoAgendarCita.ListarDoctoresSegunEspecialidad(mensaje);
                 }
                 else if (estado.EstadoActual.Split(';')[1] == "EscojerHorario")
                 {
-                    return await _flujoAgendarCita.ListarHorariosDisponiblesPorDoctor(mensaje);
+                    respuesta = await _flujoAgendarCita.ListarHorariosDisponiblesPorDoctor(mensaje);
                 }
                 else if (estado.EstadoActual.Split(';')[1] == "ResumenCita")
                 {
-                    return _flujoAgendarCita.ResumenCita(mensaje);
+                    respuesta = _flujoAgendarCita.ResumenCita(mensaje);
                 }
                 else if (estado.EstadoActual.Split(';')[1] == "ConfirmarCita")
                 {
-                    return await _flujoAgendarCita.ConfirmaCita(mensaje);
+                    respuesta = await _flujoAgendarCita.ConfirmaCita(mensaje);
                 }
-            }
-            else if (estado.EstadoActual.Contains("CancelarCita"))
-            {
-                if (estado.EstadoActual.Split(';').Length == 1)
-                {
-                    return await _flujoCancelarCita.ConfirmarCancelarCita(mensaje);
-                }
-            }
-            else if (estado.EstadoActual.Contains("ConversarConIA"))
-            {
-                if (estado.EstadoActual.Split(';').Length == 1)
-                {
-                    return await ProcesarPromptConIA(mensaje);
-                }
+
+                await RegistrarSiCorresponde(mensaje, respuesta);
+                return respuesta;
             }
 
+            if (estado.EstadoActual.Contains("CancelarCita"))
+            {
+                if (estado.EstadoActual.Split(';').Length == 1)
+                {
+                    respuesta = await _flujoCancelarCita.ConfirmarCancelarCita(mensaje);
+                }
+
+                await RegistrarSiCorresponde(mensaje, respuesta);
+                return respuesta;
+            }
+
+            if (estado.EstadoActual.Contains("ConversarConIA"))
+            {
+                if (estado.EstadoActual.Split(';').Length == 1)
+                {
+                    respuesta = await ProcesarPromptConIA(mensaje);
+                }
+
+                await RegistrarSiCorresponde(mensaje, respuesta);
+                return respuesta;
+            }
+
+            respuesta = "No entendí tu petición. Escribe 'menu' para volver al inicio.";
+
+            await RegistrarSiCorresponde(mensaje, respuesta);
             return respuesta;
         }
 
@@ -132,81 +190,127 @@ namespace Dialogix.ChatBot
             return await _conversacionService.ReiterarInicioConversacion();
         }
 
-        public async Task<string> ValidarDNI(string dni)
+        public async Task<string> ValidarDNI(string dniTexto)
         {
-            string prompt = "Del siguiente texto: " + dni + " extrae únicamente el número de DNI." +
+            string prompt = "Del siguiente texto: " + dniTexto + " extrae únicamente el número de DNI." +
                 " El DNI es un número de 8 dígitos consecutivos." +
                 " Devuelve únicamente el número, sin texto adicional, sin frases, sin explicaciones, sin adornos.";
 
-            string respuesta = await _openAIRepository.GenerarRespuestaAsync(prompt);
+            string dniExtraido = await _openAIRepository.GenerarRespuestaAsync(prompt);
+
+            if (dniTexto.Trim().Length == 8) dniExtraido = dniTexto;
+
+            dniExtraido = dniExtraido?.Trim() ?? string.Empty;
+
             try
             {
-                Paciente paciente = await _pacientesService.BuscarUsuarioPorDni(respuesta);
-                EstadoConversacion conversacion = new EstadoConversacion();
-                conversacion.EstadoActual = "MenuPrincipal";
-                conversacion.IdPaciente = paciente.IdPaciente;
-                conversacion.DniIngresado = respuesta;
-                conversacion.NombrePaciente = paciente.Nombre;
+                Paciente paciente = await _pacientesService.BuscarUsuarioPorDni(dniExtraido);
+
+                int idConversacion = 0;
+                if (int.TryParse(dniExtraido, out int dniParsed))
+                {
+                    idConversacion = await _conversacionService.RegistrarConversacion(dniParsed, "WEB");
+                }
+
+                EstadoConversacion conversacion = new EstadoConversacion
+                {
+                    EstadoActual = "SegundaValidacion",
+                    IdPaciente = paciente.IdPaciente,
+                    CorreoPaciente = paciente.Correo,
+                    DniIngresado = dniExtraido,
+                    NombrePaciente = paciente.Nombre,
+                    IdConversacion = idConversacion
+                };
+
                 Session.SetObject("OUser", conversacion);
 
-                return "Un gusto tenerlo por aqui " + paciente.Nombre + " seleccione una opcion:\n\n" +
-                       "1️⃣ Agendar cita médica\n" +
-                       "2️⃣ Cancelar cita médica\n" +
-                       "3️⃣ Consultar estado de resultados\n" +
-                       "4️⃣ Ver historial de citas\n" +
-                       "5️⃣ Conversar con tu IA\n" +
-                       "6️⃣ Hablar con un asesor";
+                string respuestaMenu = "Por favor, ingrese el código de verificacion de su DNI:\n\n"; 
+
+                await RegistrarSiCorresponde(dniTexto, respuestaMenu);
+
+                return respuestaMenu;
             }
             catch (Exception ex)
             {
                 return ex.Message;
             }
+        }
 
+        public async Task<string> ValidarUltimoDigitoDNI(string dniTexto)
+        {
+            string prompt = "Del siguiente texto extrae ÚNICAMENTE el código de verificación del DNI." +
+                " El código es un solo dígito del 0 al 9." +
+                " Devuelve solo el dígito, sin texto adicional, sin palabras, sin explicaciones. Si no encuentras el dígito de 1 solo caracter devuelvo la letra O. El texto es: " + dniTexto;
+
+            string dniExtraido = await _openAIRepository.GenerarRespuestaAsync(prompt);
+
+            if (dniTexto.Trim().Length == 1) dniExtraido = dniTexto;
+
+            dniExtraido = dniExtraido?.Trim() ?? string.Empty;
+            EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
+
+            try
+            {
+                string paciente = await _pacientesService.ComprobarUltimoDigitoDNI(estadoConversacion!.IdPaciente, dniExtraido);
+
+                int idConversacion = 0;
+                if (int.TryParse(dniExtraido, out int dniParsed))
+                {
+                    idConversacion = await _conversacionService.RegistrarConversacion(dniParsed, "WEB");
+                }
+
+                estadoConversacion.EstadoActual = "MenuPrincipal";
+
+                Session.SetObject("OUser", estadoConversacion);
+
+                string respuestaMenu = "Un gusto tenerlo(a) por aqui " + estadoConversacion.NombrePaciente + ", seleccione una opcion:\n\n" +
+                       "1. Agendar cita médica\n" +
+                       "2. Cancelar cita médica\n" +
+                       "3. Consultar estado de resultados\n" +
+                       "4. Ver historial de citas\n" +
+                       "5. Conversar con tu IA\n" +
+                       "6. Hablar con un asesor";
+
+                await RegistrarSiCorresponde(dniTexto, respuestaMenu);
+
+                return respuestaMenu;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
 
         public async Task<string> IniciarConversacionConLaIA()
         {
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
-            estadoConversacion!.EstadoActual = "ConversarConIA";
-            Session.SetObject("OUser", estadoConversacion);
+            if (estadoConversacion != null)
+            {
+                estadoConversacion.EstadoActual = "ConversarConIA";
+                Session.SetObject("OUser", estadoConversacion);
+            }
 
             return await _conversacionService.IniciarConversacionConLaIA();
         }
 
         public async Task<string> ProcesarPromptConIA(string mensaje)
         {
-            if (string.IsNullOrWhiteSpace(mensaje)) return "Por faovrv, introduzca su consulta";
-            string prompt = "";
-            //if(_numeroConsulta == 0)
-            {
-                //prompt = "En este flujo te encargaras de responder las preguntas del usuario pero estrictamente centrado en dar informacion sobre el flujo de la aplicacion o " +
-                //    "temas centrados en el sistema de salud publico peruano EsSalud, tambien necesitas guardar el historial de lo que te escriba el usurio pero solo mientras dure " +
-                //    "la conversacion, yo te diré cuando olvidar todo lo que el usuario te escribió, el prompt del usuario es: " + mensaje;
+            if (string.IsNullOrWhiteSpace(mensaje)) return "Por favor, introduzca su consulta";
 
-                prompt = "En este flujo te encargaras de responder las preguntas del usuario pero estrictamente centrado en dar informacion sobre el flujo de la aplicacion o " +
-                    "temas centrados en el sistema de salud publico peruano EsSalud, OJO los usuario no tienen una cuenta como si de una red social se tratese si no solo debe " + "" +
-                    "ingreasr su DNI para validarlo en el sistema de EsSalud, a continuacion las reglas de negocio y el flujo del sistema: " +
-                    "-Flujo Agendar Cita: Para agendar una cita el usuario debe validar tu identidad, elegir una especialidad, elejir a un doctor y seleccionar uno de los " +
-                    "horarios disponibles; las reglas de negocio para agendar cita son: no tener otra cita agenda porque solo se puede agendar una a la vez. " +
-                    "-Flujo Cancelar Cita: Para canelar la cita tambien se necesita que el usuario haya validado su sesion, le aparecerá informacion de su cita y ahi deberá " +
-                    "seleccion \"SÍ\" si desea cancelar su cita o \"NO\" si no desea cancelarla, la regla de negocio es que para no puede faltar menos de 24 horas para el inicio " +
-                    "de la cita y que si cancela 2 veces sus citas programadas ya no podrá agendar mas citas virtualmente. " +
-                    "-Flujo Consultar estado de resultados: despues que el usuario se haya validado le aparecerá los resultados de sus ultimas 3 exmanenes (solo se le mostrará " +
-                    "el estado) " +
-                    "-Flujo Ver historial de citas: despues de que el usuario se haya validado le aparecerá sus últimas 3 citas generadas en el sistema de essalud. " +
-                    "Esas fueron todas las reglas y flujos del sistema, si no logras entender puedes responder con \"Puedo ayudarte con informacion sobre citas, resultados, servicio " +
-                    "y procesos de EsSalud, ¿Podrías detallar un poco más tu consulta?\", recuerda que tienes que responder estrictamemte cosas relacionadas al sistema que tiene un enfoque " +
-                    "a EsSalud (a menos que sea un \"hola\" o por ejemplo \"gracias\" esas cosas) con palabras no tecnicas faciles de entender para los pacientes, tampoco tienes " +
-                    "que revelar flujos internos y tecnicos del sistema, si puedes que las respuestas que des no sean tan largas, NO MUESTRES HISTORIAL DE LA CONVERSACION, a continuacion te paso el prompt del usuario: ";
-            }
+            string prompt = "En este flujo te encargaras de responder las preguntas del usuario pero estrictamente centrado en dar informacion sobre el flujo de la aplicacion o " +
+                    "temas centrados en el sistema de salud publico peruano EsSalud. A continuacion las reglas y flujos: " +
+                    "-Flujo Agendar Cita: ... (resumen de reglas) " +
+                    "-Flujo Cancelar Cita: ... " +
+                    "-Flujo Consultar estado de resultados: ... " +
+                    "-Flujo Ver historial de citas: ... " +
+                    "No muestres historial de conversación. Responde de forma clara y breve. Prompt del usuario: ";
 
-            //_numeroConsulta++;
             prompt += mensaje;
 
             try
             {
                 string respuestaIA = await _openAIRepository.GenerarRespuestaAsync(prompt);
-                return respuestaIA.Replace("\n", "").Replace("*", "");
+                return respuestaIA?.Replace("\n", "").Replace("*", "") ?? "No se obtuvo respuesta de la IA";
             }
             catch (Exception ex)
             {
@@ -214,5 +318,77 @@ namespace Dialogix.ChatBot
             }
         }
 
+        private string ObtenerCanalesAsesor()
+        {
+            try
+            {
+                EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
+
+                if (estadoConversacion == null)
+                {
+                    Session.Clear();
+                    throw new Exception("Sin sesión activa");
+                }
+
+                if (estadoConversacion.IdConversacion > 0)
+                {
+                    _ = _conversacionService.FinalizarConversacion(estadoConversacion.IdConversacion);
+                }
+
+                string mensaje =
+                    "CANALES_ASESOR|" +
+                    "Telefono:(01) 411-8000|" +
+                    "WhatsApp:+51 948 123 456|" +
+                    "Correo:atencionalasegurado@essalud.gob.pe|" +
+                    "Horario:Lunes a Sábado — 7:00 a.m. a 7:00 p.m.";
+
+                Session.Clear();
+
+                return mensaje;
+            }
+            catch (Exception)
+            {
+                Session.Clear();
+                return string.Empty;
+            }
+        }
+
+        private async Task RegistrarSiCorresponde(string textoUsuario, string respuesta)
+        {
+            try
+            {
+                EstadoConversacion? estadoActual = Session.GetObject<EstadoConversacion>("OUser");
+                if (estadoActual != null && estadoActual.IdConversacion > 0)
+                {
+                    await _conversacion_service_safeRegistrarMensaje(estadoActual.IdConversacion, textoUsuario, respuesta);
+                    await _conversacion_service_safeRegistrarMetrica();
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private async Task _conversacion_service_safeRegistrarMensaje(int idConversacion, string texto, string respuesta)
+        {
+            try
+            {
+                await _conversacionService.RegistrarMensaje(idConversacion, texto ?? string.Empty, respuesta ?? string.Empty);
+            }
+            catch
+            {
+            }
+        }
+
+        private async Task _conversacion_service_safeRegistrarMetrica()
+        {
+            try
+            {
+                await _conversacionService.RegistrarMetrica();
+            }
+            catch
+            {
+            }
+        }
     }
 }

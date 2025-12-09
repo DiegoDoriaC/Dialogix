@@ -40,6 +40,7 @@ go
 CREATE TABLE Paciente (
     Id INT PRIMARY KEY,
 	DNI VARCHAR(8),
+	UltDigito varchar(1),
     Nombre VARCHAR(150),
     Sexo CHAR(1),
     FechaNacimiento DATE,
@@ -69,6 +70,8 @@ CREATE TABLE CitaMedica  (
 	Estado VARCHAR(20)
 )
 go
+
+select * from CitaMedica
 
 CREATE TABLE ResultadosClinicos (
     IdResultadosClinicos INT IDENTITY(1,1) PRIMARY KEY,
@@ -253,77 +256,79 @@ INSERT INTO Medico VALUES (78, 18, 'Dr. Elmer Gutiérrez', 'CMP20999', 'Medicina 
 INSERT INTO Medico VALUES (79, 19, 'Dra. Pierina Concha', 'CMP21111', 'Emergencias');
 INSERT INTO Medico VALUES (80, 20, 'Dr. Alejandro Cárdenas', 'CMP21400', 'Medicina General');
 
+select *  from citaMedica where IdPaciente = 67
+
 -- Pacientes — 70 INSERTs
-INSERT INTO Paciente VALUES (1,'72104533','Carlos Alberto Ruiz', 'M','1984-03-12','987654321','carlos.ruiz@example.com','Av. Los Álamos 123');
-INSERT INTO Paciente VALUES (2,'74823011','María Fernanda Torres', 'F','1992-07-25','986112233','maria.torres@example.com','Jr. Las Margaritas 450');
-INSERT INTO Paciente VALUES (3,'70334421','Luis Enrique Salazar', 'M','1978-11-03','983221145','luis.salazar@example.com','Av. Próceres 1290');
-INSERT INTO Paciente VALUES (4,'71580244','Ana Cecilia Vargas', 'F','1989-05-18','981345987','ana.vargas@example.com','Mz C Lote 8 Urb. Los Cedros');
-INSERT INTO Paciente VALUES (5,'76011289','José Manuel Pineda', 'M','1995-02-16','982555771','jose.pineda@example.com','Calle Los Fresnos 221');
-INSERT INTO Paciente VALUES (6,'70149233','Lucía Alejandra Campos', 'F','1990-12-01','987100200','lucia.campos@example.com','Av. Perú 1880');
-INSERT INTO Paciente VALUES (7,'71288900','Rodolfo Iván Huamán', 'M','1975-09-28','987666321','rodolfo.huaman@example.com','Jr. Huáscar 540');
-INSERT INTO Paciente VALUES (8,'75500213','Carmen Rosa Díaz', 'F','1981-01-19','987991124','carmen.diaz@example.com','Av. Las Gardenias 1021');
-INSERT INTO Paciente VALUES (9,'70893451','Sergio Daniel Ponce', 'M','1993-10-10','981234776','sergio.ponce@example.com','Los Jardines 455');
-INSERT INTO Paciente VALUES (10,'70654382','Valeria Sofía León', 'F','2001-04-12','984300123','valeria.leon@example.com','Av. Petit Thouars 2000');
-INSERT INTO Paciente VALUES (11,'73001544','Julio César Medina', 'M','1980-08-25','984112987','julio.medina@example.com','Av. Bolívar 540');
-INSERT INTO Paciente VALUES (12,'76551209','Karla Milagros Rivas', 'F','1994-06-02','989334122','karla.rivas@example.com','Urb. San Gabriel Mz A Lt 9');
-INSERT INTO Paciente VALUES (13,'74889912','Héctor Manuel Lozano', 'M','1977-03-14','981778900','hector.lozano@example.com','Calle Huascarán 118');
-INSERT INTO Paciente VALUES (14,'70554432','Diana Elizabeth Torres', 'F','1988-02-21','982988100','diana.torres@example.com','Av. La Cultura 1500');
-INSERT INTO Paciente VALUES (15,'72690310','Gabriel Alejandro Castillo', 'M','2003-05-04','989002291','gabriel.castillo@example.com','Calle Las Lomas 311');
-INSERT INTO Paciente VALUES (16,'76100283','Fiorella Carolina Chávez', 'F','1991-07-16','983002311','fiorella.chavez@example.com','Av. Tomás Valle 900');
-INSERT INTO Paciente VALUES (17,'70233417','Miguel Ángel Gutiérrez', 'M','1972-12-19','986777645','miguel.gutierrez@example.com','Calle Grau 120');
-INSERT INTO Paciente VALUES (18,'73128893','Nathalie Paola Cárdenas', 'F','1998-11-22','983889112','nathalie.cardenas@example.com','Urb. Los Portales F3-2');
-INSERT INTO Paciente VALUES (19,'74881230','Christian David Torres', 'M','1983-06-13','987123990','christian.torres@example.com','Av. Naciones Unidas 330');
-INSERT INTO Paciente VALUES (20,'79011289','Andrea Jazmín Huamán', 'F','1996-01-27','981220017','andrea.huaman@example.com','Calle Las Camelias 120');
-INSERT INTO Paciente VALUES (21,'77544129','Manuel Ricardo Pajares', 'M','1979-10-30','987410999','manuel.pajares@example.com','Av. Angamos 999');
-INSERT INTO Paciente VALUES (22,'76203912','Daniela Verónica Dávila', 'F','2005-03-14','984560298','daniela.davila@example.com','Av. Guardia Civil 190');
-INSERT INTO Paciente VALUES (23,'71588912','Oscar Renzo Salinas', 'M','1968-09-05','981664229','oscar.salinas@example.com','Jr. Puno 321');
-INSERT INTO Paciente VALUES (24,'74512003','Rosa Emilia Campos', 'F','1973-04-08','987444123','rosa.campos@example.com','Av. San Martín 455');
-INSERT INTO Paciente VALUES (25,'73300921','Diego Aníbal Cortez', 'M','1990-12-05','987122440','diego.cortez@example.com','Av. Universitaria 1780');
-INSERT INTO Paciente VALUES (26,'76443221','Elena Karina Morales', 'F','1985-02-17','986321788','elena.morales@example.com','Urb. Los Próceres Lt 22');
-INSERT INTO Paciente VALUES (27,'71234598','Alonso Martín Guerrero', 'M','1997-09-29','989432012','alonso.guerrero@example.com','Av. Independencia 531');
-INSERT INTO Paciente VALUES (28,'74812311','Ruth Noemí Cueva', 'F','1976-01-02','988221001','ruth.cueva@example.com','Jr. Tarapacá 812');
-INSERT INTO Paciente VALUES (29,'70023419','Cristian Omar Lazo', 'M','1994-12-22','989442200','cristian.lazo@example.com','Calle Piura 707');
-INSERT INTO Paciente VALUES (30,'73099122','Evelyn Johana Segura', 'F','2002-05-10','986530221','evelyn.segura@example.com','Av. Tacna 650');
-INSERT INTO Paciente VALUES (31,'71133278','Renzo Eduardo Portugal', 'M','1986-08-11','987700321','renzo.portugal@example.com','Av. Los Alisos 945');
-INSERT INTO Paciente VALUES (32,'76344210','Milagros Daniela Bravo', 'F','1993-04-01','986112776','milagros.bravo@example.com','Urb. Los Rosales 123');
-INSERT INTO Paciente VALUES (33,'71221903','Gerson Alexander Luján', 'M','1970-06-20','981114450','gerson.lujan@example.com','Av. La Marina 410');
-INSERT INTO Paciente VALUES (34,'75221094','Cinthia Paola Quispe', 'F','1982-01-22','987990122','cinthia.quispe@example.com','Av. Arequipa 1790');
-INSERT INTO Paciente VALUES (35,'74300921','Eduardo Martín Pérez', 'M','1999-12-31','989044310','eduardo.perez@example.com','Av. Javier Prado 700');
-INSERT INTO Paciente VALUES (36,'70091283','Melissa Carolina Tapia', 'F','1974-07-18','982220111','melissa.tapia@example.com','Calle Los Robles 202');
-INSERT INTO Paciente VALUES (37,'73120001','Pedro Antonio Ramos', 'M','1987-10-02','983330121','pedro.ramos@example.com','Av. Del Ejército 456');
-INSERT INTO Paciente VALUES (38,'79832100','Yolanda Isabel Córdova', 'F','1969-02-09','987812204','yolanda.cordova@example.com','Av. Grau 711');
-INSERT INTO Paciente VALUES (39,'71244533','Kevin Arturo Cabrera', 'M','2004-09-14','981223498','kevin.cabrera@example.com','Urb. El Trebol Lt 12');
-INSERT INTO Paciente VALUES (40,'75331190','Leslie Ariana Romero', 'F','1983-06-26','989221900','leslie.romero@example.com','Av. Angamos Oeste 210');
-INSERT INTO Paciente VALUES (41,'71233481','Mauricio José Meza', 'M','1991-07-19','987555121','mauricio.meza@example.com','Calle Cusco 919');
-INSERT INTO Paciente VALUES (42,'76299123','Patricia Alejandra Zapata', 'F','1978-03-03','983221184','patricia.zapata@example.com','Av. El Sol 300');
-INSERT INTO Paciente VALUES (43,'70883314','Jean Franco Mendieta', 'M','1985-02-28','981552093','jean.mendieta@example.com','Calle Bolivia 488');
-INSERT INTO Paciente VALUES (44,'74500122','Lorena Magaly Huerta', 'F','1997-06-23','986330940','lorena.huerta@example.com','Av. San Luis 1200');
-INSERT INTO Paciente VALUES (45,'73122390','Aldo Sebastián Ramos', 'M','2000-01-18','988331457','aldo.ramos@example.com','Av. Argentina 780');
-INSERT INTO Paciente VALUES (46,'75409913','Erika María Espinoza', 'F','1989-09-01','982221778','erika.espinoza@example.com','Calle Moquegua 556');
-INSERT INTO Paciente VALUES (47,'76488321','Jorge Luis Cabrera', 'M','1976-02-19','983445678','jorge.cabrera@example.com','Av. Surco 310');
-INSERT INTO Paciente VALUES (48,'72339001','Diana Sofía Gamboa', 'F','1995-03-11','987410200','diana.gamboa@example.com','Av. República 612');
-INSERT INTO Paciente VALUES (49,'74480912','Marco Antonio Molina', 'M','1981-08-30','981778340','marco.molina@example.com','Av. La Paz 340');
-INSERT INTO Paciente VALUES (50,'72201922','Katherine Ivonne Torres', 'F','1993-02-17','982100299','katherine.torres@example.com','Av. Guardia Republicana 999');
-INSERT INTO Paciente VALUES (51,'74530992','Harold Esteban Dávila', 'M','1979-07-07','987142309','harold.davila@example.com','Jr. Cañete 144');
-INSERT INTO Paciente VALUES (52,'76429119','Lina Patricia Ochoa', 'F','1984-03-25','984441220','lina.ochoa@example.com','Av. El Derby 1123');
-INSERT INTO Paciente VALUES (53,'74322091','Rubén Alberto Poma', 'M','1990-11-12','982311009','ruben.poma@example.com','Av. San Felipe 400');
-INSERT INTO Paciente VALUES (54,'73900921','Milagros Esther Soto', 'F','1999-07-21','989000111','milagros.soto@example.com','Av. Guardia Civil 320');
-INSERT INTO Paciente VALUES (55,'72423119','Rodrigo Andrés Cárdenas', 'M','1986-05-11','981883322','rodrigo.cardenas@example.com','Calle Libertad 440');
-INSERT INTO Paciente VALUES (56,'74622109','Pamela Cristina Saavedra', 'F','1973-02-18','987411223','pamela.saavedra@example.com','Jr. Junín 301');
-INSERT INTO Paciente VALUES (57,'74211098','Kevin Alfredo Blanco', 'M','2002-10-07','986402112','kevin.blanco@example.com','Av. Lima 1220');
-INSERT INTO Paciente VALUES (58,'76398122','Carolina Isabel Pinedo', 'F','1994-03-01','983010211','carolina.pinedo@example.com','Av. Salaverry 990');
-INSERT INTO Paciente VALUES (59,'72110428','Alexis Mario Goycochea', 'M','1992-12-30','981421309','alexis.goycochea@example.com','Av. La Paz 130');
-INSERT INTO Paciente VALUES (60,'74033112','Jazmín Lucero Aguilar', 'F','2003-01-05','989211011','jazmin.aguilar@example.com','Av. Primavera 455');
-INSERT INTO Paciente VALUES (61,'70142219','Hugo Sebastián Huerta', 'M','1988-04-27','987114209','hugo.huerta@example.com','Calle Amazonas 120');
-INSERT INTO Paciente VALUES (62,'74422819','Fiorella Pilar Reyes', 'F','1996-09-17','981002334','fiorella.reyes@example.com','Urb. Las Flores 150');
-INSERT INTO Paciente VALUES (63,'76229918','Daniel Mauricio Zevallos', 'M','1991-11-24','986320543','daniel.zevallos@example.com','Av. Del Parque 200');
-INSERT INTO Paciente VALUES (64,'71332044','Bianca Celeste Romero', 'F','1980-07-30','987200541','bianca.romero@example.com','Av. Los Olivos 500');
-INSERT INTO Paciente VALUES (65,'75500229','Stuart Raúl Castañeda', 'M','1998-03-18','983440122','stuart.castaneda@example.com','Av. Alcázar 133');
-INSERT INTO Paciente VALUES (66,'76440221','Stefany Noelia López', 'F','1997-08-12','984556210','stefany.lopez@example.com','Calle Los Laureles 190');
-INSERT INTO Paciente VALUES (67,'70190211','Joel Martín Jurado', 'M','1995-12-09','989778010','joel.jurado@example.com','Av. San Borja 900');
-INSERT INTO Paciente VALUES (68,'72511092','Yuliana Marisol Paredes', 'F','1982-10-04','987642110','yuliana.paredes@example.com','Av. Paseo Colón 530');
-INSERT INTO Paciente VALUES (69,'73520094','Henry Alonso Pastor', 'M','1990-05-22','984200099','henry.pastor@example.com','Av. Nicolás Ayllón 771');
-INSERT INTO Paciente VALUES (70,'71029011','Tatiana Milena Guzmán', 'F','1998-04-15','986132110','tatiana.guzman@example.com','Av. Los Laureles 915');
+INSERT INTO Paciente VALUES (1,'72104533', '1', 'Carlos Alberto Ruiz', 'M','1984-03-12','987654321','carlos.ruiz@example.com','Av. Los Álamos 123');
+INSERT INTO Paciente VALUES (2,'74823011', '1', 'María Fernanda Torres', 'F','1992-07-25','986112233','maria.torres@example.com','Jr. Las Margaritas 450');
+INSERT INTO Paciente VALUES (3,'70334421', '1', 'Luis Enrique Salazar', 'M','1978-11-03','983221145','luis.salazar@example.com','Av. Próceres 1290');
+INSERT INTO Paciente VALUES (4,'71580244', '1', 'Ana Cecilia Vargas', 'F','1989-05-18','981345987','ana.vargas@example.com','Mz C Lote 8 Urb. Los Cedros');
+INSERT INTO Paciente VALUES (5,'76011289', '1', 'José Manuel Pineda', 'M','1995-02-16','982555771','jose.pineda@example.com','Calle Los Fresnos 221');
+INSERT INTO Paciente VALUES (6,'70149233', '1', 'Lucía Alejandra Campos', 'F','1990-12-01','987100200','lucia.campos@example.com','Av. Perú 1880');
+INSERT INTO Paciente VALUES (7,'71288900', '1', 'Rodolfo Iván Huamán', 'M','1975-09-28','987666321','rodolfo.huaman@example.com','Jr. Huáscar 540');
+INSERT INTO Paciente VALUES (8,'75500213', '1', 'Carmen Rosa Díaz', 'F','1981-01-19','987991124','carmen.diaz@example.com','Av. Las Gardenias 1021');
+INSERT INTO Paciente VALUES (9,'70893451', '1', 'Sergio Daniel Ponce', 'M','1993-10-10','981234776','sergio.ponce@example.com','Los Jardines 455');
+INSERT INTO Paciente VALUES (10,'70654382', '2', 'Valeria Sofía León', 'F','2001-04-12','984300123','valeria.leon@example.com','Av. Petit Thouars 2000');
+INSERT INTO Paciente VALUES (11,'73001544', '2', 'Julio César Medina', 'M','1980-08-25','984112987','julio.medina@example.com','Av. Bolívar 540');
+INSERT INTO Paciente VALUES (12,'76551209', '2', 'Karla Milagros Rivas', 'F','1994-06-02','989334122','karla.rivas@example.com','Urb. San Gabriel Mz A Lt 9');
+INSERT INTO Paciente VALUES (13,'74889912', '2', 'Héctor Manuel Lozano', 'M','1977-03-14','981778900','hector.lozano@example.com','Calle Huascarán 118');
+INSERT INTO Paciente VALUES (14,'70554432', '2', 'Diana Elizabeth Torres', 'F','1988-02-21','982988100','diana.torres@example.com','Av. La Cultura 1500');
+INSERT INTO Paciente VALUES (15,'72690310', '2', 'Gabriel Alejandro Castillo', 'M','2003-05-04','989002291','gabriel.castillo@example.com','Calle Las Lomas 311');
+INSERT INTO Paciente VALUES (16,'76100283', '2', 'Fiorella Carolina Chávez', 'F','1991-07-16','983002311','fiorella.chavez@example.com','Av. Tomás Valle 900');
+INSERT INTO Paciente VALUES (17,'70233417', '2', 'Miguel Ángel Gutiérrez', 'M','1972-12-19','986777645','miguel.gutierrez@example.com','Calle Grau 120');
+INSERT INTO Paciente VALUES (18,'73128893', '2', 'Nathalie Paola Cárdenas', 'F','1998-11-22','983889112','nathalie.cardenas@example.com','Urb. Los Portales F3-2');
+INSERT INTO Paciente VALUES (19,'74881230', '2', 'Christian David Torres', 'M','1983-06-13','987123990','christian.torres@example.com','Av. Naciones Unidas 330');
+INSERT INTO Paciente VALUES (20,'79011289', '2', 'Andrea Jazmín Huamán', 'F','1996-01-27','981220017','andrea.huaman@example.com','Calle Las Camelias 120');
+INSERT INTO Paciente VALUES (21,'77544129', '2', 'Manuel Ricardo Pajares', 'M','1979-10-30','987410999','manuel.pajares@example.com','Av. Angamos 999');
+INSERT INTO Paciente VALUES (22,'76203912', '2', 'Daniela Verónica Dávila', 'F','2005-03-14','984560298','daniela.davila@example.com','Av. Guardia Civil 190');
+INSERT INTO Paciente VALUES (23,'71588912', '2', 'Oscar Renzo Salinas', 'M','1968-09-05','981664229','oscar.salinas@example.com','Jr. Puno 321');
+INSERT INTO Paciente VALUES (24,'74512003', '2', 'Rosa Emilia Campos', 'F','1973-04-08','987444123','rosa.campos@example.com','Av. San Martín 455');
+INSERT INTO Paciente VALUES (25,'73300921', '2', 'Diego Aníbal Cortez', 'M','1990-12-05','987122440','diego.cortez@example.com','Av. Universitaria 1780');
+INSERT INTO Paciente VALUES (26,'76443221', '2', 'Elena Karina Morales', 'F','1985-02-17','986321788','elena.morales@example.com','Urb. Los Próceres Lt 22');
+INSERT INTO Paciente VALUES (27,'71234598', '2', 'Alonso Martín Guerrero', 'M','1997-09-29','989432012','alonso.guerrero@example.com','Av. Independencia 531');
+INSERT INTO Paciente VALUES (28,'74812311', '2', 'Ruth Noemí Cueva', 'F','1976-01-02','988221001','ruth.cueva@example.com','Jr. Tarapacá 812');
+INSERT INTO Paciente VALUES (29,'70023419', '2', 'Cristian Omar Lazo', 'M','1994-12-22','989442200','cristian.lazo@example.com','Calle Piura 707');
+INSERT INTO Paciente VALUES (30,'73099122', '2', 'Evelyn Johana Segura', 'F','2002-05-10','986530221','evelyn.segura@example.com','Av. Tacna 650');
+INSERT INTO Paciente VALUES (31,'71133278', '2', 'Renzo Eduardo Portugal', 'M','1986-08-11','987700321','renzo.portugal@example.com','Av. Los Alisos 945');
+INSERT INTO Paciente VALUES (32,'76344210', '2', 'Milagros Daniela Bravo', 'F','1993-04-01','986112776','milagros.bravo@example.com','Urb. Los Rosales 123');
+INSERT INTO Paciente VALUES (33,'71221903', '2', 'Gerson Alexander Luján', 'M','1970-06-20','981114450','gerson.lujan@example.com','Av. La Marina 410');
+INSERT INTO Paciente VALUES (34,'75221094', '2', 'Cinthia Paola Quispe', 'F','1982-01-22','987990122','cinthia.quispe@example.com','Av. Arequipa 1790');
+INSERT INTO Paciente VALUES (35,'74300921', '2', 'Eduardo Martín Pérez', 'M','1999-12-31','989044310','eduardo.perez@example.com','Av. Javier Prado 700');
+INSERT INTO Paciente VALUES (36,'70091283', '2', 'Melissa Carolina Tapia', 'F','1974-07-18','982220111','melissa.tapia@example.com','Calle Los Robles 202');
+INSERT INTO Paciente VALUES (37,'73120001', '2', 'Pedro Antonio Ramos', 'M','1987-10-02','983330121','pedro.ramos@example.com','Av. Del Ejército 456');
+INSERT INTO Paciente VALUES (38,'79832100', '2', 'Yolanda Isabel Córdova', 'F','1969-02-09','987812204','yolanda.cordova@example.com','Av. Grau 711');
+INSERT INTO Paciente VALUES (39,'71244533', '2', 'Kevin Arturo Cabrera', 'M','2004-09-14','981223498','kevin.cabrera@example.com','Urb. El Trebol Lt 12');
+INSERT INTO Paciente VALUES (40,'75331190', '2', 'Leslie Ariana Romero', 'F','1983-06-26','989221900','leslie.romero@example.com','Av. Angamos Oeste 210');
+INSERT INTO Paciente VALUES (41,'71233481', '2', 'Mauricio José Meza', 'M','1991-07-19','987555121','mauricio.meza@example.com','Calle Cusco 919');
+INSERT INTO Paciente VALUES (42,'76299123', '2', 'Patricia Alejandra Zapata', 'F','1978-03-03','983221184','patricia.zapata@example.com','Av. El Sol 300');
+INSERT INTO Paciente VALUES (43,'70883314', '2', 'Jean Franco Mendieta', 'M','1985-02-28','981552093','jean.mendieta@example.com','Calle Bolivia 488');
+INSERT INTO Paciente VALUES (44,'74500122', '2', 'Lorena Magaly Huerta', 'F','1997-06-23','986330940','lorena.huerta@example.com','Av. San Luis 1200');
+INSERT INTO Paciente VALUES (45,'73122390', '2', 'Aldo Sebastián Ramos', 'M','2000-01-18','988331457','aldo.ramos@example.com','Av. Argentina 780');
+INSERT INTO Paciente VALUES (46,'75409913', '2', 'Erika María Espinoza', 'F','1989-09-01','982221778','erika.espinoza@example.com','Calle Moquegua 556');
+INSERT INTO Paciente VALUES (47,'76488321', '2', 'Jorge Luis Cabrera', 'M','1976-02-19','983445678','jorge.cabrera@example.com','Av. Surco 310');
+INSERT INTO Paciente VALUES (48,'72339001', '2', 'Diana Sofía Gamboa', 'F','1995-03-11','987410200','diana.gamboa@example.com','Av. República 612');
+INSERT INTO Paciente VALUES (49,'74480912', '2', 'Marco Antonio Molina', 'M','1981-08-30','981778340','marco.molina@example.com','Av. La Paz 340');
+INSERT INTO Paciente VALUES (50,'72201922', '2', 'Katherine Ivonne Torres', 'F','1993-02-17','982100299','katherine.torres@example.com','Av. Guardia Republicana 999');
+INSERT INTO Paciente VALUES (51,'74530992', '2', 'Harold Esteban Dávila', 'M','1979-07-07','987142309','harold.davila@example.com','Jr. Cañete 144');
+INSERT INTO Paciente VALUES (52,'76429119', '2', 'Lina Patricia Ochoa', 'F','1984-03-25','984441220','lina.ochoa@example.com','Av. El Derby 1123');
+INSERT INTO Paciente VALUES (53,'74322091', '2', 'Rubén Alberto Poma', 'M','1990-11-12','982311009','ruben.poma@example.com','Av. San Felipe 400');
+INSERT INTO Paciente VALUES (54,'73900921', '2', 'Milagros Esther Soto', 'F','1999-07-21','989000111','milagros.soto@example.com','Av. Guardia Civil 320');
+INSERT INTO Paciente VALUES (55,'72423119', '2', 'Rodrigo Andrés Cárdenas', 'M','1986-05-11','981883322','rodrigo.cardenas@example.com','Calle Libertad 440');
+INSERT INTO Paciente VALUES (56,'74622109', '2', 'Pamela Cristina Saavedra', 'F','1973-02-18','987411223','pamela.saavedra@example.com','Jr. Junín 301');
+INSERT INTO Paciente VALUES (57,'74211098', '2', 'Kevin Alfredo Blanco', 'M','2002-10-07','986402112','kevin.blanco@example.com','Av. Lima 1220');
+INSERT INTO Paciente VALUES (58,'76398122', '2', 'Carolina Isabel Pinedo', 'F','1994-03-01','983010211','carolina.pinedo@example.com','Av. Salaverry 990');
+INSERT INTO Paciente VALUES (59,'72110428', '2', 'Alexis Mario Goycochea', 'M','1992-12-30','981421309','alexis.goycochea@example.com','Av. La Paz 130');
+INSERT INTO Paciente VALUES (60,'74033112', '2', 'Jazmín Lucero Aguilar', 'F','2003-01-05','989211011','jazmin.aguilar@example.com','Av. Primavera 455');
+INSERT INTO Paciente VALUES (61,'70142219', '2', 'Hugo Sebastián Huerta', 'M','1988-04-27','987114209','hugo.huerta@example.com','Calle Amazonas 120');
+INSERT INTO Paciente VALUES (62,'74422819', '2', 'Fiorella Pilar Reyes', 'F','1996-09-17','981002334','fiorella.reyes@example.com','Urb. Las Flores 150');
+INSERT INTO Paciente VALUES (63,'76229918', '2', 'Daniel Mauricio Zevallos', 'M','1991-11-24','986320543','daniel.zevallos@example.com','Av. Del Parque 200');
+INSERT INTO Paciente VALUES (64,'71332044', '2', 'Bianca Celeste Romero', 'F','1980-07-30','987200541','bianca.romero@example.com','Av. Los Olivos 500');
+INSERT INTO Paciente VALUES (65,'75500229', '2', 'Stuart Raúl Castañeda', 'M','1998-03-18','983440122','stuart.castaneda@example.com','Av. Alcázar 133');
+INSERT INTO Paciente VALUES (66,'76440221', '2', 'Stefany Noelia López', 'F','1997-08-12','984556210','stefany.lopez@example.com','Calle Los Laureles 190');
+INSERT INTO Paciente VALUES (67,'70190211', '2', 'Joel Martín Jurado', 'M','1995-12-09','989778010','joel.jurado@example.com','Av. San Borja 900');
+INSERT INTO Paciente VALUES (68,'72511092', '2', 'Yuliana Marisol Paredes', 'F','1982-10-04','987642110','yuliana.paredes@example.com','Av. Paseo Colón 530');
+INSERT INTO Paciente VALUES (69,'73520094', '2', 'Henry Alonso Pastor', 'M','1990-05-22','984200099','henry.pastor@example.com','Av. Nicolás Ayllón 771');
+INSERT INTO Paciente VALUES (70,'71029011', '2', 'Tatiana Milena Guzmán', 'F','1998-04-15','986132110','tatiana.guzman@example.com','Av. Los Laureles 915');
 
 -- INSERTS — HorarioMedico (70 registros)
 INSERT INTO HorarioMedico VALUES (1, 1, 'Lunes', '08:00', '14:00');
@@ -659,7 +664,7 @@ go
 
 
 create procedure pr_listar_doctores_segun_especialidad
-	@Especialidad varchar(15)
+	@Especialidad varchar(80)
 as
 begin
 	select top 7 Id, Nombre from Medico where Especialidad = @Especialidad
@@ -688,10 +693,10 @@ begin
 	SELECT HoraCita
 	FROM CitaMedica
 	WHERE IdMedico = @idMedico
-	AND FechaCita = @fecha;
+	AND FechaCita = @fecha
+	AND Estado != 'Cancelada'
 end
 go
-
 
 create procedure pr_listar_especialidades
 as
@@ -699,3 +704,22 @@ begin
 	select Especialidad from Medico group by Especialidad	
 end
 go
+
+CREATE PROCEDURE pr_total_citas_agendadas
+AS
+BEGIN
+    SELECT COUNT(*) AS TotalCitas
+    FROM CitaMedica
+    WHERE Estado <> 'Cancelada';
+END
+GO
+
+create procedure pr_obtener_ult_dig
+	@ID_PAC int
+as
+begin
+	select UltDigito from Paciente where Id = @ID_PAC
+end
+go
+
+update Paciente set Correo = 'analista10@intelisoft.ws'

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dialogix.Domain\Dialogix.Domain.csproj" />
+    <ProjectReference Include="..\Essalud.Infraestructure\Essalud.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>

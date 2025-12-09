@@ -47,6 +47,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Dialogix.Controllers.PacienteController",
+    "Method": "ResetSession",
+    "RelativePath": "Dialogix/Paciente/ResetSession",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Dialogix.Controllers.PreguntasFrecuentesController",
     "Method": "ModificarPreguntaFrecuente",
     "RelativePath": "Dialogix/PreguntasFrecuentes/actualizar",
@@ -329,6 +339,46 @@
     "ReturnTypes": [
       {
         "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.MetricaUso, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "ObtenerTotalCitas",
+    "RelativePath": "metricas/citas-total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "ObtenerMetricasHoy",
+    "RelativePath": "metricas/hoy",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

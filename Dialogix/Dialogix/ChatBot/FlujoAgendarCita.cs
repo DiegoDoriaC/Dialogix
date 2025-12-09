@@ -1,4 +1,5 @@
 ﻿using Dialogix.ChatBot.Interfaces;
+using Dialogix.Correos;
 using Dialogix.Domain.Common;
 using Dialogix.Helpers;
 using Essalud.Application.Feature.Interfaces;
@@ -57,6 +58,8 @@ namespace Dialogix.ChatBot
             if (input.Trim().Replace(".", "") == "5") especialidad = "Medicina General";
             if (input.Trim().Replace(".", "") == "6") especialidad = "Odontología";
             if (input.Trim().Replace(".", "") == "7") especialidad = "Pediatría";
+
+
 
             string respuesta = "Escoja un doctor: ";
             List<Medico> objeto = await _medicosRepository.ListarMedicosSegunEspecialidad(especialidad);
@@ -128,14 +131,14 @@ namespace Dialogix.ChatBot
             resumenCita += "|Paciente: " + estadoConversacion.NombrePaciente + ".";
             resumenCita += "|Especialidad: " + listaEspecialidades.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexEspecialidad) - 1) + ".";
             resumenCita += "|Medico: " + listaDoctores.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexDoctor) - 1).Nombre + ".";
-            resumenCita += "|Horario: " + fechaCita.ToString("yyyy/MM/dd hh:mm tt");
+            resumenCita += "|Horario: " + fechaCita.ToString("dd/MM/yyyy 'a las' hh:mm tt");
 
             return resumenCita;
         }
 
         public async Task<string> ConfirmaCita(string prompt)
         {
-            string mensaje = "Se canceló el registro de la cita, tenga buen día";
+            string mensaje = "Se canceló el registro de la cita, tenga buen día"; 
 
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
             List<string> listaEspecialidades = Session.GetObject<List<string>>("OListaEspecialidades")!;
@@ -145,6 +148,9 @@ namespace Dialogix.ChatBot
             int IndiceEspecialidades = int.Parse(estadoConversacion!.AgendarCita.IndexEspecialidad);
             int IndiceDoctor = int.Parse(estadoConversacion!.AgendarCita.IndexDoctor);
             int IndiceHorarios = int.Parse(estadoConversacion!.AgendarCita.IndexHorario);
+
+            string especialidad = listaEspecialidades.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexEspecialidad) - 1);
+            string medico = listaDoctores.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexDoctor) - 1).Nombre;
 
             if (prompt == "1")
             {
@@ -159,9 +165,20 @@ namespace Dialogix.ChatBot
                 try
                 {
                     await _citasMedicasService.AgendarCitaMedica(cita);
+                    try 
+                    {
+                        EnvioCorreo mail = new EnvioCorreo();
+                        mail.EnviarNotificacionRegistroCita(estadoConversacion, cita, especialidad, medico);
+                    }
+                    catch
+                    {
+                        Session.Clear();
+                        return "Felicidades " + estadoConversacion.NombrePaciente + " su cita fue agendada correctamente pero NO se pudo enviar el correo, " +
+                        "puede consultar informacion adicional mediante el chat, tenga buen dia";
+                    }
+
                     mensaje = "Felicidades " + estadoConversacion.NombrePaciente + " su cita fue agendada correctamente, " +
                         "puede consultar informacion adicional mediante el chat, tenga buen dia";
-
                 }
                 catch (Exception ex)
                 {

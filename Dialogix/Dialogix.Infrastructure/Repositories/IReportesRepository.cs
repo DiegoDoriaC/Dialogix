@@ -15,5 +15,7 @@ namespace Dialogix.Infrastructure.Repositories
         Task<List<MetricaUso>> FiltrarMetricaUsoPorMes(DateTime FechaInicio, DateTime FechaFin);
 
         Task<List<Feedback>> FiltrarFeedback(Feedback feedback);
+        Task<int> ObtenerMetricaHoy();
+
     }
 }

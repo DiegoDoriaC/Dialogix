@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj": {}
+    "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj": {
+    "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj",
         "projectName": "Dialogix.Domain",
-        "projectPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj": {
+    "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj",
         "projectName": "Dialogix.Infrastructure",
-        "projectPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\Dialogix.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,151 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\Desktop\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj"
+              "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Dialogix.Domain\\Dialogix.Domain.csproj"
+              },
+              "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Essalud.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Essalud.Infraestructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\Essalud.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\Essalud.Domain.csproj",
+        "projectName": "Essalud.Domain",
+        "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\Essalud.Domain.csproj",
+        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Essalud.Infraestructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Essalud.Infraestructure.csproj",
+        "projectName": "Essalud.Infraestructure",
+        "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\Essalud.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Infraestructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\Essalud.Domain.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Downloads\\Dialogix\\Dialogix\\Essalud.Domain\\Essalud.Domain.csproj"
               }
             }
           }

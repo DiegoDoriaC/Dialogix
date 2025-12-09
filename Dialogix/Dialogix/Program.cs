@@ -54,6 +54,8 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddScoped<IReportesService, ReportesService>();
 builder.Services.AddScoped<IReportesRepository, ReportesRepository>();
+builder.Services.AddScoped<IReportesCitasRepository, ReportesCitasRepository>();
+
 
 builder.Services.AddScoped<IPacientesService, PacientesService>();
 builder.Services.AddScoped<IPacientesRepository, PacientesRepository>();
@@ -77,18 +79,47 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173") 
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+
+            .AllowCredentials();
+    });
+});
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(60);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+
+    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
+    options.Cookie.SecurePolicy = Microsoft.AspNetCore.Http.CookieSecurePolicy.Always;
+});
+
+
 var app = builder.Build();
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+
+app.UseCors("AllowReactApp");
 app.UseHttpsRedirection();
+app.UseCookiePolicy();
+app.UseSession();              
 app.UseAuthorization();
 app.MapControllers();
-app.UseSession();
 app.Run();

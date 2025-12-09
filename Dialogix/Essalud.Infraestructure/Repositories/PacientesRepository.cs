@@ -54,6 +54,25 @@ namespace Essalud.Infraestructure.Repositories
             return obj;
         }
 
+        public async Task<string> ObtenerUltimoDigitoDni(int idPaciente)
+        {
+            string result = "";
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_obtener_ult_dig";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@ID_PAC", idPaciente);
+
+                    await connection.OpenAsync();
+                    result = command.ExecuteScalar().ToString()!;
+                }
+            }
+            return result;
+        }
 
     }
 }

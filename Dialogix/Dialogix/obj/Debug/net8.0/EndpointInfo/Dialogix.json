@@ -71,6 +71,18 @@
         }
       }
     },
+    "/Dialogix/Paciente/ResetSession": {
+      "post": {
+        "tags": [
+          "Paciente"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Dialogix/PreguntasFrecuentes/listar": {
       "get": {
         "tags": [
@@ -499,6 +511,64 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MetricaUsoListRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metricas/hoy": {
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metricas/citas-total": {
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
                 }
               }
             }

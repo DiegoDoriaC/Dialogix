@@ -30,7 +30,7 @@ namespace Dialogix.ChatBot
             try
             {
                 List<ResultadosClinicos> listadoResultados = await _resultadosService.ConsultarEstadoResultados(resultados);
-                mensaje = "Ustedes tiene " + listadoResultados.Count + " resultados médicos en su historial (el mas reciente aparecerá primero)";
+                mensaje = "Usted tiene " + listadoResultados.Count + " resultado(s) médico(s) en su historial (el mas reciente aparecerá primero)";
                 for(int i = 0; i < listadoResultados.Count; i++)
                 {
                     // Dividido por * para que judith pueda hacer la separacion entre resultados
@@ -41,6 +41,7 @@ namespace Dialogix.ChatBot
             }
             catch (Exception ex)
             {
+                Session.Clear();
                 return ex.Message;
             }
 

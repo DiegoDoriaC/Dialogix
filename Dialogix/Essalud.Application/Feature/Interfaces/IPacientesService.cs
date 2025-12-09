@@ -10,5 +10,6 @@ namespace Essalud.Application.Feature.Interfaces
     public interface IPacientesService
     {
         Task<Paciente> BuscarUsuarioPorDni(string dni);
+        Task<string> ComprobarUltimoDigitoDNI(int idPaciente, string prompt);
     }
 }

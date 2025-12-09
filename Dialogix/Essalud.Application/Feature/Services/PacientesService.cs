@@ -32,5 +32,19 @@ namespace Essalud.Application.Feature.Services
 
             return pacienteObj;
         }
+
+        public async Task<string> ComprobarUltimoDigitoDNI(int idPaciente, string prompt)
+        {
+            if (string.IsNullOrWhiteSpace(prompt) || prompt.Length != 1)
+                throw new Exception("Por favor, ingrese su código correctamente");
+
+            if(!int.TryParse(prompt, out _))
+                throw new Exception("Debe ingresar su código de verificación");
+
+            string ultDigito = await _pacientesRepository.ObtenerUltimoDigitoDni(idPaciente);
+            if (ultDigito == prompt) return ultDigito;
+            else throw new Exception("El dígito no coincide con el registro en el sistema");
+        }
+
     }
 }

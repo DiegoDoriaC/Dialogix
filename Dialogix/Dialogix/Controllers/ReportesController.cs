@@ -128,5 +128,50 @@ namespace Dialogix.Controllers
             return response;
         }
 
+        [HttpGet("metricas/hoy")]
+        public async Task<RespuestaGenerica<int>> ObtenerMetricasHoy()
+        {
+            var response = new RespuestaGenerica<int>();
+
+            try
+            {
+                int total = await _reportesService.ObtenerMetricaHoy();
+
+                response.ObjetoRespuesta = total;
+                response.Estado = true;
+                response.Mensaje = "Total de conversaciones de hoy obtenido correctamente";
+            }
+            catch (Exception ex)
+            {
+                response.Estado = false;
+                response.Mensaje = ex.Message;
+            }
+
+            return response;
+        }
+
+        [HttpGet("metricas/citas-total")]
+        public async Task<RespuestaGenerica<int>> ObtenerTotalCitas()
+        {
+            var response = new RespuestaGenerica<int>();
+
+            try
+            {
+                int total = await _reportesService.ObtenerTotalCitasAgendadas();
+                response.ObjetoRespuesta = total;
+                response.Estado = true;
+                response.Mensaje = "Total de citas agendadas obtenido correctamente";
+            }
+            catch (Exception ex)
+            {
+                response.Estado = false;
+                response.Mensaje = ex.Message;
+            }
+
+            return response;
+        }
+
+
+
     }
 }

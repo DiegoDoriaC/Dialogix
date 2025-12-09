@@ -29,5 +29,12 @@ namespace Dialogix.Controllers
             return Ok(new { respuesta });
         }
 
+        [HttpPost("ResetSession")]
+        public IActionResult ResetSession()
+        {
+            HttpContext.Session.Clear();
+            return Ok(new { message = "Sesión del chatbot reseteada" });
+        }
+
     }
 }

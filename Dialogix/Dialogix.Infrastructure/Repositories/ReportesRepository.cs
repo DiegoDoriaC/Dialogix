@@ -166,5 +166,33 @@ namespace Dialogix.Infrastructure.Repositories
             return respuesta;
         }
 
+        public async Task<int> ObtenerMetricaHoy()
+        {
+            int total = 0;
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_metrica_hoy";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    await connection.OpenAsync();
+
+                    using (var rd = await command.ExecuteReaderAsync())
+                    {
+                        if (await rd.ReadAsync())
+                        {
+                            total = rd[0] != DBNull.Value ? Convert.ToInt32(rd[0]) : 0;
+                        }
+                    }
+                }
+            }
+
+            return total;
+        }
+
+
+
     }
 }

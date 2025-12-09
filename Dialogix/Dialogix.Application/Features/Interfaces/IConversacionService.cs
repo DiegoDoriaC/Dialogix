@@ -12,5 +12,11 @@ namespace Dialogix.Application.Features.Interfaces
         Task<string> IniciarConversacion();
         Task<string> ReiterarInicioConversacion();
         Task<string> IniciarConversacionConLaIA();
+
+        Task<int> RegistrarConversacion(int dniUsuario, string canal);
+        Task RegistrarMensaje(int idConversacion, string texto, string respuesta);
+        Task RegistrarMetrica();
+        Task FinalizarConversacion(int idConversacion);
     }
+
 }
