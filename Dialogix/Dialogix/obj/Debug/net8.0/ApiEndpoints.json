@@ -1,26 +1,97 @@
 [
   {
     "ContainingType": "Dialogix.Controllers.ReportesController",
-    "Method": "ListarCantidadConsultasPorEspecialidad",
-    "RelativePath": "atencionesPorEspecialidads",
+    "Method": "ObtenerTotalCitasAtendidas",
+    "RelativePath": "citas-atendidas-total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ReportesController",
+    "Method": "ListarCitasPorEspecialidadTotales",
+    "RelativePath": "citas-por-especialidad-totales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Essalud.Domain.DTOs.CitasPorEspecialidadDTO, Essalud.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ActividadesAdminController",
+    "Method": "ObtenerUltimas",
+    "RelativePath": "Dialogix/ActividadesAdmin/ultimas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "FechaInicio",
+        "Name": "top",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Dialogix.Domain.ActividadAdmin, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.AdministradorController",
+    "Method": "ActualizarDatos",
+    "RelativePath": "Dialogix/Administrador/actualizar-datos",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idUsuario",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "nombre",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "FechaFin",
+        "Name": "apellido",
         "Type": "System.String",
         "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Collections.Generic.List\u00601[[Essalud.Domain.DTOs.CitasPorEspecialidadDTO, Essalud.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.Usuario, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -83,6 +154,52 @@
     "ReturnTypes": [
       {
         "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.Usuario, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ConfiguracionChatbotController",
+    "Method": "Actualizar",
+    "RelativePath": "Dialogix/ConfiguracionChatbot/actualizar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "config",
+        "Type": "Dialogix.Domain.ConfiguracionChatbot",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Dialogix.Controllers.ConfiguracionChatbotController",
+    "Method": "Obtener",
+    "RelativePath": "Dialogix/ConfiguracionChatbot/obtener",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Dialogix.Application.Common.DTOs.RespuestaGenerica\u00601[[Dialogix.Domain.ConfiguracionChatbot, Dialogix.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -249,7 +366,7 @@
   {
     "ContainingType": "Dialogix.Controllers.ReportesController",
     "Method": "FiltrarFeedback",
-    "RelativePath": "filtrarFeetback",
+    "RelativePath": "filtrarFeedback",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

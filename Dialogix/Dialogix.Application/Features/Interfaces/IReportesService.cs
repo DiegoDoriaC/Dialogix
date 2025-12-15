@@ -12,15 +12,25 @@ namespace Dialogix.Application.Features.Interfaces
     public interface IReportesService
     {
         Task<bool> RegistrarMetrica();
-        Task<int> FiltrarMetricaUso(string FechaInicio, string FechaFin);
-        Task<List<MetricaUso>> FiltrarMetricaUsoPorDia(string FechaInicio, string FechaFin);
-        Task<List<MetricaUso>> FiltrarMetricaUsoPorMes(string FechaInicio, string FechaFin);
-        Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(string FechaInicio, string FechaFin);
+        Task<int> FiltrarMetricaUso(string FechaInicio, string FechaFin, int idAdmin);
+        Task<List<MetricaUso>> FiltrarMetricaUsoPorDia(string FechaInicio, string FechaFin, int idAdmin);
+        Task<List<MetricaUso>> FiltrarMetricaUsoPorMes(string FechaInicio, string FechaFin, int idAdmin);
 
-        Task<List<Feedback>> FiltrarFeedback(Feedback feedback);
-        Task<int> ObtenerMetricaHoy();
-        Task<int> ObtenerTotalCitasAgendadas();
+        Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(
+            string FechaInicio,
+            string FechaFin,
+            int idAdmin
+        );
 
-
+        Task<List<Feedback>> FiltrarFeedback(Feedback feedback, int idAdmin);
+        Task<int> ObtenerMetricaHoy(int idAdmin);
+        Task<int> ObtenerTotalCitasAgendadas(int idAdmin);
+        Task<int> ObtenerTotalCitasAtendidas(int idAdmin);
+        Task<List<CitasPorEspecialidadDTO>> ListarCitasPorEspecialidadTotales(int idAdmin);
     }
+
+
+
+
 }
+

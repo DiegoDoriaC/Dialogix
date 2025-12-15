@@ -84,6 +84,40 @@ namespace Dialogix.Infrastructure.Repositories
             }
             return obj;
         }
+        public async Task<Usuario> ActualizarDatos(int IdUsuario, string Nombre, string Apellido)
+        {
+            Usuario obj = new Usuario();
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_actualizar_datos_usuario";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    command.Parameters.AddWithValue("@Nombre", Nombre);
+                    command.Parameters.AddWithValue("@Apellido", Apellido);
+
+                    await connection.OpenAsync();
+
+                    using (var rd = await command.ExecuteReaderAsync())
+                    {
+                        while (await rd.ReadAsync())
+                        {
+                            obj.IdUsuario = rd["IdUsuario"] != DBNull.Value ? Convert.ToInt32(rd["IdUsuario"]) : 0;
+                            obj.Nombre = Convert.ToString(rd["Nombre"])!;
+                            obj.Apellido = Convert.ToString(rd["Apellido"])!;
+                            obj.Rol = Convert.ToString(rd["Rol"])!;
+                            obj.Avatar = Convert.ToString(rd["Avatar"])!;
+                        }
+                    }
+                }
+            }
+
+            return obj;
+        }
+
 
     }
 }

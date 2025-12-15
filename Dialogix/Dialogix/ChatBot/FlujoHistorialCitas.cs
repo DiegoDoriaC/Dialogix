@@ -32,7 +32,6 @@ namespace Dialogix.ChatBot
                 List<CitaMedica> listadoCitas = await _citasMedicasRepository.HistorialCitasMedicas(cita);
                 foreach(CitaMedica item in listadoCitas)
                 {
-                    // Dividir el historial de citas con * para judith
                     mensaje += "*|Especialidad: " + item.Medico.Especialidad;
                     mensaje += "|Fecha: " + item.FechaCita.ToShortDateString();
                     mensaje += "|Hora: " + item.FechaCita.ToString("hh:mm tt");

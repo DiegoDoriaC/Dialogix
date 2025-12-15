@@ -10,6 +10,6 @@ namespace Dialogix.Application.Common.DTOs
     {
         public string Mensaje { get; set; } = "";
         public T ObjetoRespuesta { get; set; } = new T();
-        public bool Estado { get; set; } // true si dió un resultado como se esperaba, false si no lo hizo
+        public bool Estado { get; set; }
     }
 }

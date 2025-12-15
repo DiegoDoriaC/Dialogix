@@ -27,8 +27,8 @@ namespace Essalud.Application.Feature.Services
         public async Task<CitaMedica> CancelarCitaMedica(CitaMedica cita)
         {
             CitaMedica citaObj = await _citasMedicasRepository.InformacionCitaMedica(cita);
-            if (citaObj.FechaCita.AddDays(1) >= DateTime.Now)
-                throw new Exception("Falta menos de un dia para la cita, no se puede cancelar");
+            if (citaObj.FechaCita <= DateTime.Now.AddHours(1))
+                throw new Exception("Falta menos de una hora para la cita, no se puede cancelar");
 
             bool respuesta = await _citasMedicasRepository.CancelarCitaMedica(cita);
             if (!respuesta)
@@ -44,6 +44,16 @@ namespace Essalud.Application.Feature.Services
                 throw new Exception("No se encontró ninguna cita en el historial");
 
             return listadoCitas;
+        }
+
+        public async Task<int> ObtenerTotalCitasAtendidas()
+        {
+            return await _citasMedicasRepository.ObtenerTotalCitasAtendidas();
+        }
+
+        public async Task<List<CitasPorEspecialidadDTO>> ListarCitasPorEspecialidadTotales()
+        {
+            return await _citasMedicasRepository.ListarCitasPorEspecialidadTotales();
         }
 
     }

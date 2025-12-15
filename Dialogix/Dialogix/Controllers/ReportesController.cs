@@ -1,12 +1,13 @@
 ﻿using Dialogix.Application.Common.DTOs;
 using Dialogix.Application.Features.Interfaces;
-using Dialogix.Application.Features.Services;
 using Dialogix.Domain;
 using Essalud.Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Dialogix.Helpers;
 
 namespace Dialogix.Controllers
 {
+
     public class ReportesController : Controller
     {
         private readonly IReportesService _reportesService;
@@ -16,24 +17,21 @@ namespace Dialogix.Controllers
             _reportesService = reportesService;
         }
 
-        [HttpGet("filtrarFeetback")]
+        [HttpGet("filtrarFeedback")]
         public async Task<RespuestaGenerica<List<Feedback>>> FiltrarFeedback(Feedback feedback)
         {
-            List<Feedback> listado = new List<Feedback>();
-            RespuestaGenerica<List<Feedback>> response = new RespuestaGenerica<List<Feedback>>();
+            var response = new RespuestaGenerica<List<Feedback>>();
 
             try
             {
-                listado = await _reportesService.FiltrarFeedback(feedback);
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
+
+                var listado = await _reportesService.FiltrarFeedback(feedback, idAdmin);
+
                 response.Mensaje = "Filtrado obtenido exitosamente";
                 response.ObjetoRespuesta = listado;
-                response.Estado = true;
-
-                if (listado.Count == 0)
-                {
-                    response.Mensaje = "No se encontró nigngun feedback";
-                    response.Estado = false;
-                }
+                response.Estado = listado.Count > 0;
             }
             catch (Exception ex)
             {
@@ -44,25 +42,21 @@ namespace Dialogix.Controllers
             return response;
         }
 
-
         [HttpGet("filtrarMetricaUso")]
         public async Task<RespuestaGenerica<int>> FiltrarMetricaUso(string FechaInicio, string FechaFin)
         {
-            int contador = 0;
-            RespuestaGenerica<int> response = new RespuestaGenerica<int>();
+            var response = new RespuestaGenerica<int>();
 
             try
             {
-                contador = await _reportesService.FiltrarMetricaUso(FechaInicio, FechaFin);
-                response.Mensaje = "Metrica obteneda correctamente";
-                response.ObjetoRespuesta = contador;
-                response.Estado = true;
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
 
-                if (contador == 0)
-                {
-                    response.Mensaje = "No se encontraron datos de metrica";
-                    response.Estado = false;
-                }
+                int total = await _reportesService.FiltrarMetricaUso(FechaInicio, FechaFin, idAdmin);
+
+                response.Mensaje = "Métrica obtenida correctamente";
+                response.ObjetoRespuesta = total;
+                response.Estado = true;
             }
             catch (Exception ex)
             {
@@ -76,21 +70,19 @@ namespace Dialogix.Controllers
         [HttpGet("filtrarMetricaUsoDia")]
         public async Task<RespuestaGenerica<List<MetricaUso>>> FiltrarMetricaUsoPorDia(string FechaInicio, string FechaFin)
         {
-            List<MetricaUso> listado = new List<MetricaUso>();
-            RespuestaGenerica<List<MetricaUso>> response = new RespuestaGenerica<List<MetricaUso>>();
+            var response = new RespuestaGenerica<List<MetricaUso>>();
 
             try
             {
-                listado = await _reportesService.FiltrarMetricaUsoPorDia(FechaInicio, FechaFin);
-                response.Mensaje = "Metrica obteneda correctamente";
-                response.ObjetoRespuesta = listado;
-                response.Estado = true;
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
 
-                if (listado.Count == 0)
-                {
-                    response.Mensaje = "No se encontraron datos de metrica";
-                    response.Estado = false;
-                }
+                var listado = await _reportesService
+                    .FiltrarMetricaUsoPorDia(FechaInicio, FechaFin, idAdmin);
+
+                response.Mensaje = "Métrica por día obtenida correctamente";
+                response.ObjetoRespuesta = listado;
+                response.Estado = listado.Count > 0;
             }
             catch (Exception ex)
             {
@@ -104,21 +96,19 @@ namespace Dialogix.Controllers
         [HttpGet("filtrarMetricaUsoMes")]
         public async Task<RespuestaGenerica<List<MetricaUso>>> FiltrarMetricaUsoPorMes(string FechaInicio, string FechaFin)
         {
-            List<MetricaUso> listado = new List<MetricaUso>();
-            RespuestaGenerica<List<MetricaUso>> response = new RespuestaGenerica<List<MetricaUso>>();
+            var response = new RespuestaGenerica<List<MetricaUso>>();
 
             try
             {
-                listado = await _reportesService.FiltrarMetricaUsoPorMes(FechaInicio, FechaFin);
-                response.Mensaje = "Metrica obteneda correctamente";
-                response.ObjetoRespuesta = listado;
-                response.Estado = true;
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
 
-                if (listado.Count == 0)
-                {
-                    response.Mensaje = "No se encontraron datos de metrica";
-                    response.Estado = false;
-                }
+                var listado = await _reportesService
+                    .FiltrarMetricaUsoPorMes(FechaInicio, FechaFin, idAdmin);
+
+                response.Mensaje = "Métrica por mes obtenida correctamente";
+                response.ObjetoRespuesta = listado;
+                response.Estado = listado.Count > 0;
             }
             catch (Exception ex)
             {
@@ -136,16 +126,17 @@ namespace Dialogix.Controllers
 
             try
             {
-                int total = await _reportesService.ObtenerMetricaHoy();
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
 
-                response.ObjetoRespuesta = total;
+                response.ObjetoRespuesta = await _reportesService.ObtenerMetricaHoy(idAdmin);
+                response.Mensaje = "Métricas de hoy obtenidas correctamente";
                 response.Estado = true;
-                response.Mensaje = "Total de conversaciones de hoy obtenido correctamente";
             }
             catch (Exception ex)
             {
-                response.Estado = false;
                 response.Mensaje = ex.Message;
+                response.Estado = false;
             }
 
             return response;
@@ -158,38 +149,35 @@ namespace Dialogix.Controllers
 
             try
             {
-                int total = await _reportesService.ObtenerTotalCitasAgendadas();
-                response.ObjetoRespuesta = total;
-                response.Estado = true;
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
+
+                response.ObjetoRespuesta = await _reportesService.ObtenerTotalCitasAgendadas(idAdmin);
                 response.Mensaje = "Total de citas agendadas obtenido correctamente";
+                response.Estado = true;
             }
             catch (Exception ex)
             {
-                response.Estado = false;
                 response.Mensaje = ex.Message;
+                response.Estado = false;
             }
 
             return response;
         }
 
-        [HttpGet("atencionesPorEspecialidads")]
-        public async Task<RespuestaGenerica<List<CitasPorEspecialidadDTO>>> ListarCantidadConsultasPorEspecialidad(string FechaInicio, string FechaFin)
+        [HttpGet("citas-atendidas-total")]
+        public async Task<RespuestaGenerica<int>> ObtenerTotalCitasAtendidas()
         {
-            List<CitasPorEspecialidadDTO> listado = new List<CitasPorEspecialidadDTO>();
-            RespuestaGenerica<List<CitasPorEspecialidadDTO>> response = new RespuestaGenerica<List<CitasPorEspecialidadDTO>>();
+            var response = new RespuestaGenerica<int>();
 
             try
             {
-                listado = await _reportesService.ListarCantidadConsultasPorEspecialidad(FechaInicio, FechaFin);
-                response.Mensaje = "Citas obteneda correctamente";
-                response.ObjetoRespuesta = listado;
-                response.Estado = true;
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
 
-                if (listado.Count == 0)
-                {
-                    response.Mensaje = "No se encontraron datos de las citas";
-                    response.Estado = false;
-                }
+                response.ObjetoRespuesta = await _reportesService.ObtenerTotalCitasAtendidas(idAdmin);
+                response.Mensaje = "Total de citas atendidas obtenido correctamente";
+                response.Estado = true;
             }
             catch (Exception ex)
             {
@@ -200,5 +188,29 @@ namespace Dialogix.Controllers
             return response;
         }
 
+        [HttpGet("citas-por-especialidad-totales")]
+        public async Task<RespuestaGenerica<List<CitasPorEspecialidadDTO>>> ListarCitasPorEspecialidadTotales()
+        {
+            var response = new RespuestaGenerica<List<CitasPorEspecialidadDTO>>();
+
+            try
+            {
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idAdmin = admin?.IdUsuario ?? 0;
+
+                var listado = await _reportesService.ListarCitasPorEspecialidadTotales(idAdmin);
+
+                response.Mensaje = "Citas por especialidad obtenidas correctamente";
+                response.ObjetoRespuesta = listado;
+                response.Estado = listado.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                response.Mensaje = ex.Message;
+                response.Estado = false;
+            }
+
+            return response;
+        }
     }
 }

@@ -8,26 +8,60 @@ namespace Dialogix.Application.Features.Services
     public class ConversacionService : IConversacionService
     {
         private readonly IConfiguration _config;
+        private readonly IConfiguracionChatbotService _configChatbotService;
 
-        public ConversacionService(IConfiguration config)
+        public ConversacionService(
+            IConfiguration config,
+            IConfiguracionChatbotService configChatbotService)
         {
             _config = config;
+            _configChatbotService = configChatbotService;
         }
 
-        public Task<string> IniciarConversacion()
+        public async Task<string> IniciarConversacion()
         {
-            return Task.FromResult("👋 ¡Hola! Soy tu asistente virtual de salud. Por favor ingresa tu DNI para continuar:");
+            var config = await _configChatbotService.ObtenerConfiguracionAsync();
+
+            if (!config.Activo)
+                return config.MensajeMantenimiento;
+
+            var ahora = DateTime.Now.TimeOfDay;
+
+            bool fueraHorario =
+                ahora < config.HoraInicio || ahora > config.HoraFin;
+
+            if (fueraHorario && config.HabilitarFueraHorario)
+                return config.MensajeFueraHorario;
+
+            if (fueraHorario && !config.HabilitarFueraHorario)
+                return string.Empty;
+
+            return config.MensajeBienvenida;
         }
 
-        public Task<string> ReiterarInicioConversacion()
+
+        public async Task<string> ReiterarInicioConversacion()
         {
-            return Task.FromResult("Por favor, ingrese su DNI para validarlo en el sistema");
+            var config = await _configChatbotService.ObtenerConfiguracionAsync();
+
+            if (!config.Activo)
+                return config.MensajeMantenimiento;
+
+            return "Por favor, ingrese su DNI para validarlo en el sistema";
         }
 
-        public Task<string> IniciarConversacionConLaIA()
+
+        public async Task<string> IniciarConversacionConLaIA()
         {
-            return Task.FromResult("Hola!, soy tu asistente virtual. Puedes hacer consultas sobre EsSalud, citas, resultados o servicios institucionales.");
+            return "Hola!, soy tu asistente virtual. Puedes hacer consultas sobre EsSalud, citas, resultados o servicios institucionales.";
+            //var config = await _configChatbotService.ObtenerConfiguracionAsync();
+
+            //if (!config.Activo)
+            //    return config.MensajeMantenimiento;
+
+            //return config.MensajeBienvenida;
         }
+
 
         public async Task<int> RegistrarConversacion(int dniUsuario, string canal)
         {

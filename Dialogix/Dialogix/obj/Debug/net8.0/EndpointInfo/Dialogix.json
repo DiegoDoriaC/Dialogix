@@ -5,6 +5,46 @@
     "version": "1.0"
   },
   "paths": {
+    "/Dialogix/ActividadesAdmin/ultimas": {
+      "get": {
+        "tags": [
+          "ActividadesAdmin"
+        ],
+        "parameters": [
+          {
+            "name": "top",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActividadAdminListRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActividadAdminListRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActividadAdminListRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Dialogix/Administrador/login": {
       "post": {
         "tags": [
@@ -99,6 +139,136 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Dialogix/Administrador/actualizar-datos": {
+      "put": {
+        "tags": [
+          "Administrador"
+        ],
+        "parameters": [
+          {
+            "name": "idUsuario",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "apellido",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Dialogix/ConfiguracionChatbot/obtener": {
+      "get": {
+        "tags": [
+          "ConfiguracionChatbot"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfiguracionChatbotRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfiguracionChatbotRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfiguracionChatbotRespuestaGenerica"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Dialogix/ConfiguracionChatbot/actualizar": {
+      "put": {
+        "tags": [
+          "ConfiguracionChatbot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracionChatbot"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracionChatbot"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfiguracionChatbot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanRespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanRespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanRespuestaGenerica"
                 }
               }
             }
@@ -330,7 +500,7 @@
         }
       }
     },
-    "/filtrarFeetback": {
+    "/filtrarFeedback": {
       "get": {
         "tags": [
           "Reportes"
@@ -632,26 +802,39 @@
         }
       }
     },
-    "/atencionesPorEspecialidads": {
+    "/citas-atendidas-total": {
       "get": {
         "tags": [
           "Reportes"
         ],
-        "parameters": [
-          {
-            "name": "FechaInicio",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "FechaFin",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int32RespuestaGenerica"
+                }
+              }
             }
           }
+        }
+      }
+    },
+    "/citas-por-especialidad-totales": {
+      "get": {
+        "tags": [
+          "Reportes"
         ],
         "responses": {
           "200": {
@@ -719,6 +902,76 @@
   },
   "components": {
     "schemas": {
+      "ActividadAdmin": {
+        "type": "object",
+        "properties": {
+          "idActividad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUsuario": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "modulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "accion": {
+            "type": "string",
+            "nullable": true
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "adminNombre": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActividadAdminListRespuestaGenerica": {
+        "type": "object",
+        "properties": {
+          "mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetoRespuesta": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActividadAdmin"
+            },
+            "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BooleanRespuestaGenerica": {
+        "type": "object",
+        "properties": {
+          "mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetoRespuesta": {
+            "type": "boolean"
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "CitasPorEspecialidadDTO": {
         "type": "object",
         "properties": {
@@ -746,6 +999,70 @@
               "$ref": "#/components/schemas/CitasPorEspecialidadDTO"
             },
             "nullable": true
+          },
+          "estado": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfiguracionChatbot": {
+        "type": "object",
+        "properties": {
+          "idConfig": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mensajeBienvenida": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensajeFueraHorario": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensajeMantenimiento": {
+            "type": "string",
+            "nullable": true
+          },
+          "horaInicio": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "horaFin": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "habilitarFueraHorario": {
+            "type": "boolean"
+          },
+          "maxMensajes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "timeoutSegundos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "activo": {
+            "type": "boolean"
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfiguracionChatbotRespuestaGenerica": {
+        "type": "object",
+        "properties": {
+          "mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetoRespuesta": {
+            "$ref": "#/components/schemas/ConfiguracionChatbot"
           },
           "estado": {
             "type": "boolean"

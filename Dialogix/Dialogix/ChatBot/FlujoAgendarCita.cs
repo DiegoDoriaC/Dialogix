@@ -17,7 +17,7 @@ namespace Dialogix.ChatBot
         private readonly ICitasMedicasService _citasMedicasService;
         private ISession Session => _httpContextAccessor.HttpContext!.Session;
 
-        public FlujoAgendarCita(IHttpContextAccessor httpContextAccessor, IMedicosRepository medicosRepository, 
+        public FlujoAgendarCita(IHttpContextAccessor httpContextAccessor, IMedicosRepository medicosRepository,
             IHorariosMedicoService horarioMedicoService, IEspecialidadRepository especialidadRepository, ICitasMedicasService citasMedicasService)
         {
             _httpContextAccessor = httpContextAccessor;
@@ -36,6 +36,7 @@ namespace Dialogix.ChatBot
             List<string> listadoEspecialidades = await _especialidadRepository.ListarEspecialidades();
 
             estado.EstadoActual = "AgendarCita";
+            estado.HistorialPasos.Clear();
             Session.SetObject("OUser", estado);
             Session.SetObject("OListaEspecialidades", listadoEspecialidades);
 
@@ -68,9 +69,12 @@ namespace Dialogix.ChatBot
                 respuesta += "|" + item.Nombre;
             }
 
+            respuesta += "|⬅ Volver";
+
             EstadoConversacion? estado = Session.GetObject<EstadoConversacion>("OUser");
-            estado!.EstadoActual = "AgendarCita;EscojerHorario";
-            estado!.AgendarCita.IndexEspecialidad = input;
+            estado!.HistorialPasos.Push(estado.EstadoActual);
+            estado.AgendarCita.IndexEspecialidad = input;
+            estado.EstadoActual = "AgendarCita;EscojerHorario";
             Session.SetObject("OUser", estado);
             Session.SetObject("OListaDoctores", objeto);
 
@@ -79,28 +83,46 @@ namespace Dialogix.ChatBot
 
         public async Task<string> ListarHorariosDisponiblesPorDoctor(string input)
         {
-            int idMedico = 0;
-            List<Medico> estado = Session.GetObject<List<Medico>>("OListaDoctores")!;
-
-            try { idMedico = estado.ElementAt(Convert.ToInt32(input) - 1).IdMedico; }
-            catch (Exception ex) { return "No se pudo detectar al doctor, por favor vuelve a introducir el numero de doctor"; }
-
-            List<DateTime> horariosDisponibles = await _horarioMedicoService.ObtenerHorariosDisponiblesFuturos(idMedico);
-
-            string horasDisponibles = "";
-
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
+            if (estadoConversacion == null)
+                return "Su sesión ha expirado, por favor vuelva a iniciar la consulta.";
+
+            List<Medico>? listaDoctores = Session.GetObject<List<Medico>>("OListaDoctores");
+            if (listaDoctores == null || listaDoctores.Count == 0)
+                return "No se encontraron doctores en la sesión. Por favor vuelva a seleccionar la especialidad.";
+
+            int idMedico;
+
+            try
+            {
+                idMedico = listaDoctores.ElementAt(Convert.ToInt32(input) - 1).IdMedico;
+            }
+            catch
+            {
+                return "No se pudo detectar al doctor, por favor vuelva a introducir el número de doctor.";
+            }
+
+            List<DateTime> horariosDisponibles =
+                await _horarioMedicoService.ObtenerHorariosDisponiblesFuturos(idMedico);
+
+            string horasDisponibles;
 
             if (horariosDisponibles.Count > 0)
             {
                 horasDisponibles = "Escoje un horario";
-                estadoConversacion!.EstadoActual = "AgendarCita;ResumenCita";
-                estadoConversacion!.AgendarCita.IndexDoctor = input;
+                estadoConversacion.AgendarCita.IndexDoctor = input;
+                estadoConversacion.HistorialPasos.Push(estadoConversacion.EstadoActual);
+                estadoConversacion.EstadoActual = "AgendarCita;Horarios";
+
             }
             else
             {
-                horasDisponibles = "No hay horarios disponibles para el doctor ese dia, por favor escoje otro doctor";
-                return await ListarDoctoresSegunEspecialidad(estadoConversacion!.AgendarCita.IndexEspecialidad);
+                horasDisponibles =
+                    "No hay horarios disponibles para el doctor ese día, por favor escoja otro doctor.";
+
+                return await ListarDoctoresSegunEspecialidad(
+                    estadoConversacion.AgendarCita.IndexEspecialidad
+                );
             }
 
             foreach (DateTime item in horariosDisponibles)
@@ -108,37 +130,51 @@ namespace Dialogix.ChatBot
                 horasDisponibles += "|" + item.ToString("yyyy/MM/dd hh:mm tt");
             }
 
+            horasDisponibles += "|⬅ Volver";
+
             Session.SetObject("OUser", estadoConversacion);
             Session.SetObject("OListaHorarios", horariosDisponibles);
 
             return horasDisponibles;
         }
 
+
         public string ResumenCita(string prompt)
         {
             string resumenCita = "Su cita está lista para ser generada, primero valide la información: ";
 
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
-            estadoConversacion!.AgendarCita.IndexHorario = prompt;
-            estadoConversacion!.EstadoActual = "AgendarCita;ConfirmarCita";
+            if (estadoConversacion == null)
+                return "Su sesión ha expirado, por favor vuelva a iniciar.";
+
+            estadoConversacion.AgendarCita.IndexHorario = prompt;
+
+            estadoConversacion.HistorialPasos.Push(estadoConversacion.EstadoActual);
+
+            estadoConversacion.EstadoActual = "AgendarCita;ConfirmarCita";
             Session.SetObject("OUser", estadoConversacion);
 
             List<string> listaEspecialidades = Session.GetObject<List<string>>("OListaEspecialidades")!;
             List<Medico> listaDoctores = Session.GetObject<List<Medico>>("OListaDoctores")!;
             List<DateTime> listaHorarios = Session.GetObject<List<DateTime>>("OListaHorarios")!;
-            DateTime fechaCita = listaHorarios.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexHorario) - 1);
+            DateTime fechaCita = listaHorarios.ElementAt(
+                int.Parse(estadoConversacion.AgendarCita.IndexHorario) - 1
+            );
 
             resumenCita += "|Paciente: " + estadoConversacion.NombrePaciente + ".";
-            resumenCita += "|Especialidad: " + listaEspecialidades.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexEspecialidad) - 1) + ".";
-            resumenCita += "|Medico: " + listaDoctores.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexDoctor) - 1).Nombre + ".";
+            resumenCita += "|Especialidad: " +
+                listaEspecialidades.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexEspecialidad) - 1) + ".";
+            resumenCita += "|Medico: " +
+                listaDoctores.ElementAt(int.Parse(estadoConversacion.AgendarCita.IndexDoctor) - 1).Nombre + ".";
             resumenCita += "|Horario: " + fechaCita.ToString("dd/MM/yyyy 'a las' hh:mm tt");
+            resumenCita += "|⬅ Volver";
 
             return resumenCita;
         }
 
         public async Task<string> ConfirmaCita(string prompt)
         {
-            string mensaje = "Se canceló el registro de la cita, tenga buen día"; 
+            string mensaje = "Se canceló el registro de la cita, tenga buen día";
 
             EstadoConversacion? estadoConversacion = Session.GetObject<EstadoConversacion>("OUser");
             List<string> listaEspecialidades = Session.GetObject<List<string>>("OListaEspecialidades")!;
@@ -165,7 +201,7 @@ namespace Dialogix.ChatBot
                 try
                 {
                     await _citasMedicasService.AgendarCitaMedica(cita);
-                    try 
+                    try
                     {
                         EnvioCorreo mail = new EnvioCorreo();
                         mail.EnviarNotificacionRegistroCita(estadoConversacion, cita, especialidad, medico);
@@ -178,16 +214,18 @@ namespace Dialogix.ChatBot
                     }
 
                     mensaje = "Felicidades " + estadoConversacion.NombrePaciente + " su cita fue agendada correctamente, " +
-                        "puede consultar informacion adicional mediante el chat, tenga buen dia";
+                        "le hemos enviado a su correo electrónico el comprobante con el detalle de la cita." + " Puede consultar información adicional mediante el chat. ¡Que tenga un buen día!";
                 }
                 catch (Exception ex)
                 {
                     mensaje = ex.Message;
                 }
             }
-
+            estadoConversacion?.HistorialPasos.Clear();
             Session.Clear();
             return mensaje;
         }
+
+       
     }
 }

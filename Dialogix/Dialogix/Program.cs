@@ -70,6 +70,13 @@ builder.Services.AddScoped<ICitasMedicasRepository, CitasMedicasRepository>();
 builder.Services.AddScoped<IResultadosService, ResultadosService>();
 builder.Services.AddScoped<IResultadosRepository, ResultadosRepository>();
 
+builder.Services.AddScoped<IActividadAdminRepository, ActividadAdminRepository>();
+builder.Services.AddScoped<IActividadAdminService, ActividadAdminService>();
+
+builder.Services.AddScoped<IConfiguracionChatbotRepository, ConfiguracionChatbotRepository>();
+builder.Services.AddScoped<IConfiguracionChatbotService, ConfiguracionChatbotService>();
+
+
 // Habilitar el acceso a la session
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
@@ -86,10 +93,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp", policy =>
     {
         policy
-            .WithOrigins("http://localhost:5173") 
+            .WithOrigins("https://essaluddemodialogix.netlify.app")
             .AllowAnyHeader()
             .AllowAnyMethod()
-
             .AllowCredentials();
     });
 });

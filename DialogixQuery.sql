@@ -1,4 +1,4 @@
-use master
+﻿use master
 create database Dialogix
 go
 
@@ -16,7 +16,7 @@ create table Usuarios
 	Rol varchar(10),
 	Estado varchar(10),
 	Usuario varchar(30) unique,
-	Contrase�a varchar(300),
+	Contraseña varchar(300),
 	Avatar varchar(300)
 )
 go
@@ -68,7 +68,58 @@ create table Feedback
 )
 go
 
-insert into Usuarios ([Nombre], [Apellido], [FechaNacimiento], [Rol], [Estado], [Usuario], [Contrase�a])
+CREATE TABLE ActividadesAdmin (
+    IdActividad INT IDENTITY(1,1) PRIMARY KEY,
+    IdUsuario INT NOT NULL,
+    Modulo VARCHAR(50) NOT NULL,      
+    Accion VARCHAR(120) NOT NULL,    
+    Detalle VARCHAR(200) NULL,       
+    Fecha DATETIME NOT NULL DEFAULT GETDATE(),
+
+    CONSTRAINT FK_ActividadesAdmin_Usuarios
+        FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario)
+);
+GO
+
+CREATE TABLE ConfiguracionChatbot (
+    IdConfig INT PRIMARY KEY IDENTITY(1,1),
+
+    -- Mensajes
+    MensajeBienvenida NVARCHAR(500) NOT NULL,
+    MensajeFueraHorario NVARCHAR(500) NOT NULL,
+    MensajeMantenimiento NVARCHAR(500) NOT NULL,
+
+    -- Horario
+    HoraInicio TIME NOT NULL,
+    HoraFin TIME NOT NULL,
+    HabilitarFueraHorario BIT NOT NULL DEFAULT 1,
+
+    -- Límites
+    MaxMensajes INT NOT NULL DEFAULT 15,
+    TimeoutSegundos INT NOT NULL DEFAULT 30,
+
+    -- Estado
+    Activo BIT NOT NULL DEFAULT 1,
+
+    -- Auditoría
+    FechaActualizacion DATETIME NOT NULL DEFAULT GETDATE()
+);
+GO
+
+
+CREATE INDEX IX_ActividadesAdmin_Fecha
+ON ActividadesAdmin (Fecha DESC);
+GO
+
+CREATE INDEX IX_ActividadesAdmin_IdUsuario_Fecha
+ON ActividadesAdmin (IdUsuario, Fecha DESC);
+GO
+
+CREATE UNIQUE INDEX IX_ConfiguracionChatbot_Unica
+ON ConfiguracionChatbot (IdConfig);
+GO
+
+insert into Usuarios ([Nombre], [Apellido], [FechaNacimiento], [Rol], [Estado], [Usuario], [Contraseña], [Avatar])
 values ('Diego', 'Doria', '2002-04-06', 'ADMIN', 'ACT', 'admin', '100000.wNKCFMdxa9c6uhj8Du+9KQ==.w+Q0Wtmy2msTVdoJhwyleJg9Pt+skfav6FBkjp9xK8E=', '')
 go
 
@@ -77,7 +128,7 @@ create procedure pr_iniciar_sesion
 	@Usuario varchar(30)
 as
 begin
-	select IdUsuario, Nombre, Apellido, Rol, Contrase�a, Avatar
+	select IdUsuario, Nombre, Apellido, Rol, Contraseña, Avatar
 	from Usuarios where Usuario = @Usuario
 	AND Estado = 'ACT'
 end
@@ -89,10 +140,27 @@ create procedure pr_actualizar_avatar
 as
 begin
 	update Usuarios set Avatar = @Avatar where IdUsuario = @Id_usuario
-	select IdUsuario, Nombre, Apellido, Rol, Contrase�a, Avatar
+	select IdUsuario, Nombre, Apellido, Rol, Contraseña, Avatar
 	from Usuarios where IdUsuario = @Id_usuario
 end
 go
+
+CREATE PROCEDURE pr_actualizar_datos_usuario
+(
+    @IdUsuario INT,
+    @Nombre VARCHAR(50),
+    @Apellido VARCHAR(50)
+)
+AS
+BEGIN
+    UPDATE Usuarios
+    SET Nombre = @Nombre,
+        Apellido = @Apellido
+    WHERE IdUsuario = @IdUsuario;
+
+    SELECT * FROM Usuarios WHERE IdUsuario = @IdUsuario;
+END
+GO
 
 ----------------------------------------	METRICA	  ----------------------------------------
 create procedure pr_registrar_metrica
@@ -104,6 +172,22 @@ begin
 	if(@@ROWCOUNT = 0)
 	begin
 		insert into MetricaUso ([Fecha], [TotalConversaciones]) values (@Fecha, 1)
+	end
+end
+go
+
+ALTER procedure pr_registrar_metrica
+	@Fecha datetime
+as
+begin
+	update MetricaUso 
+	set TotalConversaciones = TotalConversaciones + 1 
+	where Fecha = CONVERT(date, @Fecha)
+
+	if(@@ROWCOUNT = 0)
+	begin
+		insert into MetricaUso ([Fecha], [TotalConversaciones]) 
+		values (CONVERT(date, @Fecha), 1)
 	end
 end
 go
@@ -164,6 +248,14 @@ begin
 end
 go
 
+CREATE PROCEDURE pr_metrica_hoy
+AS
+BEGIN
+    SELECT SUM(TotalConversaciones) AS TotalHoy
+    FROM MetricaUso
+    WHERE Fecha = CONVERT(date, GETDATE());
+END
+GO
 
 ----------------------------------------	PREGUNTAS FRECUENTES	  ----------------------------------------
 create procedure pr_listar_preguntas_frecuentes
@@ -301,3 +393,111 @@ begin
 	AND (@Canal = '' or @Canal = con.Canal)
 end
 go
+
+
+-- Actividades Admin
+CREATE PROCEDURE pr_registrar_actividad_admin
+    @IdUsuario INT,
+    @Modulo VARCHAR(50),
+    @Accion VARCHAR(120),
+    @Detalle VARCHAR(200) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ActividadesAdmin (IdUsuario, Modulo, Accion, Detalle)
+    VALUES (@IdUsuario, @Modulo, @Accion, @Detalle);
+END
+GO
+
+CREATE PROCEDURE pr_listar_ultimas_actividades_admin
+    @Top INT = 10
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT TOP (@Top)
+        a.IdActividad,
+        a.Fecha,
+        a.Modulo,
+        a.Accion,
+        a.Detalle,
+        a.IdUsuario,
+        (u.Nombre + ' ' + u.Apellido) AS AdminNombre
+    FROM ActividadesAdmin a
+    INNER JOIN Usuarios u ON u.IdUsuario = a.IdUsuario
+    ORDER BY a.Fecha DESC;
+END
+GO
+
+-- Configuración
+INSERT INTO ConfiguracionChatbot (
+    MensajeBienvenida,
+    MensajeFueraHorario,
+    MensajeMantenimiento,
+    HoraInicio,
+    HoraFin,
+    HabilitarFueraHorario,
+    MaxMensajes,
+    TimeoutSegundos,
+    Activo
+)
+VALUES (
+    '¡Hola! Soy tu asistente virtual de salud. Por favor ingresa tu DNI para continuar:',
+    'Nuestro horario de atención ha finalizado. Puedes intentarlo más tarde.',
+    'El chatbot se encuentra en mantenimiento. Por favor, inténtalo más tarde.',
+    '00:00',
+    '23:59',
+    1,
+    90,
+    600,
+    1
+);
+GO
+CREATE PROCEDURE pr_obtener_configuracion_chatbot
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT TOP 1 *
+    FROM ConfiguracionChatbot
+    WHERE IdConfig = 1;
+END;
+GO
+
+CREATE PROCEDURE pr_actualizar_configuracion_chatbot
+    @MensajeBienvenida NVARCHAR(500),
+    @MensajeFueraHorario NVARCHAR(500),
+    @MensajeMantenimiento NVARCHAR(500),
+    @HoraInicio TIME,
+    @HoraFin TIME,
+    @HabilitarFueraHorario BIT,
+    @MaxMensajes INT,
+    @TimeoutSegundos INT,
+    @Activo BIT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE ConfiguracionChatbot
+    SET
+        MensajeBienvenida = @MensajeBienvenida,
+        MensajeFueraHorario = @MensajeFueraHorario,
+        MensajeMantenimiento = @MensajeMantenimiento,
+        HoraInicio = @HoraInicio,
+        HoraFin = @HoraFin,
+        HabilitarFueraHorario = @HabilitarFueraHorario,
+        MaxMensajes = @MaxMensajes,
+        TimeoutSegundos = @TimeoutSegundos,
+        Activo = @Activo,
+        FechaActualizacion = GETDATE()
+    WHERE IdConfig = 1;
+END;
+GO
+
+
+
+use Dialogix
+select* from ConfiguracionChatbot
+
+

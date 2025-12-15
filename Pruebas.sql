@@ -10,6 +10,22 @@ SELECT * FROM MetricaUso ORDER BY Fecha DESC;
 SELECT * FROM Mensajes
 
 
+-- DNI + fecha y hora de especialidad registrada en cardiologia
+SELECT 
+    pac.DNI,
+    pac.Nombre AS Paciente,
+    med.Nombre AS Medico,
+    med.Especialidad,
+    cit.FechaCita,
+    cit.HoraCita,
+    cit.Estado
+FROM CitaMedica cit
+INNER JOIN Paciente pac ON pac.Id = cit.IdPaciente
+INNER JOIN Medico med ON med.Id = cit.IdMedico
+WHERE med.Especialidad = 'Cardiología'
+ORDER BY cit.FechaCita, cit.HoraCita;
+
+
 -- Total de citas médicas
 USE Essalud
 SELECT COUNT(*) AS TotalCitas
@@ -23,6 +39,16 @@ EXEC pr_total_citas_agendadas;
 -- Preguntas Frecuentes
 USE Dialogix
 SELECT * FROM PreguntasFrecuentes
+
+
+EXEC pr_registrar_actividad_admin
+    @IdUsuario = 1,
+    @Modulo = 'TEST',
+    @Accion = 'Inserción manual',
+    @Detalle = 'Prueba directa';
+
+
+	SELECT * FROM ActividadesAdmin ORDER BY Fecha DESC;
 
 -- Metricas
 USE Dialogix
@@ -41,6 +67,7 @@ SELECT
     P.Sexo,
     P.FechaNacimiento,
     P.Telefono,
+	P.UltDigito,
     P.Correo
 FROM Paciente P
 LEFT JOIN CitaMedica C 
@@ -66,7 +93,7 @@ SELECT
 FROM CitaMedica C
 INNER JOIN Paciente P ON P.Id = C.IdPaciente
 LEFT JOIN Medico M ON M.Id = C.IdMedico
-WHERE P.DNI = '73120001';
+WHERE P.DNI = '73122390';
 
 
 ----Consultar Estado de Resultados

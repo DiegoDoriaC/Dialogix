@@ -13,5 +13,9 @@ namespace Essalud.Application.Feature.Interfaces
         Task<CitaMedica> AgendarCitaMedica(CitaMedica cita);
         Task<CitaMedica> CancelarCitaMedica(CitaMedica cita);
         Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita);
+        Task<int> ObtenerTotalCitasAtendidas();
+        Task<List<CitasPorEspecialidadDTO>> ListarCitasPorEspecialidadTotales();
+
+
     }
 }

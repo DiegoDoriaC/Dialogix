@@ -73,6 +73,25 @@ namespace Essalud.Infraestructure.Repositories
             }
             return result;
         }
+        public async Task<bool> ValidarFechaNacimiento(int idPaciente, DateTime fecha)
+        {
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_validar_fecha_nacimiento";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@IdPaciente", idPaciente);
+                    command.Parameters.AddWithValue("@FechaNacimiento", fecha);
+
+                    await connection.OpenAsync();
+                    int result = Convert.ToInt32(await command.ExecuteScalarAsync());
+
+                    return result == 1;
+                }
+            }
+        }
 
     }
 }

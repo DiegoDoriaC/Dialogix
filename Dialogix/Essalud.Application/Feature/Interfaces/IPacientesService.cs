@@ -11,5 +11,7 @@ namespace Essalud.Application.Feature.Interfaces
     {
         Task<Paciente> BuscarUsuarioPorDni(string dni);
         Task<string> ComprobarUltimoDigitoDNI(int idPaciente, string prompt);
+        Task ValidarFechaNacimiento(int idPaciente, DateTime fecha);
+
     }
 }

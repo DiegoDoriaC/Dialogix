@@ -11,5 +11,7 @@ namespace Essalud.Infraestructure.Repositories.Interfaces
     {
         Task<Paciente> BuscarUsuarioPorDni(Paciente paciente);
         Task<string> ObtenerUltimoDigitoDni(int idPaciente);
+        Task<bool> ValidarFechaNacimiento(int idPaciente, DateTime fecha);
+
     }
 }

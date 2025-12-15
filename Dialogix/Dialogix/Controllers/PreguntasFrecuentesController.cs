@@ -2,9 +2,11 @@
 using Dialogix.Application.Features.Interfaces;
 using Dialogix.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Dialogix.Helpers;
 
 namespace Dialogix.Controllers 
 {
+
     [Controller]
     [Route("Dialogix/[controller]")]
     public class PreguntasFrecuentesController : Controller
@@ -19,7 +21,7 @@ namespace Dialogix.Controllers
         [HttpGet("listar")]
         public async Task<RespuestaGenerica<List<PreguntasFrecuentes>>> ListarPreguntasFrecuentes()
         {
-            List<PreguntasFrecuentes> listado = new List<PreguntasFrecuentes> ();
+            List<PreguntasFrecuentes> listado = new List<PreguntasFrecuentes>();
             RespuestaGenerica<List<PreguntasFrecuentes>> response = new RespuestaGenerica<List<PreguntasFrecuentes>>();
 
             try
@@ -31,7 +33,7 @@ namespace Dialogix.Controllers
 
                 if (listado.Count == 0)
                 {
-                    response.Mensaje = "No se encontró nigngun resultado";
+                    response.Mensaje = "No se encontró ningún resultado";
                     response.Estado = false;
                 }
             }
@@ -40,7 +42,7 @@ namespace Dialogix.Controllers
                 response.Mensaje = ex.Message;
                 response.Estado = false;
             }
-                        
+
             return response;
         }
 
@@ -52,7 +54,12 @@ namespace Dialogix.Controllers
 
             try
             {
-                respuesta = await _preguntasFrecuentesService.RegistrarPreguntasFrecuentes(pre);
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idUsuario = admin?.IdUsuario ?? 0;
+                Console.WriteLine($"ID USUARIO SESION: {idUsuario}");
+
+                respuesta = await _preguntasFrecuentesService.RegistrarPreguntasFrecuentes(pre, idUsuario);
+
                 response.Mensaje = "Pregunta Registrada Correctamente";
                 response.ObjetoRespuesta = pre;
                 response.Estado = true;
@@ -68,7 +75,7 @@ namespace Dialogix.Controllers
                 response.Mensaje = ex.Message;
                 response.Estado = false;
             }
-            
+
             return response;
         }
 
@@ -80,7 +87,11 @@ namespace Dialogix.Controllers
 
             try
             {
-                respuesta = await _preguntasFrecuentesService.ModificarPreguntaFrecuente(pre);
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idUsuario = admin?.IdUsuario ?? 0;  
+
+                respuesta = await _preguntasFrecuentesService.ModificarPreguntaFrecuente(pre, idUsuario);
+
                 response.Mensaje = "Pregunta Modificada Correctamente";
                 response.ObjetoRespuesta = pre;
                 response.Estado = true;
@@ -96,7 +107,7 @@ namespace Dialogix.Controllers
                 response.Mensaje = ex.Message;
                 response.Estado = false;
             }
-                        
+
             return response;
         }
 
@@ -108,7 +119,11 @@ namespace Dialogix.Controllers
 
             try
             {
-                respuesta = await _preguntasFrecuentesService.EliminarPreguntaFrecuentes(id);
+                var admin = HttpContext.Session.GetObject<Usuario>("admin");
+                int idUsuario = admin?.IdUsuario ?? 0; 
+
+                respuesta = await _preguntasFrecuentesService.EliminarPreguntaFrecuentes(id, idUsuario);
+
                 response.Mensaje = "Pregunta Eliminada Correctamente";
                 response.ObjetoRespuesta = new PreguntasFrecuentes();
                 response.Estado = true;
@@ -124,10 +139,8 @@ namespace Dialogix.Controllers
                 response.Mensaje = ex.Message;
                 response.Estado = false;
             }
-                        
+
             return response;
         }
-
     }
-
 }

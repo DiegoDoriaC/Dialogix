@@ -106,7 +106,7 @@ namespace Essalud.Infraestructure.Repositories
                                 Medico = new Medico { Nombre = Convert.ToString(rd["NombreMedico"])!, Especialidad = Convert.ToString(rd["Especialidad"])! }
                             });
                         }
-                    }                        
+                    }
                 }
             }
             return listadoCitas;
@@ -130,7 +130,7 @@ namespace Essalud.Infraestructure.Repositories
                     using (var rd = await command.ExecuteReaderAsync())
                     {
                         while (await rd.ReadAsync())
-                        {     
+                        {
                             obj = new CitaMedica();
                             obj.IdCitaMedica = rd["Id"] != DBNull.Value ? Convert.ToInt32(rd["Id"]) : 0;
                             obj.Paciente.IdPaciente = rd["IdPaciente"] != DBNull.Value ? Convert.ToInt32(rd["IdPaciente"]) : 0;
@@ -177,6 +177,59 @@ namespace Essalud.Infraestructure.Repositories
             }
             return listado;
         }
+
+        public async Task<int> ObtenerTotalCitasAtendidas()
+        {
+            int total = 0;
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "pr_total_citas_atendidas";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    await connection.OpenAsync();
+
+                    var result = await command.ExecuteScalarAsync();
+                    total = Convert.ToInt32(result);
+                }
+            }
+
+            return total;
+        }
+        public async Task<List<CitasPorEspecialidadDTO>> ListarCitasPorEspecialidadTotales()
+        {
+            var lista = new List<CitasPorEspecialidadDTO>();
+
+            using (var connection = (SqlConnection)_connectionFactory.CreateConnection())
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "pr_citas_por_especialidad";
+                command.CommandType = CommandType.StoredProcedure;
+
+                await connection.OpenAsync();
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var item = new CitasPorEspecialidadDTO
+                        {
+                            Especilidad = reader["Especialidad"]?.ToString() ?? "",
+                            Cantidad = reader["TotalCitas"] != DBNull.Value
+                                ? Convert.ToInt32(reader["TotalCitas"])
+                                : 0
+                        };
+
+                        lista.Add(item);
+                    }
+                }
+            }
+
+            return lista;
+        }
+
 
     }
 }

@@ -20,9 +20,6 @@ namespace Essalud.Application.Feature.Services
 
         public async Task<Paciente> BuscarUsuarioPorDni(string dni)
         {
-            if(string.IsNullOrWhiteSpace(dni) || dni.Length != 8) 
-                throw new Exception("por favor, ingrese su DNI correctamente");
-
             Paciente paciente = new Paciente();
             paciente.Dni = dni;
 
@@ -45,6 +42,13 @@ namespace Essalud.Application.Feature.Services
             if (ultDigito == prompt) return ultDigito;
             else throw new Exception("El dígito no coincide con el registro en el sistema");
         }
+        public async Task ValidarFechaNacimiento(int idPaciente, DateTime fecha)
+        {
+            bool esCorrecto = await _pacientesRepository.ValidarFechaNacimiento(idPaciente, fecha);
+            if (!esCorrecto)
+                throw new Exception("La fecha de nacimiento no coincide con nuestros registros.");
+        }
+
 
     }
 }

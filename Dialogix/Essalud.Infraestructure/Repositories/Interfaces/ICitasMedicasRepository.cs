@@ -15,5 +15,9 @@ namespace Essalud.Infraestructure.Repositories.Interfaces
         Task<List<CitaMedica>> HistorialCitasMedicas(CitaMedica cita);
         Task<CitaMedica> InformacionCitaMedica(CitaMedica cita);
         Task<List<CitasPorEspecialidadDTO>> ListarCantidadConsultasPorEspecialidad(DateTime FechaInicio, DateTime FechaFin);
+        Task<int> ObtenerTotalCitasAtendidas();
+        Task<List<CitasPorEspecialidadDTO>> ListarCitasPorEspecialidadTotales();
+
+
     }
 }

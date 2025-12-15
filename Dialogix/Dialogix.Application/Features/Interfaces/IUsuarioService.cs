@@ -10,6 +10,9 @@ namespace Dialogix.Application.Features.Interfaces
     public interface IUsuarioService
     {
         Task<Usuario> IniciarSesion(string user, string contrasenia);
-        Task<Usuario> ActualizarAvatar(int IdUsuario, string NombreImagen);
+        Task<Usuario> ActualizarAvatar(int IdUsuario, string NombreImagen, int idAdmin);
+        Task<Usuario> ActualizarDatos(int IdUsuario, string Nombre, string Apellido, int idAdmin);
+
+
     }
 }

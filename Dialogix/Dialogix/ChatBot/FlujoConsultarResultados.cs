@@ -33,7 +33,6 @@ namespace Dialogix.ChatBot
                 mensaje = "Usted tiene " + listadoResultados.Count + " resultado(s) médico(s) en su historial (el mas reciente aparecerá primero)";
                 for(int i = 0; i < listadoResultados.Count; i++)
                 {
-                    // Dividido por * para que judith pueda hacer la separacion entre resultados
                     mensaje += "*|Fecha de registro: " + listadoResultados.ElementAt(i).FechaRegistro.ToShortDateString();
                     mensaje += "|Tipo de examen: " + listadoResultados.ElementAt(i).TipoExamen;
                     mensaje += "|Estado: " + listadoResultados.ElementAt(i).Estado + "*";

@@ -25,7 +25,7 @@ namespace Dialogix.Infrastructure.Repositories
                 messages = new[]
                 {
                     new { role = "user", content = prompt.Trim() }
-                }
+                } 
             };
 
             var response = await _http.PostAsJsonAsync("chat/completions", request);
